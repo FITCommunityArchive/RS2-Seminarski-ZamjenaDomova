@@ -19,15 +19,21 @@ namespace ZamjenaDomova.WebAPI.Controllers
             _service = service;
         }
         [HttpGet]
-        public ActionResult<List<Model.User>> Get()
+        public ActionResult<List<Model.User>> Get([FromQuery]UserSearchRequest request)
         {
-            return _service.Get();
+            return _service.Get(request);
         }
 
         [HttpPost]
         public Model.User Insert(UserInsertRequest request)
         {
             return _service.Insert(request);
+        }
+
+        [HttpPut("id")]
+        public Model.User Update(int id, UserUpdateRequest request)
+        {
+            return _service.Update(id, request);
         }
     }
 }

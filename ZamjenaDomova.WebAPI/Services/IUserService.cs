@@ -8,8 +8,9 @@ namespace ZamjenaDomova.WebAPI.Services
 {
     public interface IUserService
     {
-        List<Model.User> Get();
+        List<Model.User> Get(UserSearchRequest request);
 
         Model.User Insert(UserInsertRequest request);
+        Model.User Update(int id, UserUpdateRequest request);
     }
 }

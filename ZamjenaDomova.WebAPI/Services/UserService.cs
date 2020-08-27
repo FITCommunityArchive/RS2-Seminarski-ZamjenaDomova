@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ZamjenaDomova.WebAPI.Services
 {
@@ -23,9 +24,19 @@ namespace ZamjenaDomova.WebAPI.Services
             _mapper = mapper;
         }
 
-        public List<Model.User> Get()
+        public List<Model.User> Get(UserSearchRequest request)
         {
-            return _mapper.Map<List<Model.User>>(_context.User.ToList());
+            var query = _context.User.AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(request?.FirstName))
+                query = query.Where(x => x.FirstName.StartsWith(request.FirstName));
+            
+            if(!string.IsNullOrWhiteSpace(request?.LastName))
+                query = query.Where(x => x.LastName.StartsWith(request.LastName));
+            
+            var list = query.ToList();
+
+            return _mapper.Map<List<Model.User>>(list);
         }
 
         public Model.User Insert(UserInsertRequest request)
@@ -42,6 +53,16 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.User>(entity); 
+        }
+        Model.User IUserService.Update(int id, [FromBody]UserUpdateRequest request)
+        {
+            var entity = _context.User.Find(id);
+
+            _mapper.Map(request, entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.User>(entity);
         }
         public static string GenerateSalt()
         {
@@ -63,5 +84,7 @@ namespace ZamjenaDomova.WebAPI.Services
             byte[] inArray = algorithm.ComputeHash(dst);
             return Convert.ToBase64String(inArray);
         }
+
+        
     }
 }

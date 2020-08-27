@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZamjenaDomova.WebAPI", "ZamjenaDomova.WebAPI\ZamjenaDomova.WebAPI.csproj", "{D6D4535B-69C3-4A73-9C6F-DE963BB89778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZamjenaDomova.WebAPI", "ZamjenaDomova.WebAPI\ZamjenaDomova.WebAPI.csproj", "{D6D4535B-69C3-4A73-9C6F-DE963BB89778}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZamjenaDomova.Model", "ZamjenaDomova.Model\ZamjenaDomova.Model.csproj", "{9BA792ED-E29B-459F-8556-0B12C314C7B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZamjenaDomova.Model", "ZamjenaDomova.Model\ZamjenaDomova.Model.csproj", "{9BA792ED-E29B-459F-8556-0B12C314C7B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZamjenaDomova.WinUI", "ZamjenaDomova.WinUI\ZamjenaDomova.WinUI.csproj", "{2343D835-CE45-40D3-A3A0-1EB787E17628}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{BA92612D-CEB9-47B7-BCC6-2BDBF767489D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{9BA792ED-E29B-459F-8556-0B12C314C7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA792ED-E29B-459F-8556-0B12C314C7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA792ED-E29B-459F-8556-0B12C314C7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2343D835-CE45-40D3-A3A0-1EB787E17628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2343D835-CE45-40D3-A3A0-1EB787E17628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2343D835-CE45-40D3-A3A0-1EB787E17628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2343D835-CE45-40D3-A3A0-1EB787E17628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2343D835-CE45-40D3-A3A0-1EB787E17628} = {BA92612D-CEB9-47B7-BCC6-2BDBF767489D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18BFE65A-63A8-43B5-836C-0DC9F83B2DF8}

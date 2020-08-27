@@ -12,6 +12,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
         {
             CreateMap<Database.User, Model.User>();
             CreateMap<Model.Requests.UserInsertRequest, Database.User>();
+            CreateMap<Model.Requests.UserUpdateRequest, Database.User>();
         }
     }
 }
