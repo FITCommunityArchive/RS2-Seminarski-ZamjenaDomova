@@ -8,9 +8,9 @@ using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
-    public class AmenityController : BaseController<Model.Amenity, object>
+    public class AmenityController : BaseCRUDController<Model.Amenity, Model.Requests.AmenitySearchRequest, object, object>
     {
-        public AmenityController(IService<Model.Amenity, object> service) :base(service)
+        public AmenityController(AmenityService service):base(service)
         {
 
         }

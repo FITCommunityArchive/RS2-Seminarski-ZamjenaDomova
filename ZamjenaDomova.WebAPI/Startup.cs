@@ -40,8 +40,8 @@ namespace ZamjenaDomova.WebAPI
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<IUserService, UserService>();
-
             services.AddScoped<IService<Model.AmenitiesCategory, object>, BaseService<Model.AmenitiesCategory, object, Database.AmenitiesCategory>>();
+            services.AddScoped<ICRUDService<Model.Amenity, Model.Requests.AmenitySearchRequest, object, object>, AmenityService>();
 
             services.AddMvc(x => x.Filters.Add<ErrorFilter>());
 
