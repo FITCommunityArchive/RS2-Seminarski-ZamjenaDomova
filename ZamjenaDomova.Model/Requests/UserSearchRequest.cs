@@ -6,7 +6,6 @@ namespace ZamjenaDomova.Model.Requests
 {
     public class UserSearchRequest
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
     }
 }

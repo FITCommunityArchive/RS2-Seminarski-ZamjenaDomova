@@ -28,15 +28,18 @@ namespace ZamjenaDomova.WebAPI.Services
         {
             var query = _context.User.AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(request?.FirstName))
-                query = query.Where(x => x.FirstName.StartsWith(request.FirstName));
-            
-            if(!string.IsNullOrWhiteSpace(request?.LastName))
-                query = query.Where(x => x.LastName.StartsWith(request.LastName));
-            
+            if(!string.IsNullOrWhiteSpace(request?.Name))
+                query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
+
             var list = query.ToList();
 
             return _mapper.Map<List<Model.User>>(list);
+        }
+        Model.User IUserService.GetById(int id)
+        {
+            var entity = _context.User.Find(id);
+
+            return _mapper.Map<Model.User>(entity);
         }
 
         public Model.User Insert(UserInsertRequest request)

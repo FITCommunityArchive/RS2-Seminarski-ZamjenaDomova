@@ -32,6 +32,9 @@
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojTelefona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +54,10 @@
             this.dgvUsers.AllowUserToAddRows = false;
             this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Ime,
+            this.Prezime,
+            this.BrojTelefona});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsers.Location = new System.Drawing.Point(3, 18);
             this.dgvUsers.Name = "dgvUsers";
@@ -77,6 +84,33 @@
             this.txtSearch.Size = new System.Drawing.Size(543, 22);
             this.txtSearch.TabIndex = 2;
             // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "FirstName";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.MinimumWidth = 6;
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            this.Ime.Width = 125;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "LastName";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.MinimumWidth = 6;
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            this.Prezime.Width = 125;
+            // 
+            // BrojTelefona
+            // 
+            this.BrojTelefona.DataPropertyName = "PhoneNumber";
+            this.BrojTelefona.HeaderText = "Broj telefona";
+            this.BrojTelefona.MinimumWidth = 6;
+            this.BrojTelefona.Name = "BrojTelefona";
+            this.BrojTelefona.ReadOnly = true;
+            this.BrojTelefona.Width = 125;
+            // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -100,5 +134,8 @@
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojTelefona;
     }
 }

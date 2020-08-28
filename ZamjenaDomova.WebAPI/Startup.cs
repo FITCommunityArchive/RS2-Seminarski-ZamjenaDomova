@@ -41,6 +41,8 @@ namespace ZamjenaDomova.WebAPI
 
             services.AddScoped<IUserService, UserService>();
 
+            services.AddScoped<IService<Model.AmenitiesCategory, object>, BaseService<Model.AmenitiesCategory, object, Database.AmenitiesCategory>>();
+
             services.AddMvc(x => x.Filters.Add<ErrorFilter>());
 
         }

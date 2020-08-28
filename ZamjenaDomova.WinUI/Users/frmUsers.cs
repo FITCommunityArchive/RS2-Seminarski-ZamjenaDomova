@@ -24,10 +24,10 @@ namespace ZamjenaDomova.WinUI.Users
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
             //pozivamo api
-            var search = new UserSearchRequest { FirstName = txtSearch.Text };
+            var search = new UserSearchRequest { Name = txtSearch.Text};
 
             var result = await _apiService.Get<List<Model.User>>(search);
-
+            dgvUsers.AutoGenerateColumns = false;
             dgvUsers.DataSource = result;
 
         }

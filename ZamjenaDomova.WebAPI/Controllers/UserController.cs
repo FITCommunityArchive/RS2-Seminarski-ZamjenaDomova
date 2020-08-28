@@ -23,6 +23,12 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.Get(request);
         }
+        [HttpGet("{id}")]
+
+        public Model.User GetById(int id)
+        {
+            return _service.GetById(id);
+        }
 
         [HttpPost]
         public Model.User Insert(UserInsertRequest request)
