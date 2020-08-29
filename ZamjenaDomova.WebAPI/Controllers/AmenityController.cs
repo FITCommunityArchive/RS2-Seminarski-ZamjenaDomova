@@ -8,9 +8,9 @@ using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
-    public class AmenityController : BaseCRUDController<Model.Amenity, Model.Requests.AmenitySearchRequest, object, object>
+    public class AmenityController : BaseCRUDController<Model.Amenity, Model.Requests.AmenitySearchRequest, Model.Requests.AmenityUpsertRequest, Model.Requests.AmenityUpsertRequest>
     {
-        public AmenityController(AmenityService service):base(service)
+        public AmenityController(ICRUDService<Model.Amenity,Model.Requests.AmenitySearchRequest, Model.Requests.AmenityUpsertRequest, Model.Requests.AmenityUpsertRequest> service):base(service)
         {
 
         }

@@ -9,7 +9,7 @@ using ZamjenaDomova.WebAPI.Database;
 
 namespace ZamjenaDomova.WebAPI.Services
 {
-    public class AmenityService : BaseCRUDService<Model.Amenity, AmenitySearchRequest, Database.Amenity, object, object>
+    public class AmenityService : BaseCRUDService<Model.Amenity, AmenitySearchRequest, Database.Amenity, Model.Requests.AmenityUpsertRequest, Model.Requests.AmenityUpsertRequest>
     {
         public AmenityService(ZamjenaDomovaContext context, IMapper mapper) : base(context, mapper)
         {
