@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
+
 namespace ZamjenaDomova.Model
 {
     public class User
@@ -17,6 +18,7 @@ namespace ZamjenaDomova.Model
 
         public string PhoneNumber { get; set; }
         //public byte[] Image { get; set; }
+        public List<Role> Roles { get; set; }
 
     }
 }
