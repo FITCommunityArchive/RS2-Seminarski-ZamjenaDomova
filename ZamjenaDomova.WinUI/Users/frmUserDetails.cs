@@ -22,7 +22,7 @@ namespace ZamjenaDomova.WinUI.Users
 
         }
 
-        private void btnSnimi_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
 
         }

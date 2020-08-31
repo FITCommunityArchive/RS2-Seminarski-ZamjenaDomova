@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZamjenaDomova.WinUI.Amenities;
 using ZamjenaDomova.WinUI.Users;
 
 namespace ZamjenaDomova.WinUI
@@ -111,6 +112,22 @@ namespace ZamjenaDomova.WinUI
         }
 
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAmenities frm = new frmAmenities();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserDetails frm = new frmUserDetails();
+            //frm.MdiParent = this;
+            frm.Show();
+            //frm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void pretragaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmUsers frm = new frmUsers();
             frm.MdiParent = this;

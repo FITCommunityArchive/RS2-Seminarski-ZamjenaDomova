@@ -31,5 +31,10 @@ namespace ZamjenaDomova.WinUI.Users
             dgvUsers.DataSource = result;
 
         }
+
+        private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var id = dgvUsers.SelectedRows[0].Cells[0].Value;
+        }
     }
 }

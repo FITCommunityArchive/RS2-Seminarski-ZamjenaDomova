@@ -30,6 +30,8 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvAmenities = new System.Windows.Forms.DataGridView();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnShow = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmenities)).BeginInit();
             this.SuspendLayout();
@@ -58,11 +60,30 @@
             this.dgvAmenities.Size = new System.Drawing.Size(769, 328);
             this.dgvAmenities.TabIndex = 0;
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(16, 29);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(255, 22);
+            this.txtSearch.TabIndex = 1;
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(296, 25);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(86, 31);
+            this.btnShow.TabIndex = 2;
+            this.btnShow.Text = "Prikazi";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // frmAmenities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnShow);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAmenities";
             this.Text = "frmAmenities";
@@ -70,6 +91,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmenities)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -77,5 +99,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvAmenities;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnShow;
     }
 }

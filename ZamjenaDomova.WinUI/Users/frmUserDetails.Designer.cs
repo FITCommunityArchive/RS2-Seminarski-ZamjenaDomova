@@ -40,14 +40,14 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPasswordConfirmation = new System.Windows.Forms.TextBox();
-            this.btnSnimi = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(32, 66);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(480, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(453, 22);
             this.txtFirstName.TabIndex = 0;
             // 
             // label1
@@ -72,7 +72,7 @@
             // 
             this.txtLastName.Location = new System.Drawing.Point(32, 124);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(480, 22);
+            this.txtLastName.Size = new System.Drawing.Size(453, 22);
             this.txtLastName.TabIndex = 2;
             // 
             // label3
@@ -88,7 +88,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(32, 184);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(480, 22);
+            this.txtEmail.Size = new System.Drawing.Size(453, 22);
             this.txtEmail.TabIndex = 4;
             // 
             // label4
@@ -104,7 +104,7 @@
             // 
             this.txtTelephone.Location = new System.Drawing.Point(32, 247);
             this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(480, 22);
+            this.txtTelephone.Size = new System.Drawing.Size(453, 22);
             this.txtTelephone.TabIndex = 6;
             // 
             // label5
@@ -112,9 +112,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(32, 288);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.Size = new System.Drawing.Size(57, 17);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Password";
+            this.label5.Text = "Lozinka";
             // 
             // txtPassword
             // 
@@ -126,35 +126,35 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(289, 288);
+            this.label6.Location = new System.Drawing.Point(266, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 17);
+            this.label6.Size = new System.Drawing.Size(105, 17);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Potvrda";
+            this.label6.Text = "Potvrda lozinke";
             // 
             // txtPasswordConfirmation
             // 
-            this.txtPasswordConfirmation.Location = new System.Drawing.Point(292, 311);
+            this.txtPasswordConfirmation.Location = new System.Drawing.Point(269, 311);
             this.txtPasswordConfirmation.Name = "txtPasswordConfirmation";
-            this.txtPasswordConfirmation.Size = new System.Drawing.Size(220, 22);
+            this.txtPasswordConfirmation.Size = new System.Drawing.Size(216, 22);
             this.txtPasswordConfirmation.TabIndex = 10;
             // 
-            // btnSnimi
+            // btnSave
             // 
-            this.btnSnimi.Location = new System.Drawing.Point(354, 373);
-            this.btnSnimi.Name = "btnSnimi";
-            this.btnSnimi.Size = new System.Drawing.Size(158, 23);
-            this.btnSnimi.TabIndex = 12;
-            this.btnSnimi.Text = "Sacuvaj";
-            this.btnSnimi.UseVisualStyleBackColor = true;
-            this.btnSnimi.Click += new System.EventHandler(this.btnSnimi_Click);
+            this.btnSave.Location = new System.Drawing.Point(367, 373);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(118, 23);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Snimi";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSnimi);
+            this.ClientSize = new System.Drawing.Size(914, 450);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPasswordConfirmation);
             this.Controls.Add(this.label5);
@@ -189,6 +189,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPasswordConfirmation;
-        private System.Windows.Forms.Button btnSnimi;
+        private System.Windows.Forms.Button btnSave;
     }
 }

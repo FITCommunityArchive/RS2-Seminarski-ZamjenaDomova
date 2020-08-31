@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.WinUI.Amenities
 {
@@ -22,6 +23,15 @@ namespace ZamjenaDomova.WinUI.Amenities
         private async void frmAmenities_Load(object sender, EventArgs e)
         {
             var result = await _amenityService.Get<List<Model.Amenity>>(null);
+            dgvAmenities.DataSource = result;
+        }
+
+        private async void btnShow_Click(object sender, EventArgs e)
+        {
+            var search = new AmenitySearchRequest { Name = txtSearch.Text };
+
+            var result = await _amenityService.Get<List<Model.Amenity>>(search);
+            dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
         }
     }
