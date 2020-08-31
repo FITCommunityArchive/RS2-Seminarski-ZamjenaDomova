@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.WinUI.Users
 {
@@ -32,9 +33,25 @@ namespace ZamjenaDomova.WinUI.Users
             }    
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
-
+            UserUpsertRequest request = new UserUpsertRequest
+            {
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                Email = txtEmail.Text,
+                PhoneNumber = txtTelephone.Text,
+                Password = txtPassword.Text,
+                PasswordConfirmation = txtPasswordConfirmation.Text
+            };
+            if(_id.HasValue)
+            {
+                await _userService.Update<Model.User>(_id, request);
+            }
+            else
+            {
+                await _userService.Insert<Model.User>(request);
+            }
         }
     }
 }

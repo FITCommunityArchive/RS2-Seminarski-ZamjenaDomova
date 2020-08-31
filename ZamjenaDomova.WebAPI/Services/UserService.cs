@@ -60,7 +60,12 @@ namespace ZamjenaDomova.WebAPI.Services
         Model.User IUserService.Update(int id, [FromBody]UserUpsertRequest request)
         {
             var entity = _context.User.Find(id);
-
+            if(!string.IsNullOrWhiteSpace(request.Password))
+            {
+                if (request.Password != request.PasswordConfirmation)
+                    throw new Exception("Passwordi se ne slažu");
+                //TODO: update password
+            }
             _mapper.Map(request, entity);
 
             _context.SaveChanges();
