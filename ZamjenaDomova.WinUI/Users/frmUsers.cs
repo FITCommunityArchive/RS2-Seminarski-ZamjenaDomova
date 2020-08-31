@@ -35,6 +35,15 @@ namespace ZamjenaDomova.WinUI.Users
         private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvUsers.SelectedRows[0].Cells[0].Value;
+            frmUserDetails frm = new frmUserDetails(int.Parse(id.ToString()));
+            frm.Show();
+        }
+
+        private async void frmUsers_Load(object sender, EventArgs e)
+        {
+            var result = await _apiService.Get<List<Model.User>>(null);
+            dgvUsers.AutoGenerateColumns = false;
+            dgvUsers.DataSource = result;
         }
     }
 }

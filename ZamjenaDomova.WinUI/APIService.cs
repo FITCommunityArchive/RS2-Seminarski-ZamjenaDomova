@@ -25,8 +25,15 @@ namespace ZamjenaDomova.WinUI
                 url += "?";
                 url += await search.ToQueryString();
             }
-            var result = await url.GetJsonAsync<T>();
-            return result;
+           
+            return await url.GetJsonAsync<T>();
+        }
+
+        public async Task<T> GetById<T>(object id)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+
+            return await url.GetJsonAsync<T>();
         }
     }
 }
