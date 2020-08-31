@@ -10,7 +10,7 @@ namespace ZamjenaDomova.WebAPI.Services
     {
         List<Model.User> Get(UserSearchRequest request);
         Model.User GetById(int id);
-        Model.User Insert(UserInsertRequest request);
-        Model.User Update(int id, UserUpdateRequest request);
+        Model.User Insert(UserUpsertRequest request);
+        Model.User Update(int id, UserUpsertRequest request);
     }
 }

@@ -11,8 +11,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
         public Mapper()
         {
             CreateMap<Database.User, Model.User>();
-            CreateMap<Model.Requests.UserInsertRequest, Database.User>();
-            CreateMap<Model.Requests.UserUpdateRequest, Database.User>();
+            CreateMap<Model.Requests.UserUpsertRequest, Database.User>();
             CreateMap<Database.AmenitiesCategory, Model.AmenitiesCategory>();
             CreateMap<Database.Amenity, Model.Amenity>();
             CreateMap<Model.Requests.AmenityUpsertRequest, Database.Amenity>();

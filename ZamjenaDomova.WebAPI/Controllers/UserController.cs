@@ -31,13 +31,13 @@ namespace ZamjenaDomova.WebAPI.Controllers
         }
 
         [HttpPost]
-        public Model.User Insert(UserInsertRequest request)
+        public Model.User Insert(UserUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
         [HttpPut("id")]
-        public Model.User Update(int id, UserUpdateRequest request)
+        public Model.User Update(int id, UserUpsertRequest request)
         {
             return _service.Update(id, request);
         }

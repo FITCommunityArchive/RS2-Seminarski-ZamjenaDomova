@@ -42,7 +42,7 @@ namespace ZamjenaDomova.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public Model.User Insert(UserInsertRequest request)
+        public Model.User Insert(UserUpsertRequest request)
         {
             var entity = _mapper.Map<Database.User>(request);
 
@@ -57,7 +57,7 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return _mapper.Map<Model.User>(entity); 
         }
-        Model.User IUserService.Update(int id, [FromBody]UserUpdateRequest request)
+        Model.User IUserService.Update(int id, [FromBody]UserUpsertRequest request)
         {
             var entity = _context.User.Find(id);
 
