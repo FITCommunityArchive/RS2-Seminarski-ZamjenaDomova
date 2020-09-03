@@ -59,5 +59,14 @@ namespace ZamjenaDomova.WinUI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obavezno polje.
+        /// </summary>
+        internal static string Val_RequiredField {
+            get {
+                return ResourceManager.GetString("Val_RequiredField", resourceCulture);
+            }
+        }
     }
 }

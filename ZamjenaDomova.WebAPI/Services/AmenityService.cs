@@ -24,6 +24,7 @@ namespace ZamjenaDomova.WebAPI.Services
             if (!string.IsNullOrWhiteSpace(search.Name))
                 query = query.Where(x => x.Name.StartsWith(search.Name));
 
+            query = query.OrderBy(x => x.Name);
             return _mapper.Map<List<Model.Amenity>>(query.ToList());
         }
 

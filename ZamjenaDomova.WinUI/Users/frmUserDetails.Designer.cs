@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtPasswordConfirmation = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -49,6 +52,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(453, 22);
             this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
             // label1
             // 
@@ -74,6 +78,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(453, 22);
             this.txtLastName.TabIndex = 2;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // label3
             // 
@@ -90,6 +95,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(453, 22);
             this.txtEmail.TabIndex = 4;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label4
             // 
@@ -106,6 +112,7 @@
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.Size = new System.Drawing.Size(453, 22);
             this.txtTelephone.TabIndex = 6;
+            this.txtTelephone.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelephone_Validating);
             // 
             // label5
             // 
@@ -120,6 +127,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(32, 311);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(220, 22);
             this.txtPassword.TabIndex = 8;
             // 
@@ -136,6 +144,7 @@
             // 
             this.txtPasswordConfirmation.Location = new System.Drawing.Point(269, 311);
             this.txtPasswordConfirmation.Name = "txtPasswordConfirmation";
+            this.txtPasswordConfirmation.PasswordChar = '*';
             this.txtPasswordConfirmation.Size = new System.Drawing.Size(216, 22);
             this.txtPasswordConfirmation.TabIndex = 10;
             // 
@@ -148,6 +157,10 @@
             this.btnSave.Text = "Snimi";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmUserDetails
             // 
@@ -170,6 +183,7 @@
             this.Name = "frmUserDetails";
             this.Text = "UserDetails";
             this.Load += new System.EventHandler(this.frmUserDetails_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +204,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPasswordConfirmation;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

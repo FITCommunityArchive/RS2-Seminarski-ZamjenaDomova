@@ -134,5 +134,11 @@ namespace ZamjenaDomova.WinUI
             frm.Show();
             frm.WindowState = FormWindowState.Maximized;
         }
+
+        private void noviSadržajToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAmenityDetails frm = new frmAmenityDetails();
+            frm.Show();
+        }
     }
 }
