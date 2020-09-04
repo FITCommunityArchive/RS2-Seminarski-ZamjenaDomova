@@ -36,6 +36,8 @@
             this.txtCategory = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmenityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmenities)).BeginInit();
             this.SuspendLayout();
@@ -43,9 +45,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvAmenities);
-            this.groupBox1.Location = new System.Drawing.Point(13, 188);
+            this.groupBox1.Location = new System.Drawing.Point(157, 188);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(775, 250);
+            this.groupBox1.Size = new System.Drawing.Size(500, 250);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Amenities";
@@ -55,18 +57,21 @@
             this.dgvAmenities.AllowUserToAddRows = false;
             this.dgvAmenities.AllowUserToDeleteRows = false;
             this.dgvAmenities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAmenities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Category,
+            this.AmenityName});
             this.dgvAmenities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAmenities.Location = new System.Drawing.Point(3, 18);
             this.dgvAmenities.Name = "dgvAmenities";
             this.dgvAmenities.ReadOnly = true;
             this.dgvAmenities.RowHeadersWidth = 51;
             this.dgvAmenities.RowTemplate.Height = 24;
-            this.dgvAmenities.Size = new System.Drawing.Size(769, 229);
+            this.dgvAmenities.Size = new System.Drawing.Size(494, 229);
             this.dgvAmenities.TabIndex = 0;
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(350, 127);
+            this.btnShow.Location = new System.Drawing.Point(488, 133);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(86, 31);
             this.btnShow.TabIndex = 2;
@@ -77,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 88);
+            this.label2.Location = new System.Drawing.Point(180, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 17);
             this.label2.TabIndex = 13;
@@ -88,7 +93,7 @@
             this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(120, 85);
+            this.cmbCategory.Location = new System.Drawing.Point(258, 91);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(316, 24);
             this.cmbCategory.TabIndex = 12;
@@ -104,7 +109,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 40);
+            this.label1.Location = new System.Drawing.Point(209, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
             this.label1.TabIndex = 10;
@@ -112,10 +117,28 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(120, 40);
+            this.txtSearch.Location = new System.Drawing.Point(258, 46);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(316, 22);
             this.txtSearch.TabIndex = 9;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "AmenitiesCategoryName";
+            this.Category.HeaderText = "Kategorija";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.Width = 125;
+            // 
+            // AmenityName
+            // 
+            this.AmenityName.DataPropertyName = "Name";
+            this.AmenityName.HeaderText = "Naziv";
+            this.AmenityName.MinimumWidth = 6;
+            this.AmenityName.Name = "AmenityName";
+            this.AmenityName.ReadOnly = true;
+            this.AmenityName.Width = 125;
             // 
             // frmAmenities
             // 
@@ -149,5 +172,7 @@
         private System.Windows.Forms.Label txtCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmenityName;
     }
 }

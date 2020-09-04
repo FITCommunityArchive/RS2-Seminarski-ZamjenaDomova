@@ -25,13 +25,18 @@ namespace ZamjenaDomova.WinUI.Amenities
             await LoadAmenityCategories();
 
             var result = await _amenityService.Get<List<Model.Amenity>>(null);
+            dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
         }
 
         private async void btnShow_Click(object sender, EventArgs e)
         {
             var search = new AmenitySearchRequest { Name = txtSearch.Text };
-
+            var idObj = cmbCategory.SelectedValue;
+            if (int.TryParse(idObj.ToString(), out int id))
+            {
+                search.AmenitiesCategoryId = id;
+            }
             var result = await _amenityService.Get<List<Model.Amenity>>(search);
             dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;

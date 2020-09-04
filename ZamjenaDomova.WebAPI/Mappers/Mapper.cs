@@ -13,7 +13,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
             CreateMap<Database.User, Model.User>();
             CreateMap<Model.Requests.UserUpsertRequest, Database.User>();
             CreateMap<Database.AmenitiesCategory, Model.AmenitiesCategory>();
-            CreateMap<Database.Amenity, Model.Amenity>();
+            CreateMap<Database.Amenity, Model.Amenity>().ForMember(dest=> dest.AmenitiesCategoryName, opt => opt.MapFrom(src=> src.AmenitiesCategory.Name));
             CreateMap<Model.Requests.AmenityUpsertRequest, Database.Amenity>();
         }
     }

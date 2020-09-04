@@ -35,11 +35,11 @@ namespace ZamjenaDomova.WinUI.Amenities
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            var idObj = cmbCategory.SelectedValue;
+
             AmenityUpsertRequest request = new AmenityUpsertRequest();
 
             request.Name = txtName.Text;
-
+            var idObj = cmbCategory.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
             {
                 request.AmenitiesCategoryId = id;

@@ -43,7 +43,11 @@
             this.txtPasswordConfirmation = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pbAvatar = new System.Windows.Forms.PictureBox();
+            this.btn_UploadImage = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -152,7 +156,7 @@
             // 
             this.btnSave.Location = new System.Drawing.Point(367, 373);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(118, 23);
+            this.btnSave.Size = new System.Drawing.Size(118, 32);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Snimi";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -162,11 +166,37 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // pbAvatar
+            // 
+            this.pbAvatar.Image = global::ZamjenaDomova.WinUI.Properties.Resources.imgAvatarPlaceholder;
+            this.pbAvatar.Location = new System.Drawing.Point(566, 66);
+            this.pbAvatar.Name = "pbAvatar";
+            this.pbAvatar.Size = new System.Drawing.Size(187, 175);
+            this.pbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAvatar.TabIndex = 13;
+            this.pbAvatar.TabStop = false;
+            // 
+            // btn_UploadImage
+            // 
+            this.btn_UploadImage.Location = new System.Drawing.Point(611, 247);
+            this.btn_UploadImage.Name = "btn_UploadImage";
+            this.btn_UploadImage.Size = new System.Drawing.Size(101, 35);
+            this.btn_UploadImage.TabIndex = 14;
+            this.btn_UploadImage.Text = "Učitaj sliku";
+            this.btn_UploadImage.UseVisualStyleBackColor = true;
+            this.btn_UploadImage.Click += new System.EventHandler(this.btn_UploadImage_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 450);
+            this.ClientSize = new System.Drawing.Size(793, 450);
+            this.Controls.Add(this.btn_UploadImage);
+            this.Controls.Add(this.pbAvatar);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPasswordConfirmation);
@@ -184,6 +214,7 @@
             this.Text = "UserDetails";
             this.Load += new System.EventHandler(this.frmUserDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +236,8 @@
         private System.Windows.Forms.TextBox txtPasswordConfirmation;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.PictureBox pbAvatar;
+        private System.Windows.Forms.Button btn_UploadImage;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

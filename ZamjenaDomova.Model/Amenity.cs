@@ -9,5 +9,7 @@ namespace ZamjenaDomova.Model
         public int AmenityId { get; set; }
         public string Name { get; set; }
         public int AmenitiesCategoryId { get; set; }
+        public virtual AmenitiesCategory AmenitiesCategory { get; set; }
+        public string AmenitiesCategoryName { get; set; }
     }
 }

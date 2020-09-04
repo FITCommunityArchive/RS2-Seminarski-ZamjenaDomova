@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,22 +32,28 @@ namespace ZamjenaDomova.WinUI.Users
                 txtLastName.Text = user.LastName;
                 txtEmail.Text = user.Email;
                 txtTelephone.Text = user.PhoneNumber;
+                try
+                {
+                    MemoryStream ms = new MemoryStream(user.Image);
+                    Image image = Image.FromStream(ms);
+
+                    pbAvatar.Image = image;
+                }
+                catch { }
             }
         }
-
+        UserUpsertRequest request = new UserUpsertRequest();
         private async void btnSave_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
             {
-                UserUpsertRequest request = new UserUpsertRequest
-                {
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Email = txtEmail.Text,
-                    PhoneNumber = txtTelephone.Text,
-                    Password = txtPassword.Text,
-                    PasswordConfirmation = txtPasswordConfirmation.Text
-                };
+                request.FirstName = txtFirstName.Text;
+                request.LastName = txtLastName.Text;
+                request.Email = txtEmail.Text;
+                request.PhoneNumber = txtTelephone.Text;
+                request.Password = txtPassword.Text;
+                request.PasswordConfirmation = txtPasswordConfirmation.Text;
+
                 if (_id.HasValue)
                 {
                     await _userService.Update<Model.User>(_id, request);
@@ -56,6 +63,13 @@ namespace ZamjenaDomova.WinUI.Users
                     await _userService.Insert<Model.User>(request);
                 }
                 MessageBox.Show("Uspjesno!");
+                txtEmail.Text = "";
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                txtTelephone.Text = "";
+                txtPassword.Text = "";
+                txtPasswordConfirmation.Text = "";
+                pbAvatar.Image = default;
             }
         }
 
@@ -103,6 +117,20 @@ namespace ZamjenaDomova.WinUI.Users
                 e.Cancel = true;
             }
             else errorProvider.SetError(txtTelephone, null);
+        }
+
+        private void btn_UploadImage_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+                request.Image = file;
+                Image image = Image.FromFile(fileName);
+                pbAvatar.Image = image;
+            }
+            
         }
 
         //private void txtLozinka_Validating(object sender, CancelEventArgs e)
