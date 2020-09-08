@@ -11,7 +11,7 @@ using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -21,13 +21,14 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             _service = service;
         }
-        [Authorize]
+        [Authorize(Roles = "Administrator,Editor")]
         [HttpGet]
         public ActionResult<List<Model.User>> Get([FromQuery] UserSearchRequest request)
         {
             return _service.Get(request);
         }
-        [Authorize]
+
+        [Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
 
         public Model.User GetById(int id)
@@ -35,14 +36,14 @@ namespace ZamjenaDomova.WebAPI.Controllers
             return _service.GetById(id);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public Model.User Insert(UserUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public Model.User Update(int id, UserUpsertRequest request)
         {
