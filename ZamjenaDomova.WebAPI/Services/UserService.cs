@@ -102,17 +102,48 @@ namespace ZamjenaDomova.WebAPI.Services
         }
         public Model.User Update(int id, [FromBody] UserUpsertRequest request)
         {
-            var entity = _context.User.Find(id);
+            var entity = _context.User.Include(x => x.UserRoles).FirstOrDefault(x => x.UserId == id);
+            
+            _context.User.Attach(entity);
+            _context.User.Update(entity);
+
             if (!string.IsNullOrWhiteSpace(request.Password))
             {
                 if (request.Password != request.PasswordConfirmation)
                     throw new Exception("Passwordi se ne slažu");
-                //TODO: update password
+                entity.PasswordSalt = GenerateSalt();
+                entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             }
             _mapper.Map(request, entity);
 
             _context.SaveChanges();
+            var userRoles = _context.UserRole.Where(x => x.UserId == entity.UserId);
+            if (request.Roles.Count() < userRoles.Count())
+            {
+                foreach (var role in userRoles)
+                {
+                    if (!request.Roles.Contains(role.RoleId))
+                    {
+                        _context.UserRole.Remove(role);
+                    }
+                }
+            }
 
+            if (request.Roles != null && request.Roles.Count() > 0 && request.Roles[0] != 0)
+            {
+                foreach (var role in request.Roles)
+                {
+                    if (!_context.UserRole.Any(x => x.UserId == entity.UserId && x.RoleId == role))
+                    {
+                        _context.UserRole.Add(new UserRole
+                        {
+                            RoleId = role,
+                            UserId = entity.UserId
+                        });
+                    }
+                }
+            }
+            _context.SaveChanges();
             return _mapper.Map<Model.User>(entity);
         }
         public static string GenerateSalt()
