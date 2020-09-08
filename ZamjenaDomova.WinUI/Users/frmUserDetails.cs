@@ -53,6 +53,7 @@ namespace ZamjenaDomova.WinUI.Users
                 request.PhoneNumber = txtTelephone.Text;
                 request.Password = txtPassword.Text;
                 request.PasswordConfirmation = txtPasswordConfirmation.Text;
+                request.Role = 2;
 
                 if (_id.HasValue)
                 {

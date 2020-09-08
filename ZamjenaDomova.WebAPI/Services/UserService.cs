@@ -36,7 +36,7 @@ namespace ZamjenaDomova.WebAPI.Services
         {
             var query = _context.User.AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(request?.Name))
+            if (!string.IsNullOrWhiteSpace(request?.Name))
                 query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
 
             var list = query.ToList();
@@ -45,13 +45,36 @@ namespace ZamjenaDomova.WebAPI.Services
         }
         public Model.User GetById(int id)
         {
-            var entity = _context.User.Find(id);
+            var user = _context.User.FirstOrDefault(x => x.UserId == id);
 
-            return _mapper.Map<Model.User>(entity);
+            if (user == null)
+                return new Model.User();
+
+            var result = new Model.User
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Image = user.Image,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            var userRoles = _context.UserRole.Where(x => x.UserId == id);
+            if(userRoles.Count() >0)
+            {
+                result.Roles = new List<Model.Role>();
+                foreach (var role in userRoles.Include(x => x.Role))
+                    result.Roles.Add(new Model.Role { RoleId = role.RoleId, Name = role.Role.Name });
+            }
+            return result;
         }
 
         public Model.User Insert(UserUpsertRequest request)
         {
+            if (_context.User.Any(x => x.Email == request.Email))
+            {
+                throw new UserException("Email \"" + request.Email + "\" je već zauzet!");
+            }
             var entity = _mapper.Map<Database.User>(request);
 
             if (request.Password != request.PasswordConfirmation)
@@ -63,12 +86,24 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.User.Add(entity);
             _context.SaveChanges();
 
-            return _mapper.Map<Model.User>(entity); 
+            if (request.Roles != null && request.Roles.Count() > 0 && request.Roles[0] != 0)
+            {
+                foreach (var role in request.Roles)
+                {
+                    _context.UserRole.Add(new UserRole
+                    {
+                        RoleId = role,
+                        UserId = entity.UserId
+                    });
+                }
+            }
+            _context.SaveChanges();
+            return _mapper.Map<Model.User>(entity);
         }
-        public Model.User Update(int id, [FromBody]UserUpsertRequest request)
+        public Model.User Update(int id, [FromBody] UserUpsertRequest request)
         {
             var entity = _context.User.Find(id);
-            if(!string.IsNullOrWhiteSpace(request.Password))
+            if (!string.IsNullOrWhiteSpace(request.Password))
             {
                 if (request.Password != request.PasswordConfirmation)
                     throw new Exception("Passwordi se ne slažu");
@@ -108,7 +143,7 @@ namespace ZamjenaDomova.WebAPI.Services
             if (user == null)
                 return null;
 
-            var newHash = GenerateHash(user.PasswordHash, password);
+            var newHash = GenerateHash(user.PasswordSalt, password);
             if (newHash == user.PasswordHash)
             {
                 var claims = new Claim[]

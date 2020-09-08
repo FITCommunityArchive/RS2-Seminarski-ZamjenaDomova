@@ -14,5 +14,6 @@ namespace ZamjenaDomova.Model.Requests
         public byte[] Image { get; set; }
         public string Password { get; set; }
         public string PasswordConfirmation { get; set; }
+        public List<int> Roles { get; set; }
     }
 }

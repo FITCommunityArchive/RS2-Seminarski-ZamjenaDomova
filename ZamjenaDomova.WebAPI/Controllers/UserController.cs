@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
 using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -18,11 +21,13 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             _service = service;
         }
+        [Authorize]
         [HttpGet]
-        public ActionResult<List<Model.User>> Get([FromQuery]UserSearchRequest request)
+        public ActionResult<List<Model.User>> Get([FromQuery] UserSearchRequest request)
         {
             return _service.Get(request);
         }
+        [Authorize]
         [HttpGet("{id}")]
 
         public Model.User GetById(int id)
@@ -30,16 +35,30 @@ namespace ZamjenaDomova.WebAPI.Controllers
             return _service.GetById(id);
         }
 
+        [Authorize]
         [HttpPost]
         public Model.User Insert(UserUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public Model.User Update(int id, UserUpsertRequest request)
         {
             return _service.Update(id, request);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] AuthenticateModel model)
+        {
+            var user = _service.Authenticate(model.Email, model.Password);
+
+            if (user == null)
+                return BadRequest(new { message = "Email ili lozinka nisu ispravni!" });
+
+            return Ok(user);
         }
     }
 }
