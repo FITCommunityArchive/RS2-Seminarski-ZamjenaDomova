@@ -10,6 +10,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ZamjenaDomova.WebAPI.Helpers;
+using Microsoft.Extensions.Options;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ZamjenaDomova.WebAPI.Services
 {
@@ -17,11 +23,13 @@ namespace ZamjenaDomova.WebAPI.Services
     {
         private readonly ZamjenaDomovaContext _context;
         private readonly IMapper _mapper;
+        private readonly AppSettings _appSettings;
 
-        public UserService(ZamjenaDomovaContext context, IMapper mapper)
+        public UserService(ZamjenaDomovaContext context, IMapper mapper, IOptions<AppSettings> appSettings)
         {
             _context = context;
             _mapper = mapper;
+            _appSettings = appSettings.Value;
         }
 
         public List<Model.User> Get(UserSearchRequest request)
@@ -35,7 +43,7 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return _mapper.Map<List<Model.User>>(list);
         }
-        Model.User IUserService.GetById(int id)
+        public Model.User GetById(int id)
         {
             var entity = _context.User.Find(id);
 
@@ -47,7 +55,7 @@ namespace ZamjenaDomova.WebAPI.Services
             var entity = _mapper.Map<Database.User>(request);
 
             if (request.Password != request.PasswordConfirmation)
-                throw new UserException("Passwords do not match!");
+                throw new UserException("Lozinke se ne podudaraju!");
 
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
@@ -57,7 +65,7 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return _mapper.Map<Model.User>(entity); 
         }
-        Model.User IUserService.Update(int id, [FromBody]UserUpsertRequest request)
+        public Model.User Update(int id, [FromBody]UserUpsertRequest request)
         {
             var entity = _context.User.Find(id);
             if(!string.IsNullOrWhiteSpace(request.Password))
@@ -93,6 +101,46 @@ namespace ZamjenaDomova.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        
+        public Model.User Authenticate(string email, string password)
+        {
+            var user = _context.User.Include("UserRoles.Role").FirstOrDefault(x => x.Email == email);
+
+            if (user == null)
+                return null;
+
+            var newHash = GenerateHash(user.PasswordHash, password);
+            if (newHash == user.PasswordHash)
+            {
+                var claims = new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.UserId.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email)
+                };
+
+                foreach (var role in user.UserRoles)
+                {
+                    claims.Append(new Claim(ClaimTypes.Role, role.Role.Name));
+                }
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(claims),
+                    Expires = DateTime.UtcNow.AddDays(7),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var tokenString = tokenHandler.WriteToken(token);
+
+                var loggedUser = _mapper.Map<Model.User>(user);
+                loggedUser.Token = tokenString;
+                loggedUser.Token_Expiration_Time = token.ValidTo;
+
+                return loggedUser;
+            }
+
+            return null;
+        }
     }
 }

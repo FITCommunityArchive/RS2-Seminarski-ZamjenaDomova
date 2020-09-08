@@ -21,7 +21,7 @@ namespace ZamjenaDomova.WebAPI.Database
         [Required]
         public string PhoneNumber { get; set; }
         public byte[] Image { get; set; }
-        //uloge dodati prop i u bazu
         
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

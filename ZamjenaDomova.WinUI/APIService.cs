@@ -11,7 +11,9 @@ namespace ZamjenaDomova.WinUI
 {
     public class APIService
     {
-        private string _route = null;
+        public static string Token { get; set; }
+
+        private readonly string _route = null;
         public APIService(string route)
         {
             _route = route;
@@ -20,12 +22,12 @@ namespace ZamjenaDomova.WinUI
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
 
-            if(search!=null)
+            if (search != null)
             {
                 url += "?";
                 url += await search.ToQueryString();
             }
-           
+
             return await url.GetJsonAsync<T>();
         }
 
@@ -34,7 +36,7 @@ namespace ZamjenaDomova.WinUI
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
             return await url.GetJsonAsync<T>();
-        } 
+        }
         public async Task<T> Insert<T>(object request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T, TSearch> : ControllerBase
@@ -18,7 +20,7 @@ namespace ZamjenaDomova.WebAPI.Controllers
             _service = service;
         }
         [HttpGet]
-        public IList<T> Get([FromQuery]TSearch search)
+        public IList<T> Get([FromQuery] TSearch search)
         {
             return _service.Get(search);
         }
