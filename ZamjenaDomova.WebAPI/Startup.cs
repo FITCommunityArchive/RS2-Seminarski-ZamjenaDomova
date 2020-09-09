@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ZamjenaDomova.Model.Requests;
 using ZamjenaDomova.WebAPI.Database;
 using ZamjenaDomova.WebAPI.Filters;
 using ZamjenaDomova.WebAPI.Helpers;
@@ -53,6 +54,7 @@ namespace ZamjenaDomova.WebAPI
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
                     Description = "JWT Authorization header using the Bearer scheme."
+
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -129,6 +131,7 @@ namespace ZamjenaDomova.WebAPI
             services.AddScoped<IService<Model.AmenitiesCategory, object>, BaseService<Model.AmenitiesCategory, object, Database.AmenitiesCategory>>();
             services.AddScoped<IService<Model.PreferredSwapTime, object>, BaseService<Model.PreferredSwapTime, object, Database.PreferredSwapTime>>();
             services.AddScoped<IService<Model.Territory, object>, BaseService<Model.Territory, object, Database.Territory>>();
+            services.AddScoped<IService<Model.Role, RoleSearchRequest>, RoleService>();
             services.AddScoped<ICRUDService<Model.Amenity, Model.Requests.AmenitySearchRequest, Model.Requests.AmenityUpsertRequest, Model.Requests.AmenityUpsertRequest>, AmenityService>();
 
             services.AddMvc(x => x.Filters.Add<ErrorFilter>());
@@ -148,9 +151,9 @@ namespace ZamjenaDomova.WebAPI
             app.UseRouting();
 
             app.UseAuthentication();
-            
+
             app.UseAuthorization();
-            
+
 
             app.UseEndpoints(endpoints =>
             {

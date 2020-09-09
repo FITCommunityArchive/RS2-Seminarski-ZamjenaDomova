@@ -46,6 +46,7 @@
             this.pbAvatar = new System.Windows.Forms.PictureBox();
             this.btn_UploadImage = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.clbRoles = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.SuspendLayout();
@@ -154,9 +155,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(367, 373);
+            this.btnSave.Location = new System.Drawing.Point(32, 406);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(118, 32);
+            this.btnSave.Size = new System.Drawing.Size(721, 32);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Snimi";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -190,11 +191,20 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // clbRoles
+            // 
+            this.clbRoles.FormattingEnabled = true;
+            this.clbRoles.Location = new System.Drawing.Point(32, 349);
+            this.clbRoles.Name = "clbRoles";
+            this.clbRoles.Size = new System.Drawing.Size(453, 38);
+            this.clbRoles.TabIndex = 15;
+            // 
             // frmUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 450);
+            this.Controls.Add(this.clbRoles);
             this.Controls.Add(this.btn_UploadImage);
             this.Controls.Add(this.pbAvatar);
             this.Controls.Add(this.btnSave);
@@ -239,5 +249,6 @@
         private System.Windows.Forms.PictureBox pbAvatar;
         private System.Windows.Forms.Button btn_UploadImage;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckedListBox clbRoles;
     }
 }

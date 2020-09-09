@@ -16,6 +16,8 @@ namespace ZamjenaDomova.WinUI.Users
     public partial class frmUserDetails : Form
     {
         private readonly APIService _userService = new APIService("User");
+        private readonly APIService _roleService = new APIService("Role");
+
         private int? _id = null;
         public frmUserDetails(int? userId = null)
         {
@@ -25,21 +27,41 @@ namespace ZamjenaDomova.WinUI.Users
 
         private async void frmUserDetails_Load(object sender, EventArgs e)
         {
+            var roles = await _roleService.Get<List<Model.Role>>(null);
+            clbRoles.DataSource = roles;
+            clbRoles.DisplayMember = "Name";
+            clbRoles.ValueMember = "RoleId";
+
             if (_id.HasValue)
             {
-                var user = await _userService.GetById<Model.User>(_id);
-                txtFirstName.Text = user.FirstName;
-                txtLastName.Text = user.LastName;
-                txtEmail.Text = user.Email;
-                txtTelephone.Text = user.PhoneNumber;
                 try
                 {
+                    var user = await _userService.GetById<Model.User>(_id);
+
+                    txtFirstName.Text = user.FirstName;
+                    txtLastName.Text = user.LastName;
+                    txtEmail.Text = user.Email;
+                    txtTelephone.Text = user.PhoneNumber;
+
                     MemoryStream ms = new MemoryStream(user.Image);
                     Image image = Image.FromStream(ms);
-
                     pbAvatar.Image = image;
+
+                    var request = new RoleSearchRequest { UserId = user.UserId };
+                    var userRoles = await _roleService.Get<List<Model.Role>>(request);
+                    var rolesInt = userRoles.Select(x => x.RoleId);
+                    for (int i = 0; i < clbRoles.Items.Count; i++)
+                    {
+                        var item = (clbRoles.Items[i] as Model.Role).RoleId;
+                        if (rolesInt.Contains(item))
+                            clbRoles.SetItemChecked(i, true);
+                    }
                 }
-                catch { }
+                catch (Exception)
+                {
+                    MessageBox.Show("Nemate pristup!", "Authorization", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Close();
+                }
             }
         }
         UserUpsertRequest request = new UserUpsertRequest();
@@ -131,7 +153,7 @@ namespace ZamjenaDomova.WinUI.Users
                 Image image = Image.FromFile(fileName);
                 pbAvatar.Image = image;
             }
-            
+
         }
 
         //private void txtLozinka_Validating(object sender, CancelEventArgs e)
