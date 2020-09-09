@@ -177,7 +177,7 @@ namespace ZamjenaDomova.WebAPI.Services
             var newHash = GenerateHash(user.PasswordSalt, password);
             if (newHash == user.PasswordHash)
             {
-                var claims = new Claim[]
+                var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.UserId.ToString()),
                     new Claim(ClaimTypes.Email, user.Email)
@@ -185,7 +185,8 @@ namespace ZamjenaDomova.WebAPI.Services
 
                 foreach (var role in user.UserRoles)
                 {
-                    claims.Append(new Claim(ClaimTypes.Role, role.Role.Name));
+                    var claim = new Claim(ClaimTypes.Role, role.Role.Name);
+                    claims.Add(claim);
                 }
 
                 var tokenHandler = new JwtSecurityTokenHandler();
