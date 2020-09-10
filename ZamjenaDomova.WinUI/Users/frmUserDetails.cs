@@ -43,9 +43,11 @@ namespace ZamjenaDomova.WinUI.Users
                     txtEmail.Text = user.Email;
                     txtTelephone.Text = user.PhoneNumber;
 
-                    MemoryStream ms = new MemoryStream(user.Image);
-                    Image image = Image.FromStream(ms);
-                    pbAvatar.Image = image;
+                    
+                        //MemoryStream ms = new MemoryStream(user.Image);
+                        //Image image = Image.FromStream(ms);
+                        //pbAvatar.Image = image;
+                    
 
                     var request = new RoleSearchRequest { UserId = user.UserId };
                     var userRoles = await _roleService.Get<List<Model.Role>>(request);
@@ -69,13 +71,15 @@ namespace ZamjenaDomova.WinUI.Users
         {
             if (this.ValidateChildren())
             {
+                var roles = clbRoles.CheckedItems.Cast<Model.Role>().Select(x => x.RoleId).ToList();
+
                 request.FirstName = txtFirstName.Text;
                 request.LastName = txtLastName.Text;
                 request.Email = txtEmail.Text;
                 request.PhoneNumber = txtTelephone.Text;
                 request.Password = txtPassword.Text;
                 request.PasswordConfirmation = txtPasswordConfirmation.Text;
-                request.Roles = new List<int> { 2 };
+                request.Roles = roles;
 
                 if (_id.HasValue)
                 {
@@ -86,13 +90,11 @@ namespace ZamjenaDomova.WinUI.Users
                     await _userService.Insert<Model.User>(request);
                 }
                 MessageBox.Show("Uspjesno!");
-                txtEmail.Text = "";
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
-                txtTelephone.Text = "";
-                txtPassword.Text = "";
-                txtPasswordConfirmation.Text = "";
-                pbAvatar.Image = default;
+                this.Close();
+                var frm = new frmUsers();
+                var frmIndex = Application.OpenForms["frmIndex"];
+                frm.MdiParent = frmIndex;
+                frm.Show();
             }
         }
 

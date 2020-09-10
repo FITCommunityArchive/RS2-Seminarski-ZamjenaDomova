@@ -155,7 +155,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(32, 406);
+            this.btnSave.Location = new System.Drawing.Point(32, 453);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(721, 32);
             this.btnSave.TabIndex = 12;
@@ -196,14 +196,14 @@
             this.clbRoles.FormattingEnabled = true;
             this.clbRoles.Location = new System.Drawing.Point(32, 349);
             this.clbRoles.Name = "clbRoles";
-            this.clbRoles.Size = new System.Drawing.Size(453, 38);
+            this.clbRoles.Size = new System.Drawing.Size(453, 89);
             this.clbRoles.TabIndex = 15;
             // 
             // frmUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 450);
+            this.ClientSize = new System.Drawing.Size(793, 497);
             this.Controls.Add(this.clbRoles);
             this.Controls.Add(this.btn_UploadImage);
             this.Controls.Add(this.pbAvatar);

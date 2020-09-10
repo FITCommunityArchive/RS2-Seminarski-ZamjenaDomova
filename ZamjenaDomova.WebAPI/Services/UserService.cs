@@ -56,7 +56,8 @@ namespace ZamjenaDomova.WebAPI.Services
                 LastName = user.LastName,
                 Email = user.Email,
                 Image = user.Image,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                UserId=user.UserId
             };
 
             var userRoles = _context.UserRole.Where(x => x.UserId == id);
