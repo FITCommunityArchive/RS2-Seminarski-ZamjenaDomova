@@ -7,7 +7,7 @@ namespace ZamjenaDomova.Model
 {
     public class AmenitiesCategory
     {
-        public int AmenitiesCategoryId { get; set; }
+        public int? AmenitiesCategoryId { get; set; }
         public string Name { get; set; }
 
     }

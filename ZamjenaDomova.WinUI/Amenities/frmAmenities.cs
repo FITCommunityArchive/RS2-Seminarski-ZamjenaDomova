@@ -22,33 +22,72 @@ namespace ZamjenaDomova.WinUI.Amenities
 
         private async void frmAmenities_Load(object sender, EventArgs e)
         {
-            await LoadAmenityCategories();
+            await LoadNewAmenityCategories();
+            await LoadSearchAmenityCategories();
 
             var result = await _amenityService.Get<List<Model.Amenity>>(null);
             dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
+            dgvAmenities.BackgroundColor = System.Drawing.SystemColors.Control;
         }
 
         private async void btnShow_Click(object sender, EventArgs e)
         {
-            var search = new AmenitySearchRequest { Name = txtSearch.Text };
-            var idObj = cmbCategory.SelectedValue;
+            ReloadDataGridView();
+        }
+
+        private async Task LoadNewAmenityCategories()
+        {
+            var result= await _amenityCategoryService.Get<List<Model.AmenitiesCategory>>(null);
+            result.Insert(0, new Model.AmenitiesCategory { AmenitiesCategoryId = null, Name = null });
+
+            cmbNewCategory.DataSource = result;
+            cmbNewCategory.DisplayMember = "Name";
+            cmbNewCategory.ValueMember = "AmenitiesCategoryId";
+        }
+        private async Task LoadSearchAmenityCategories()
+        {
+            var result= await _amenityCategoryService.Get<List<Model.AmenitiesCategory>>(null);
+            result.Insert(0, new Model.AmenitiesCategory { AmenitiesCategoryId = null, Name = null });
+            
+            cmbSearchCategory.DataSource = result;
+            cmbSearchCategory.DisplayMember = "Name";
+            cmbSearchCategory.ValueMember = "AmenitiesCategoryId";
+
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            AmenityUpsertRequest request = new AmenityUpsertRequest();
+
+            request.Name = txtNewName.Text;
+            var idObj = cmbNewCategory.SelectedValue;
             if (int.TryParse(idObj.ToString(), out int id))
+            {
+                request.AmenitiesCategoryId = id;
+            }
+
+            await _amenityService.Insert<Model.Amenity>(request);
+            MessageBox.Show("Uspjesno!");
+
+            txtNewName.Text = "";
+            cmbNewCategory.SelectedIndex = 0;
+
+            ReloadDataGridView();
+
+        }
+        public async void ReloadDataGridView()
+        {
+            var search = new AmenitySearchRequest { Name = txtSearchName.Text };
+            var idObj = cmbSearchCategory.SelectedValue;
+            if (idObj != null && int.TryParse(idObj.ToString(), out int id))
             {
                 search.AmenitiesCategoryId = id;
             }
             var result = await _amenityService.Get<List<Model.Amenity>>(search);
             dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
-        }
 
-        private async Task LoadAmenityCategories()
-        {
-            var result= await _amenityCategoryService.Get<List<Model.AmenitiesCategory>>(null);
-            result.Insert(0, new Model.AmenitiesCategory { AmenitiesCategoryId = -1, Name = null });
-            cmbCategory.DataSource = result;
-            cmbCategory.DisplayMember = "Name";
-            cmbCategory.ValueMember = "AmenitiesCategoryId";
         }
     }
 }

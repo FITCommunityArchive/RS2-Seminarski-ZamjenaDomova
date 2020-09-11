@@ -35,7 +35,6 @@
             this.noviKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sadržajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noviSadržajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -81,8 +80,7 @@
             // sadržajiToolStripMenuItem
             // 
             this.sadržajiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pretragaToolStripMenuItem,
-            this.noviSadržajToolStripMenuItem});
+            this.pretragaToolStripMenuItem});
             this.sadržajiToolStripMenuItem.Name = "sadržajiToolStripMenuItem";
             this.sadržajiToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.sadržajiToolStripMenuItem.Text = "Sadržaji";
@@ -94,13 +92,6 @@
             this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pretragaToolStripMenuItem.Text = "Pretraga";
             this.pretragaToolStripMenuItem.Click += new System.EventHandler(this.pretragaToolStripMenuItem_Click);
-            // 
-            // noviSadržajToolStripMenuItem
-            // 
-            this.noviSadržajToolStripMenuItem.Name = "noviSadržajToolStripMenuItem";
-            this.noviSadržajToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.noviSadržajToolStripMenuItem.Text = "Novi sadržaj";
-            this.noviSadržajToolStripMenuItem.Click += new System.EventHandler(this.noviSadržajToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -150,7 +141,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem sadržajiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noviSadržajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noviKorisnikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem1;
