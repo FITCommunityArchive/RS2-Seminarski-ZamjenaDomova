@@ -27,7 +27,7 @@ namespace ZamjenaDomova.WinUI.Amenities
         private async Task LoadAmenityCategories()
         {
             var result = await _amenityCategoryService.Get<List<Model.AmenitiesCategory>>(null);
-            result.Insert(0, new Model.AmenitiesCategory());
+            result.Insert(0, new Model.AmenitiesCategory ());
             cmbCategory.DataSource = result;
             cmbCategory.DisplayMember = "Name";
             cmbCategory.ValueMember = "AmenitiesCategoryId";
@@ -49,8 +49,17 @@ namespace ZamjenaDomova.WinUI.Amenities
 
             await _amenityService.Insert<Model.Amenity>(request);
             MessageBox.Show("Uspjesno!");
-            txtName.Text = "";
-            cmbCategory.Text = "";
+            
+            this.Close();
+            var frm = new frmAmenities();
+            var frmIndex = Application.OpenForms["frmIndex"];
+            frm.MdiParent = frmIndex;
+            frm.Show();
+        }
+
+        private void cmbCategory_Validating(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

@@ -69,6 +69,7 @@
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(316, 24);
             this.cmbCategory.TabIndex = 7;
+            this.cmbCategory.Validating += new System.ComponentModel.CancelEventHandler(this.cmbCategory_Validating);
             // 
             // label2
             // 

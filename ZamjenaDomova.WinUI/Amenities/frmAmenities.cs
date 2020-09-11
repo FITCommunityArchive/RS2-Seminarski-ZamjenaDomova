@@ -45,7 +45,7 @@ namespace ZamjenaDomova.WinUI.Amenities
         private async Task LoadAmenityCategories()
         {
             var result= await _amenityCategoryService.Get<List<Model.AmenitiesCategory>>(null);
-            result.Insert(0, new Model.AmenitiesCategory());
+            result.Insert(0, new Model.AmenitiesCategory { AmenitiesCategoryId = -1, Name = null });
             cmbCategory.DataSource = result;
             cmbCategory.DisplayMember = "Name";
             cmbCategory.ValueMember = "AmenitiesCategoryId";

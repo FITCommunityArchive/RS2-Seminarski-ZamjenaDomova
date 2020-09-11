@@ -21,7 +21,7 @@ namespace ZamjenaDomova.WebAPI.Services
             var query = _context.Set<Database.Amenity>().Include(x=> x.AmenitiesCategory).
                 AsQueryable();
 
-            if (search.AmenitiesCategoryId.HasValue == true)
+            if (search.AmenitiesCategoryId.HasValue == true && search.AmenitiesCategoryId!=-1)
                 query = query.Where(x => x.AmenitiesCategoryId == search.AmenitiesCategoryId);
             if (!string.IsNullOrWhiteSpace(search.Name))
                 query = query.Where(x => x.Name.StartsWith(search.Name));
