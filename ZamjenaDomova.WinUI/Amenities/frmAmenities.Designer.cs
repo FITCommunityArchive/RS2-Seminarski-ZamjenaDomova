@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvAmenities = new System.Windows.Forms.DataGridView();
+            this.AmenityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmenityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnShow = new System.Windows.Forms.Button();
@@ -86,6 +87,7 @@
             this.dgvAmenities.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAmenities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAmenities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AmenityId,
             this.Category,
             this.AmenityName});
             this.dgvAmenities.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -95,8 +97,19 @@
             this.dgvAmenities.ReadOnly = true;
             this.dgvAmenities.RowHeadersWidth = 51;
             this.dgvAmenities.RowTemplate.Height = 24;
+            this.dgvAmenities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAmenities.Size = new System.Drawing.Size(428, 287);
             this.dgvAmenities.TabIndex = 0;
+            this.dgvAmenities.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvAmenities_MouseDoubleClick);
+            // 
+            // AmenityId
+            // 
+            this.AmenityId.DataPropertyName = "AmenityId";
+            this.AmenityId.HeaderText = "AmenityId";
+            this.AmenityId.MinimumWidth = 6;
+            this.AmenityId.Name = "AmenityId";
+            this.AmenityId.ReadOnly = true;
+            this.AmenityId.Visible = false;
             // 
             // Category
             // 
@@ -293,7 +306,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAmenities";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAmenities";
+            this.Text = "Amenities";
             this.Load += new System.EventHandler(this.frmAmenities_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmenities)).EndInit();
@@ -319,8 +332,6 @@
         private System.Windows.Forms.Label txtCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearchName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AmenityName;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbNewCategory;
@@ -331,5 +342,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmenityId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmenityName;
     }
 }

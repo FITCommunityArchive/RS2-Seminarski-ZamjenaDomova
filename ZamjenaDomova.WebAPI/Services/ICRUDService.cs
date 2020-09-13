@@ -9,5 +9,6 @@ namespace ZamjenaDomova.WebAPI.Services
     {
         TModel Insert(TInsert request);
         TModel Update(int id, TUpdate request);
+        TModel Delete(int id);
     }
 }

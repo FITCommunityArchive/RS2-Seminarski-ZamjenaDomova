@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZamjenaDomova.Mobile.Androi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZamjenaDomova.Mobile.iOS", "ZamjenaDomova.Mobile\ZamjenaDomova.Mobile.iOS\ZamjenaDomova.Mobile.iOS.csproj", "{83926758-528A-41E1-811B-12BA9051E33A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZamjenaDomova.Mobile", "ZamjenaDomova.Mobile\ZamjenaDomova.Mobile\ZamjenaDomova.Mobile.csproj", "{0C1AC216-3445-4972-A50A-DAFA3CE677D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZamjenaDomova.Mobile", "ZamjenaDomova.Mobile\ZamjenaDomova.Mobile\ZamjenaDomova.Mobile.csproj", "{0C1AC216-3445-4972-A50A-DAFA3CE677D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

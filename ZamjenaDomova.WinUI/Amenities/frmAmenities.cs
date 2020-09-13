@@ -15,6 +15,7 @@ namespace ZamjenaDomova.WinUI.Amenities
     {
         private readonly APIService _amenityService = new APIService("Amenity");
         private readonly APIService _amenityCategoryService = new APIService("AmenitiesCategory");
+
         public frmAmenities()
         {
             InitializeComponent();
@@ -28,7 +29,6 @@ namespace ZamjenaDomova.WinUI.Amenities
             var result = await _amenityService.Get<List<Model.Amenity>>(null);
             dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
-            dgvAmenities.BackgroundColor = System.Drawing.SystemColors.Control;
         }
 
         private async void btnShow_Click(object sender, EventArgs e)
@@ -88,6 +88,13 @@ namespace ZamjenaDomova.WinUI.Amenities
             dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
 
+        }
+
+        private void dgvAmenities_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var id = dgvAmenities.SelectedRows[0].Cells["AmenityId"].Value;
+            frmAmenityDetails frm = new frmAmenityDetails(int.Parse(id.ToString()));
+            frm.Show();
         }
     }
 }
