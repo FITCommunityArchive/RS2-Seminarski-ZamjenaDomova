@@ -32,10 +32,9 @@
             <Button
                 x:Name="BtnLogin"
                 BackgroundColor="#B83A3A"
-                
+                Clicked="BtnLogin_Clicked"
                 Text="Prijava"
                 TextColor="White" />
-            <!--Clicked="BtnLogin_Clicked"-->
             <Label
                 HorizontalTextAlignment="Center"
                 Text="Novi korisnik?"
@@ -47,7 +46,8 @@
                 BackgroundColor="#B83A3A"
                 
                 Text="Registracija"
-                TextColor="White" /><!--Clicked="BtnRegister_Clicked"-->
+                TextColor="White" />
+            <!--Clicked="BtnRegister_Clicked"-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
