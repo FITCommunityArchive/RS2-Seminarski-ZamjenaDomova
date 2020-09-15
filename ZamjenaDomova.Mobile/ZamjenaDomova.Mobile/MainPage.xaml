@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              x:Class="ZamjenaDomova.Mobile.MainPage">
     <StackLayout>
-        <ffimageloading:CachedImage
+        <!--<ffimageloading:CachedImage
             CacheType="All"
             HeightRequest="150"
             Source="https://pict1.reezocar.com/images/autoscout24.fr/RZCATSFR9EDCBE625206/FERRARI-LAFERRARI-00.jpg"
@@ -16,6 +16,6 @@
             <ffimageloading:CachedImage.Transformations>
                 <transformations:CircleTransformation />
             </ffimageloading:CachedImage.Transformations>
-        </ffimageloading:CachedImage>
+        </ffimageloading:CachedImage>-->
     </StackLayout>
 </ContentPage>

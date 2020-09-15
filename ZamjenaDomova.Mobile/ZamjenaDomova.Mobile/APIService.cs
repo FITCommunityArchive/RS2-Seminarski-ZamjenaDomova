@@ -12,7 +12,13 @@ namespace ZamjenaDomova.Mobile
 {
     public static class APIService
     {
-        public readonly static string _apiUrl = "http://10.0.2.2:8080/api";
+#if DEBUG
+        public readonly static string _apiUrl = "http://localhost:50718/api";
+#endif
+#if RELEASE
+        public readonly static string _apiUrl = "https://mywebsite.azure.com/api/";
+#endif
+       
 
 
         //public static async Task<bool> RegisterUser(string ime, string prezime, string email, string telefon, string password, string passwordConfirmation)
@@ -46,7 +52,8 @@ namespace ZamjenaDomova.Mobile
             var httpClient = new HttpClient();
             var json = JsonConvert.SerializeObject(loginModel);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{_apiUrl}/User/Login", content);
+            var url = $"{_apiUrl}/User/Login";
+            var response = await httpClient.PostAsync(url, content);
             if (!response.IsSuccessStatusCode) return false;
             var jsonResult = await response.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<Model.User>(jsonResult);

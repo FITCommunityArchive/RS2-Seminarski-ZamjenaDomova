@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="APIUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://localhost:44332/api</Value>
+      <Value Profile="(Default)">http://localhost:50718/api</Value>
     </Setting>
   </Settings>
 </SettingsFile>
