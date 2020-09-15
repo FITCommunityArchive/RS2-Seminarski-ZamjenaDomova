@@ -24,7 +24,7 @@ namespace ZamjenaDomova.Mobile.Views
             {
                 Preferences.Set("userEmail", EntEmail.Text);
                 Preferences.Set("userPassword", EntPassword.Text);
-                Application.Current.MainPage = new NavigationPage(new HomePage());
+                Application.Current.MainPage = new HomePage();
             }
             else
             {
