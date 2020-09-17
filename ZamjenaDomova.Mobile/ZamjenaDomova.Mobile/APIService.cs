@@ -13,7 +13,7 @@ namespace ZamjenaDomova.Mobile
     public static class APIService
     {
 #if DEBUG
-        public readonly static string _apiUrl = "http://localhost:50718/api";
+        public readonly static string _apiUrl = "http://localhost:1337/api";
 #endif
 #if RELEASE
         public readonly static string _apiUrl = "https://mywebsite.azure.com/api/";
