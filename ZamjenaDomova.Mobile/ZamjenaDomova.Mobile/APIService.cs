@@ -60,6 +60,7 @@ namespace ZamjenaDomova.Mobile
             Preferences.Set("access_token", result.Token);
             Preferences.Set("userId", result.UserId);
             Preferences.Set("token_expiration_time", result.Token_Expiration_Time);
+            Preferences.Set("userName", result.FirstName+" "+result.LastName);
             return true;
         }
 

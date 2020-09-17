@@ -5,21 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:ZamjenaDomova.Mobile.Pages" 
-    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-    android:TabbedPage.ToolbarPlacement="Bottom"
-    BarBackgroundColor="white"
+    xmlns:pages="clr-namespace:ZamjenaDomova.Mobile.Pages"
     NavigationPage.HasNavigationBar="False"
-    SelectedTabColor="black"
-    UnselectedTabColor="black"
-    mc:Ignorable="d">
+    SelectedTabColor="#000000"
+    UnselectedTabColor="#000000"
+    mc:Ignorable="d" BarBackgroundColor="#FFFFFF" BarTextColor="#000000">
 
     <pages:MojDomPage Title="Moj dom"/>
-    <NavigationPage>
-        <x:Arguments>
-        <pages:TraziPage Title="Trazi" />
-        </x:Arguments>
-    </NavigationPage>
+    <pages:TraziPage Title="Trazi" />
     <pages:ProfilPage Title="Profil"/>
 
 </TabbedPage>

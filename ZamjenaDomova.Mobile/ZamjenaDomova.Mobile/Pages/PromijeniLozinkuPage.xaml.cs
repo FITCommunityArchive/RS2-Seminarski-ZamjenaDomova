@@ -10,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace ZamjenaDomova.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : TabbedPage
+    public partial class PromijeniLozinkuPage : ContentPage
     {
-        public HomePage()
+        public PromijeniLozinkuPage()
         {
             InitializeComponent();
-            this.CurrentPage = this.Children[1];
         }
     }
 }

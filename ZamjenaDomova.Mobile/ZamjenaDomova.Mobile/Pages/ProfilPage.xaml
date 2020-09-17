@@ -2,14 +2,57 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              mc:Ignorable="d"
              x:Class="ZamjenaDomova.Mobile.Pages.ProfilPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout
+                Margin="0,20,0,0"
+                BackgroundColor="White"
+                Spacing="20">
+            <Label x:Name="lblName"
+                   FontSize="Medium"
+                   TextColor="#A7A7A7">
+                
+            </Label>
+            <Label
+                    Margin="20,0,20,0"
+                    FontSize="Medium"
+                    Text="Postavke korisničkog računa">
+                <Label.GestureRecognizers>
+                    <!--<TapGestureRecognizer x:Name="TapChangePassword" Tapped="TapChangePassword_Tapped" />-->
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView BackgroundColor="black" HeightRequest="1" />
+            <Label
+                    Margin="20,0,20,0"
+                    FontSize="Medium"
+                    Text="Promijeni lozinku">
+                <Label.GestureRecognizers>
+                    <!--<TapGestureRecognizer x:Name="TapChangePassword" Tapped="TapChangePassword_Tapped" />-->
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView BackgroundColor="black" HeightRequest="1" />
+            <Label
+                    Margin="20,0,20,0"
+                    FontSize="Medium"
+                    Text="Spremljeno">
+                <Label.GestureRecognizers>
+                    <!--<TapGestureRecognizer x:Name="TapChangePhone" Tapped="TapChangePhone_Tapped" />-->
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView BackgroundColor="black" HeightRequest="1" />
+            <Label
+                    Margin="20,0,20,0"
+                    FontSize="Medium"
+                    Text="Moji oglasi na čekanju">
+                <Label.GestureRecognizers>
+                    <!--<TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_Tapped" />-->
+                </Label.GestureRecognizers>
+                
+            </Label>
+            <BoxView BackgroundColor="black" HeightRequest="1" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
