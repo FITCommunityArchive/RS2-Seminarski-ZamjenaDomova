@@ -7,9 +7,14 @@
              x:Class="ZamjenaDomova.Mobile.Pages.MojDomPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <Label
+                FontSize="Subtitle"
+                    Margin="20,0,20,0"
+                    Text="Dodaj novi dom">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer x:Name="TapNewHome" Tapped="TapNewHome_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

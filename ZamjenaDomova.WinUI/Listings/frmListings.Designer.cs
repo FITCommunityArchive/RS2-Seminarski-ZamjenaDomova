@@ -38,8 +38,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvListings = new System.Windows.Forms.DataGridView();
             this.btnShow = new System.Windows.Forms.Button();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lokacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Territory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,8 +140,8 @@
             this.dgvListings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.Location,
+            this.Naziv,
+            this.Lokacija,
             this.Territory,
             this.User,
             this.DateCreated});
@@ -166,21 +166,21 @@
             this.btnShow.Text = "Prikazi";
             this.btnShow.UseVisualStyleBackColor = true;
             // 
-            // Name
+            // Naziv
             // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Naziv";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            this.Naziv.DataPropertyName = "Name";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.MinimumWidth = 6;
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
             // 
-            // Location
+            // Lokacija
             // 
-            this.Location.DataPropertyName = "City";
-            this.Location.HeaderText = "Lokacija";
-            this.Location.MinimumWidth = 6;
-            this.Location.Name = "Location";
-            this.Location.ReadOnly = true;
+            this.Lokacija.DataPropertyName = "City";
+            this.Lokacija.HeaderText = "Lokacija";
+            this.Lokacija.MinimumWidth = 6;
+            this.Lokacija.Name = "Lokacija";
+            this.Lokacija.ReadOnly = true;
             // 
             // Territory
             // 
@@ -234,8 +234,8 @@
         private System.Windows.Forms.Label LblDo;
         private System.Windows.Forms.DateTimePicker dateFrom;
         private System.Windows.Forms.Label LblOd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lokacija;
         private System.Windows.Forms.DataGridViewTextBoxColumn Territory;
         private System.Windows.Forms.DataGridViewTextBoxColumn User;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;

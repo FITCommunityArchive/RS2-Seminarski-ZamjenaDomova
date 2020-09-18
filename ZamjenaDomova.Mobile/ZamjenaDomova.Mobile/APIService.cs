@@ -84,6 +84,16 @@ namespace ZamjenaDomova.Mobile
             return true;
         }
 
+        public static async Task<List<Model.Territory>> GetTerritories()
+        {
+            await TokenValidator.CheckTokenValidity();
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Territory");
+            return JsonConvert.DeserializeObject<List<Model.Territory>>(response);
+        }
+
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
         //        {
         //            var ocjenaModel = new Modeli.OcjenaModel
@@ -208,15 +218,6 @@ namespace ZamjenaDomova.Mobile
         //            return JsonConvert.DeserializeObject<List<Modeli.Grad>>(response);
         //        }
 
-        //        public static async Task<List<Modeli.Proizvodjac>> GetProizvodjace()
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Proizvodjaci");
-        //            return JsonConvert.DeserializeObject<List<Modeli.Proizvodjac>>(response);
-        //        }
 
         //        public static async Task<List<Modeli.Model>> GetModelePoProizvodjacu(int proizvodjacId)
         //        {

@@ -7,32 +7,46 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" NavigationPage.HasBackButton="True">
     <ContentPage.Content>
-        <StackLayout Margin="30" VerticalOptions="CenterAndExpand">
-            <Label
-                Text="Trenutna lozinka"
-                TextColor="#000000" />
-            <Entry
-                x:Name="EntOldPassword"
+        <ScrollView>
+            <StackLayout Margin="30" VerticalOptions="CenterAndExpand" Spacing="10">
+                <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Promjena lozinke" 
+                    Margin="0,0,0,20"/>
+                <BoxView BackgroundColor="Black" HeightRequest="1" />
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Trenutna lozinka" />
+                <Entry 
+                x:Name="EntOldPassword" 
                 IsPassword="True"/>
-            <Label
-                Text="Nova lozinka"
-                TextColor="#000000" />
-            <Entry
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Nova lozinka" />
+                <Entry
                 x:Name="EntNewPassword"
                 IsPassword="True"/>
-            <Label
-                Text="Potvrdi novu lozinku"
-                TextColor="#000000" />
-            <Entry
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Potvrdi novu lozinku" />
+                <Entry
                 x:Name="EntConfirmPassword"
-                IsPassword="True" />
-            <Button
+                IsPassword="True"/>
+
+                <Button
                 x:Name="BtnChangePassword"
                 BackgroundColor="#B83A3A"
                 Clicked="BtnChangePassword_Clicked"
                 Text="Promijeni lozinku"
-                TextColor="White" />
+                TextColor="White" 
+                FontSize="Subtitle"
+                Margin="0,20,0,0"/>
 
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

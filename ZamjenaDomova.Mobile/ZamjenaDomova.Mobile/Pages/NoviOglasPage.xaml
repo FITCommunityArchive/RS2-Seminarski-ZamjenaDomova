@@ -10,19 +10,101 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
-        <!--<ScrollView>
-            <StackLayout Spacing="10">
+        <ScrollView>
+            <StackLayout Spacing="10" Margin="30">
                 <StackLayout.Behaviors>
                     <Behaviours:ValidationGroupBehaviour x:Name="form" />
                 </StackLayout.Behaviors>
+                
+                <!--NASLOV-->
                 <Label
                     FontSize="Large"
                     HorizontalTextAlignment="Center"
-                    Text="Dodaj novi" />
+                    Text="Dodaj novi" 
+                    Margin="0,0,0,20"/>
                 <BoxView BackgroundColor="Black" HeightRequest="1" />
+                
+                <!--NAZIV-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Naslov" />
+                <Entry x:Name="EntName" />
+                
+                <!--ADRESA-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Adresa" />
+                <Entry x:Name="EntAddress" />
+                
+                <!--GRAD-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Grad" />
+                <Entry x:Name="EntCity" />
+
+                <!--KANTON-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Kanton" />
+                <Picker
+                        x:Name="PickerTerritory"
+                        Title="Odaberite kanton"
+                        ItemDisplayBinding="{Binding Name}">
+                    <!--SelectedIndexChanged="PickerProizvodjac_SelectedIndexChanged"-->
+                    <Picker.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="SelectedIndex">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Picker.Behaviors>
+                </Picker>
+
+                <!--OPIS DOMA-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Opis doma" />
+                <Editor
+                        x:Name="HomeDesc"
+                        AutoSize="Disabled"
+                        HeightRequest="100" />
+                
+                <!--OPIS PODRUČJA-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Opis područja" />
+                <Editor
+                        x:Name="AreaDesc"
+                        AutoSize="Disabled"
+                        HeightRequest="100" />
+
+                <!--BROJ OSOBA-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Broj osoba" />
+
+                <Entry x:Name="EntPersons" 
+                       Keyboard="Numeric">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="SelectedIndex">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:NumericValidator />
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
+
+
                 <StackLayout Margin="20">
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Stanje" />
                     <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
@@ -39,7 +121,7 @@
                                 Text="Korišteno"
                                 TextColor="White" />
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer x:Name="TapKoristeno" Tapped="TapKoristeno_Tapped" />
+                                <!--<TapGestureRecognizer x:Name="TapKoristeno" Tapped="TapKoristeno_Tapped" />-->
                             </Frame.GestureRecognizers>
                         </Frame>
                         <Frame
@@ -54,42 +136,22 @@
                                 Text="Novo"
                                 TextColor="Black" />
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer x:Name="TapNovo" Tapped="TapNovo_Tapped" />
+                                <!--<TapGestureRecognizer x:Name="TapNovo" Tapped="TapNovo_Tapped" />-->
                             </Frame.GestureRecognizers>
                         </Frame>
                     </StackLayout>
 
-                    <Label
-                        FontSize="Medium"
-                        HorizontalTextAlignment="Start"
-                        Text="Naslov [opcionalno]" />
+
                     <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
-                        Text="*Ako ostavite prazno, naslov će biti '[NazivProizvođača] [NazivModela]'" />
-                    <Entry x:Name="EntNaslov" />
-                    <Label
-                        FontSize="Medium"
-                        HorizontalTextAlignment="Start"
                         Text="Proizvođač*" />
-                    <Picker
-                        x:Name="PickerProizvodjac"
-                        Title="Odaberite proizvođača"
-                        ItemDisplayBinding="{Binding Naziv}"
-                        SelectedIndexChanged="PickerProizvodjac_SelectedIndexChanged">
-                        <Picker.Behaviors>
-                            <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="SelectedIndex">
-                                <Behaviours:ValidationBehaviour.Validators>
-                                    <Validators:RequiredValidator />
-                                </Behaviours:ValidationBehaviour.Validators>
-                            </Behaviours:ValidationBehaviour>
-                        </Picker.Behaviors>
-                    </Picker>
+                    
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Model*" />
-                    <Picker
+                    <!--<Picker
                         x:Name="PickerModel"
                         Title="Odaberite model"
                         ItemDisplayBinding="{Binding Naziv}"
@@ -103,7 +165,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Cijena*" />
                     <Entry x:Name="EntCijena" Keyboard="Numeric">
@@ -116,7 +178,7 @@
                         </Entry.Behaviors>
                     </Entry>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Kategorija*" />
                     <Picker
@@ -133,7 +195,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Država*" />
                     <Picker
@@ -151,7 +213,7 @@
                     </Picker>
                     <Label
                         x:Name="LblGrad"
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         IsVisible="False"
                         Text="Grad*" />
@@ -170,7 +232,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Godište*" />
                     <Picker
@@ -186,7 +248,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Kubikaža*" />
                     <Picker
@@ -202,7 +264,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Konjskih snaga*" />
                     <Entry x:Name="EntKonjskihSnaga" Keyboard="Numeric">
@@ -215,7 +277,7 @@
                         </Entry.Behaviors>
                     </Entry>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Boja*" />
                     <Picker
@@ -231,7 +293,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Transmisija*" />
                     <Picker
@@ -247,7 +309,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Gorivo*" />
                     <Picker
@@ -263,7 +325,7 @@
                         </Picker.Behaviors>
                     </Picker>
                     <Label
-                        FontSize="Medium"
+                        FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Kratki opis [opcionalno]" />
                     <Editor
@@ -274,7 +336,7 @@
                 </StackLayout>
                 <Label
                     x:Name="LblWarning"
-                    FontSize="Medium"
+                    FontSize="Small"
                     HorizontalTextAlignment="Center"
                     Text="Niste unijeli sva obavezna polja!"
                     TextColor="Red">
@@ -293,8 +355,9 @@
                     Clicked="BtnSell_Clicked"
                     IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                     Text="Postavi oglas"
-                    TextColor="White" />
+                    TextColor="White" />-->
+                </StackLayout>
             </StackLayout>
-        </ScrollView>-->
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
