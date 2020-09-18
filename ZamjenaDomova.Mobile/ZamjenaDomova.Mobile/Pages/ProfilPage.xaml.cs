@@ -22,5 +22,9 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             Navigation.PushAsync(new PromijeniLozinkuPage());
         }
+        private void TapAccSettings_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PostavkeKorisnickogRacunaPage());
+        }
     }
 }

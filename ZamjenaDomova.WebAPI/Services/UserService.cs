@@ -225,7 +225,7 @@ namespace ZamjenaDomova.WebAPI.Services
                 throw new UserException("Stara lozinka nije ispravna!");
             }
 
-            user.PasswordHash = GenerateHash(user.PasswordHash, model.NewPassword);
+            user.PasswordHash = GenerateHash(user.PasswordSalt, model.NewPassword);
             _context.SaveChanges();
             return _mapper.Map<Model.User>(user);
         }

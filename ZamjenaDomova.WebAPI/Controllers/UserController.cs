@@ -21,7 +21,7 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             _service = service;
         }
-        [Authorize(Roles = "Administrator,Editor")]
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public ActionResult<List<Model.User>> Get([FromQuery] UserSearchRequest request)
         {
@@ -61,6 +61,7 @@ namespace ZamjenaDomova.WebAPI.Controllers
 
             return Ok(user);
         }
+        [AllowAnonymous]
         [HttpPost("ChangePassword")]
         public IActionResult ChangePassword(ChangePasswordModel model)
         {
