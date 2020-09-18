@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ZamjenaDomova.Model
+namespace ZamjenaDomova.Model.Requests
 {
-    public class Listing
+    public class ListingInsertRequest
     {
-        public int ListingId { get; set; }
         public string Name { get; set; }
         //General info and location
         public string ListingDescription { get; set; }
@@ -26,5 +25,6 @@ namespace ZamjenaDomova.Model
         public int UserId { get; set; }
         public virtual User User { get; set; }
         public DateTime DateCreated { get; set; }
+        
     }
 }
