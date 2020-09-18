@@ -18,5 +18,9 @@ namespace ZamjenaDomova.Mobile.Pages
 
             lblName.Text = Preferences.Get("userName", " ");
         }
+        private void TapChangePassword_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new PromijeniLozinkuPage());
+        }
     }
 }

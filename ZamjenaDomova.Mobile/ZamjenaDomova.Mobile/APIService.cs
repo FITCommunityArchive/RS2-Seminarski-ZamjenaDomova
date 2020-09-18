@@ -18,7 +18,7 @@ namespace ZamjenaDomova.Mobile
 #if RELEASE
         public readonly static string _apiUrl = "https://mywebsite.azure.com/api/";
 #endif
-       
+
 
 
         //public static async Task<bool> RegisterUser(string ime, string prezime, string email, string telefon, string password, string passwordConfirmation)
@@ -60,29 +60,29 @@ namespace ZamjenaDomova.Mobile
             Preferences.Set("access_token", result.Token);
             Preferences.Set("userId", result.UserId);
             Preferences.Set("token_expiration_time", result.Token_Expiration_Time);
-            Preferences.Set("userName", result.FirstName+" "+result.LastName);
+            Preferences.Set("userName", result.FirstName + " " + result.LastName);
             return true;
         }
 
-        //        public static async Task<bool> ChangePassword(string oldPassword, string newPassword, string passwordConfirmation)
-        //        {
-        //            var changePasswordModel = new Modeli.ChangePasswordModel
-        //            {
-        //                OldPassword = oldPassword,
-        //                NewPassword = newPassword,
-        //                PasswordConfirmation = passwordConfirmation
-        //            };
+        public static async Task<bool> ChangePassword(string oldPassword, string newPassword, string passwordConfirmation)
+        {
+            var changePasswordModel = new Model.ChangePasswordModel
+            {
+                OldPassword = oldPassword,
+                NewPassword = newPassword,
+                PasswordConfirmation = passwordConfirmation
+            };
 
-        //            await TokenValidator.CheckTokenValidity();
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            var json = JsonConvert.SerializeObject(changePasswordModel);
-        //            var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.PostAsync($"{_apiUrl}/Korisnici/ChangePassword", content);
-        //            if (!response.IsSuccessStatusCode) return false;
-        //            return true;
-        //        }
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(changePasswordModel);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.PostAsync($"{_apiUrl}/User/ChangePassword", content);
+            if (!response.IsSuccessStatusCode) return false;
+            return true;
+        }
 
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
         //        {
@@ -327,17 +327,18 @@ namespace ZamjenaDomova.Mobile
         //        }
         //    }
 
-        //    public static class TokenValidator
-        //    {
-        //        public static async Task CheckTokenValidity()
-        //        {
-        //            var expirationTime = Preferences.Get("token_expiration_time", DateTime.Now);
-        //            if (DateTime.Compare(expirationTime, DateTime.Now) < 0)
-        //            {
-        //                var userEmail = Preferences.Get("userEmail", string.Empty);
-        //                var userPassword = Preferences.Get("userPassword", string.Empty);
-        //                await APIService.Login(userEmail, userPassword);
-        //            }
-        //        }
+        public static class TokenValidator
+        {
+            public static async Task CheckTokenValidity()
+            {
+                var expirationTime = Preferences.Get("token_expiration_time", DateTime.Now);
+                if (DateTime.Compare(expirationTime, DateTime.Now) < 0)
+                {
+                    var userEmail = Preferences.Get("userEmail", string.Empty);
+                    var userPassword = Preferences.Get("userPassword", string.Empty);
+                    await APIService.Login(userEmail, userPassword);
+                }
+            }
+        }
     }
 }

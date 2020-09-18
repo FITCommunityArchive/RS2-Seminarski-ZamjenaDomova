@@ -210,5 +210,24 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return null;
         }
+        public Model.User ChangePassword(string userEmail, ChangePasswordModel model)
+        {
+            var user = _context.User.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user == null)
+            {
+                throw new UserException("Korisnik nije pronađen!");
+            }
+
+            var oldHash = GenerateHash(user.PasswordSalt, model.OldPassword);
+            if (oldHash != user.PasswordHash)
+            {
+                throw new UserException("Stara lozinka nije ispravna!");
+            }
+
+            user.PasswordHash = GenerateHash(user.PasswordHash, model.NewPassword);
+            _context.SaveChanges();
+            return _mapper.Map<Model.User>(user);
+        }
     }
 }

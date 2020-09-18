@@ -11,7 +11,7 @@
     UnselectedTabColor="#000000"
     mc:Ignorable="d" BarBackgroundColor="#FFFFFF" BarTextColor="#000000">
 
-    <pages:MojDomPage Title="Moj dom"/>
+    <pages:MojDomPage Title="Moj dom" />
     <pages:TraziPage Title="Trazi" />
     <pages:ProfilPage Title="Profil"/>
 

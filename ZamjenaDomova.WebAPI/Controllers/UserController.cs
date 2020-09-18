@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -59,6 +60,14 @@ namespace ZamjenaDomova.WebAPI.Controllers
                 return BadRequest(new { message = "Email ili lozinka nisu ispravni!" });
 
             return Ok(user);
+        }
+        [HttpPost("ChangePassword")]
+        public IActionResult ChangePassword(ChangePasswordModel model)
+        {
+            var userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+
+            _service.ChangePassword(userEmail, model);
+            return Ok("Password uspješno promijenjen!");
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZamjenaDomova.Model;
 
 namespace ZamjenaDomova.WebAPI.Services
 {
@@ -12,6 +13,8 @@ namespace ZamjenaDomova.WebAPI.Services
         Model.User GetById(int id);
         Model.User Insert(UserUpsertRequest request);
         Model.User Update(int id, UserUpsertRequest request);
+
         Model.User Authenticate(string email, string password);
+        Model.User ChangePassword(string userEmail, ChangePasswordModel model);
     }
 }
