@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using ZamjenaDomova.Model;
 
 namespace ZamjenaDomova.WebAPI.Database
 {
@@ -18,6 +19,7 @@ namespace ZamjenaDomova.WebAPI.Database
         public string City { get; set; }
         public int TerritoryId { get; set; }
         public virtual Territory Territory { get; set; }
+        public string TerritoryName { get; set; }
         public ICollection<PreferredSwapTime> PreferredSwapTime { get; set; }
         public ICollection<ListingImage> ListingImages { get; set; }
         //Capacity
@@ -27,8 +29,9 @@ namespace ZamjenaDomova.WebAPI.Database
         //Owner
         public int UserId { get; set; }
         public virtual User User { get; set; }
+        public string UserName { get; set; }
         public DateTime DateCreated { get; set; }
-        
+
         public bool Approved { get; set; }
         public bool Active { get; set; }
     }

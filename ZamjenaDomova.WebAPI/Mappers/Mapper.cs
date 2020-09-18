@@ -16,7 +16,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
             CreateMap<Database.Amenity, Model.Amenity>().ForMember(dest=> dest.AmenitiesCategoryName, opt => opt.MapFrom(src=> src.AmenitiesCategory.Name));
             CreateMap<Model.Requests.AmenityUpsertRequest, Database.Amenity>();
             CreateMap<Database.Role, Model.Role>();
-            CreateMap<Model.Listing, Database.Listing>();
+            //CreateMap<Model.Listing, Database.Listing>();
         }
     }
 }

@@ -46,9 +46,9 @@
             // 
             this.groupBox1.Controls.Add(this.dgvUsers);
             this.groupBox1.Location = new System.Drawing.Point(22, 105);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(969, 425);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -67,7 +67,7 @@
             this.BrojTelefona});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsers.Location = new System.Drawing.Point(4, 24);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(4);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
@@ -113,7 +113,7 @@
             // btnPrikazi
             // 
             this.btnPrikazi.Location = new System.Drawing.Point(750, 24);
-            this.btnPrikazi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrikazi.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrikazi.Name = "btnPrikazi";
             this.btnPrikazi.Size = new System.Drawing.Size(119, 34);
             this.btnPrikazi.TabIndex = 1;
@@ -124,7 +124,7 @@
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(22, 26);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(678, 27);
             this.txtSearch.TabIndex = 2;
@@ -136,7 +136,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnPrikazi);
             this.panel1.Location = new System.Drawing.Point(13, 43);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1002, 555);
             this.panel1.TabIndex = 1;
@@ -148,7 +148,7 @@
             this.ClientSize = new System.Drawing.Size(1136, 659);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUsers";
             this.Text = "frmUsers";
             this.Load += new System.EventHandler(this.frmUsers_Load);

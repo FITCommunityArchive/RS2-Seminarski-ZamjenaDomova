@@ -7,15 +7,15 @@ using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
-namespace eVehicleDealership.Mobile.Behaviors
+namespace ZamjenaDomova.Mobile.Behaviours
 {
 
-    public class ValidationBehavior : Behavior<View>
+    public class ValidationBehaviour : Behavior<View>
     {
         IErrorStyle _style = new BasicErrorStyle();
         View _view;
         public string PropertyName { get; set; }
-        public ValidationGroupBehavior Group { get; set; }
+        public ValidationGroupBehaviour Group { get; set; }
         public ObservableCollection<IValidator> Validators { get; set; } = new ObservableCollection<IValidator>();
 
         public bool Validate()

@@ -35,6 +35,9 @@
             this.noviKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sadržajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oglasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sviOglasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -47,7 +50,8 @@
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
-            this.sadržajiToolStripMenuItem});
+            this.sadržajiToolStripMenuItem,
+            this.oglasiToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(843, 28);
@@ -92,6 +96,28 @@
             this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
             this.pretragaToolStripMenuItem.Text = "Pretraga";
             this.pretragaToolStripMenuItem.Click += new System.EventHandler(this.pretragaToolStripMenuItem_Click);
+            // 
+            // oglasiToolStripMenuItem
+            // 
+            this.oglasiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sviOglasiToolStripMenuItem,
+            this.odoToolStripMenuItem});
+            this.oglasiToolStripMenuItem.Name = "oglasiToolStripMenuItem";
+            this.oglasiToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.oglasiToolStripMenuItem.Text = "Oglasi";
+            // 
+            // sviOglasiToolStripMenuItem
+            // 
+            this.sviOglasiToolStripMenuItem.Name = "sviOglasiToolStripMenuItem";
+            this.sviOglasiToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.sviOglasiToolStripMenuItem.Text = "Aktivni oglasi";
+            this.sviOglasiToolStripMenuItem.Click += new System.EventHandler(this.sviOglasiToolStripMenuItem_Click);
+            // 
+            // odoToolStripMenuItem
+            // 
+            this.odoToolStripMenuItem.Name = "odoToolStripMenuItem";
+            this.odoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.odoToolStripMenuItem.Text = "Odobravanje";
             // 
             // statusStrip
             // 
@@ -144,6 +170,9 @@
         private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noviKorisnikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem oglasiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sviOglasiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odoToolStripMenuItem;
     }
 }
 

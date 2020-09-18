@@ -15,9 +15,10 @@
             <Label x:Name="lblName"
                    FontSize="Medium"
                    TextColor="#A7A7A7">
-                
+
             </Label>
             <Label
+                FontSize="Subtitle"
                     Margin="20,0,20,0"
                     Text="Postavke korisničkog računa">
                 <Label.GestureRecognizers>
@@ -26,6 +27,7 @@
             </Label>
             <BoxView BackgroundColor="black" HeightRequest="1" />
             <Label
+                FontSize="Subtitle"
                     Margin="20,0,20,0"
                     Text="Promijeni lozinku">
                 <Label.GestureRecognizers>
@@ -34,6 +36,7 @@
             </Label>
             <BoxView BackgroundColor="black" HeightRequest="1" />
             <Label
+                FontSize="Subtitle"
                     Margin="20,0,20,0"
                     Text="Spremljeno">
                 <Label.GestureRecognizers>
@@ -43,13 +46,15 @@
             <BoxView BackgroundColor="black" HeightRequest="1" />
             <Label
                     Margin="20,0,20,0"
-                    FontSize="Medium"
+                    FontSize="Subtitle"
                     Text="Moji oglasi na čekanju">
+
                 <Label.GestureRecognizers>
                     <!--<TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_Tapped" />-->
                 </Label.GestureRecognizers>
-                
+
             </Label>
+            
             <BoxView BackgroundColor="black" HeightRequest="1" />
         </StackLayout>
     </ContentPage.Content>

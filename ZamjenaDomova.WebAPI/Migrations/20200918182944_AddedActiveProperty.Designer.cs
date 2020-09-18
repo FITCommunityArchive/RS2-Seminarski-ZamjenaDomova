@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZamjenaDomova.WebAPI.Database;
 
 namespace ZamjenaDomova.WebAPI.Migrations
 {
     [DbContext(typeof(ZamjenaDomovaContext))]
-    partial class ZamjenaDomovaContextModelSnapshot : ModelSnapshot
+    [Migration("20200918182944_AddedActiveProperty")]
+    partial class AddedActiveProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
