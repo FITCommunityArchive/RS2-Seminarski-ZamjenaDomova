@@ -85,45 +85,54 @@
                         AutoSize="Disabled"
                         HeightRequest="100" />
 
-                <!--BROJ OSOBA-->
-                <StackLayout Orientation="Horizontal">
-                    <Label
+                <Grid Margin="0,30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*" />
+                        <ColumnDefinition Width="0.2*" />
+                        <ColumnDefinition Width="0.4*" />
+                    </Grid.ColumnDefinitions>
+                    <!--BROJ OSOBA-->
+                    <Label Grid.Row="0" Grid.Column="0"
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Broj osoba" />
-                    <Entry x:Name="EntPersons">
+                    <Entry x:Name="EntPersons"
+                           Grid.Row="0" Grid.Column="1">
                         <Entry.Behaviors>
                             <Behaviours:NumberValidationBehaviour/>
                         </Entry.Behaviors>
                     </Entry>
-                </StackLayout>
 
-                <!--BROJ KREVETA-->
-                <StackLayout Orientation="Horizontal">
-                    <Label
+                    <!--BROJ KREVETA-->
+                    <Label Grid.Row="1" Grid.Column="0"
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Broj kreveta" />
-                    <Entry x:Name="EntBeds">
+                    <Entry x:Name="EntBeds"
+                           Grid.Row="1" Grid.Column="1">
                         <Entry.Behaviors>
                             <Behaviours:NumberValidationBehaviour/>
                         </Entry.Behaviors>
                     </Entry>
-                </StackLayout>
-                
-                <!--BROJ KUPAONICA-->
-                <StackLayout Orientation="Horizontal">
-                    <Label
+
+                    <!--BROJ KUPAONICA-->
+                    <Label Grid.Row="2" Grid.Column="0"
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Broj kupaonica" />
-                    <Entry x:Name="EntBathrooms">
+                    <Entry x:Name="EntBathrooms"
+                           Grid.Row="2" Grid.Column="1">
                         <Entry.Behaviors>
                             <Behaviours:NumberValidationBehaviour/>
                         </Entry.Behaviors>
                     </Entry>
-                </StackLayout>
-                
+                </Grid>
+
                 <!--SADRŽAJI-->
                 <Label
                     FontSize="Subtitle"
@@ -133,10 +142,30 @@
                 <BoxView BackgroundColor="Black" HeightRequest="1" />
 
                 <ListView x:Name="lvAmenities"
-                          ms:MultiSelectListView.IsMultiSelect="true">
-                    
+                          ms:MultiSelectListView.IsMultiSelect="true"
+                          ItemsSource="{Binding Items}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ms:SelectableViewCell>
+
+                                <!--set the selected indicator (optional)-->
+
+                                <ms:SelectableViewCell.CheckView>
+                                    <BoxView Color="Red" WidthRequest="12" HeightRequest="12" />
+                                </ms:SelectableViewCell.CheckView>
+
+
+                                <!--set the content (optional)-->
+
+                                <ms:SelectableViewCell.DataView>
+                                    <Label Text="{Binding}" />
+                                </ms:SelectableViewCell.DataView>
+
+                            </ms:SelectableViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
-                <Grid Padding="12">
+                <!--<Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -148,32 +177,16 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <ListView ItemsSource="{Binding Items}"
+                    <ListView
                   ms:MultiSelectListView.IsMultiSelect="{Binding EnableMultiSelect}"
                   Grid.Row="2" Grid.ColumnSpan="3">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ms:SelectableViewCell>
-
-                                    <!-- set the selected indicator (optional) -->
-                                    <ms:SelectableViewCell.CheckView>
-                                        <BoxView Color="Red" WidthRequest="12" HeightRequest="12" />
-                                    </ms:SelectableViewCell.CheckView>
-
-                                    <!-- set the content (optional) -->
-                                    <ms:SelectableViewCell.DataView>
-                                        <Label Text="{Binding}" />
-                                    </ms:SelectableViewCell.DataView>
-
-                                </ms:SelectableViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
+                        
                     </ListView>
 
                 </Grid>
 
-
-                <StackLayout Margin="20">
+-->
+                <!--<StackLayout Margin="20">
                     <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
@@ -192,7 +205,9 @@
                                 Text="Korišteno"
                                 TextColor="White" />
                             <Frame.GestureRecognizers>
-                                <!--<TapGestureRecognizer x:Name="TapKoristeno" Tapped="TapKoristeno_Tapped" />-->
+                                -->
+                <!--<TapGestureRecognizer x:Name="TapKoristeno" Tapped="TapKoristeno_Tapped" />-->
+                <!--
                             </Frame.GestureRecognizers>
                         </Frame>
                         <Frame
@@ -207,22 +222,16 @@
                                 Text="Novo"
                                 TextColor="Black" />
                             <Frame.GestureRecognizers>
-                                <!--<TapGestureRecognizer x:Name="TapNovo" Tapped="TapNovo_Tapped" />-->
+                                -->
+                <!--<TapGestureRecognizer x:Name="TapNovo" Tapped="TapNovo_Tapped" />-->
+                <!--
                             </Frame.GestureRecognizers>
                         </Frame>
-                    </StackLayout>
+                    </StackLayout>-->
 
 
-                    <Label
-                        FontSize="Small"
-                        HorizontalTextAlignment="Start"
-                        Text="Proizvođač*" />
 
-                    <Label
-                        FontSize="Small"
-                        HorizontalTextAlignment="Start"
-                        Text="Model*" />
-                    <!--<Picker
+                <!--<Picker
                         x:Name="PickerModel"
                         Title="Odaberite model"
                         ItemDisplayBinding="{Binding Naziv}"
@@ -427,7 +436,7 @@
                     IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                     Text="Postavi oglas"
                     TextColor="White" />-->
-                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
