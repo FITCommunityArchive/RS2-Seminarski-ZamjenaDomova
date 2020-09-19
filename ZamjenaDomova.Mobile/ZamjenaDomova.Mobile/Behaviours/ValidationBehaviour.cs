@@ -17,7 +17,7 @@ namespace ZamjenaDomova.Mobile.Behaviours
         public string PropertyName { get; set; }
         public ValidationGroupBehaviour Group { get; set; }
         public ObservableCollection<IValidator> Validators { get; set; } = new ObservableCollection<IValidator>();
-
+       
         public bool Validate()
         {
             bool isValid = true;

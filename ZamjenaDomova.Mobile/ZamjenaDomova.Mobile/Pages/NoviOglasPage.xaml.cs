@@ -8,12 +8,16 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Windows.Input;
+using ZamjenaDomova.Controls;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NoviOglasPage : ContentPage
     {
+        private bool enableMultiSelect;
+
         public ObservableCollection<Model.Territory> TerritoriesCollection = new ObservableCollection<Territory>();
         //    public ObservableCollection<Modeli.Kategorija> KategorijeCollection = new ObservableCollection<Kategorija>();
         //    public ObservableCollection<Modeli.Drzava> DrzaveCollection = new ObservableCollection<Drzava>();
@@ -46,6 +50,49 @@ namespace ZamjenaDomova.Mobile.Pages
             //GetBoje();
             //GetTransmisije();
             //GetGoriva();
+            var initialItems = new[] {
+                "One",
+                "Two",
+                "Three",
+                "Four",
+                "Five"
+            };
+            enableMultiSelect = true;
+            Items = new SelectableObservableCollection<string>(initialItems);
+            AddItemCommand = new Command(OnAddItem);
+            RemoveSelectedCommand = new Command(OnRemoveSelected);
+            ToggleSelectionCommand = new Command(OnToggleSelection);
+
+            BindingContext = this;
+        }
+        public SelectableObservableCollection<string> Items { get; }
+
+        public ICommand AddItemCommand { get; }
+
+        public ICommand RemoveSelectedCommand { get; }
+
+        public ICommand ToggleSelectionCommand { get; }
+
+        private void OnAddItem()
+        {
+            Items.Add(Guid.NewGuid().ToString());
+        }
+
+        private void OnRemoveSelected()
+        {
+            var selectedItems = Items.SelectedItems.ToArray();
+            foreach (var item in selectedItems)
+            {
+                Items.Remove(item);
+            }
+        }
+
+        private void OnToggleSelection()
+        {
+            foreach (var item in Items)
+            {
+                item.IsSelected = !item.IsSelected;
+            }
         }
 
         private async void GetTerritories()
@@ -258,5 +305,6 @@ namespace ZamjenaDomova.Mobile.Pages
         //        modelId = selectedModel.ModelId;
         //    }
         //}
+        
     }
 }

@@ -6,16 +6,17 @@
     xmlns:Behaviours="clr-namespace:ZamjenaDomova.Mobile.Behaviours"
     xmlns:Validators="clr-namespace:ZamjenaDomova.Mobile.Validators.Implementations"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="10" Margin="30">
+            <StackLayout Spacing="10" Margin="30,50,30,30">
                 <StackLayout.Behaviors>
-                    <Behaviours:ValidationGroupBehaviour x:Name="form" />
+                    <Behaviours:ValidationGroupBehaviour x:Name="form"/>
                 </StackLayout.Behaviors>
-                
+
                 <!--NASLOV-->
                 <Label
                     FontSize="Large"
@@ -23,21 +24,21 @@
                     Text="Dodaj novi" 
                     Margin="0,0,0,20"/>
                 <BoxView BackgroundColor="Black" HeightRequest="1" />
-                
+
                 <!--NAZIV-->
                 <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Naslov" />
                 <Entry x:Name="EntName" />
-                
+
                 <!--ADRESA-->
                 <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Adresa" />
                 <Entry x:Name="EntAddress" />
-                
+
                 <!--GRAD-->
                 <Label
                         FontSize="Small"
@@ -73,7 +74,7 @@
                         x:Name="HomeDesc"
                         AutoSize="Disabled"
                         HeightRequest="100" />
-                
+
                 <!--OPIS PODRUČJA-->
                 <Label
                         FontSize="Small"
@@ -85,21 +86,91 @@
                         HeightRequest="100" />
 
                 <!--BROJ OSOBA-->
-                <Label
+                <StackLayout Orientation="Horizontal">
+                    <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Broj osoba" />
+                    <Entry x:Name="EntPersons">
+                        <Entry.Behaviors>
+                            <Behaviours:NumberValidationBehaviour/>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
 
-                <Entry x:Name="EntPersons" 
-                       Keyboard="Numeric">
-                    <Entry.Behaviors>
-                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="SelectedIndex">
-                            <Behaviours:ValidationBehaviour.Validators>
-                                <Validators:NumericValidator />
-                            </Behaviours:ValidationBehaviour.Validators>
-                        </Behaviours:ValidationBehaviour>
-                    </Entry.Behaviors>
-                </Entry>
+                <!--BROJ KREVETA-->
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Broj kreveta" />
+                    <Entry x:Name="EntBeds">
+                        <Entry.Behaviors>
+                            <Behaviours:NumberValidationBehaviour/>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+                
+                <!--BROJ KUPAONICA-->
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Broj kupaonica" />
+                    <Entry x:Name="EntBathrooms">
+                        <Entry.Behaviors>
+                            <Behaviours:NumberValidationBehaviour/>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+                
+                <!--SADRŽAJI-->
+                <Label
+                    FontSize="Subtitle"
+                    HorizontalTextAlignment="Center"
+                    Text="Sadržaji" 
+                    Margin="0,0,0,20"/>
+                <BoxView BackgroundColor="Black" HeightRequest="1" />
+
+                <ListView x:Name="lvAmenities"
+                          ms:MultiSelectListView.IsMultiSelect="true">
+                    
+                </ListView>
+                <Grid Padding="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <ListView ItemsSource="{Binding Items}"
+                  ms:MultiSelectListView.IsMultiSelect="{Binding EnableMultiSelect}"
+                  Grid.Row="2" Grid.ColumnSpan="3">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ms:SelectableViewCell>
+
+                                    <!-- set the selected indicator (optional) -->
+                                    <ms:SelectableViewCell.CheckView>
+                                        <BoxView Color="Red" WidthRequest="12" HeightRequest="12" />
+                                    </ms:SelectableViewCell.CheckView>
+
+                                    <!-- set the content (optional) -->
+                                    <ms:SelectableViewCell.DataView>
+                                        <Label Text="{Binding}" />
+                                    </ms:SelectableViewCell.DataView>
+
+                                </ms:SelectableViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
 
 
                 <StackLayout Margin="20">
@@ -146,7 +217,7 @@
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Proizvođač*" />
-                    
+
                     <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
