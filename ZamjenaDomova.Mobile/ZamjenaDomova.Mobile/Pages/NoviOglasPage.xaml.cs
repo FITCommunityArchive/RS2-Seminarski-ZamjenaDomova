@@ -50,22 +50,17 @@ namespace ZamjenaDomova.Mobile.Pages
             //GetBoje();
             //GetTransmisije();
             //GetGoriva();
-            var initialItems = new[] {
-                "One",
-                "Two",
-                "Three",
-                "Four",
-                "Five"
-            };
+
             enableMultiSelect = true;
-            Items = new SelectableObservableCollection<string>(initialItems);
-            AddItemCommand = new Command(OnAddItem);
-            RemoveSelectedCommand = new Command(OnRemoveSelected);
-            ToggleSelectionCommand = new Command(OnToggleSelection);
+            GetAmenities();
+
+            //AddItemCommand = new Command(OnAddItem);
+            //RemoveSelectedCommand = new Command(OnRemoveSelected);
+            //ToggleSelectionCommand = new Command(OnToggleSelection);
 
             BindingContext = this;
         }
-        public SelectableObservableCollection<string> Items { get; }
+
 
         public ICommand AddItemCommand { get; }
 
@@ -73,27 +68,27 @@ namespace ZamjenaDomova.Mobile.Pages
 
         public ICommand ToggleSelectionCommand { get; }
 
-        private void OnAddItem()
-        {
-            Items.Add(Guid.NewGuid().ToString());
-        }
+        //private void OnAddItem()
+        //{
+        //    Items.Add(Guid.NewGuid().ToString());
+        //}
 
-        private void OnRemoveSelected()
-        {
-            var selectedItems = Items.SelectedItems.ToArray();
-            foreach (var item in selectedItems)
-            {
-                Items.Remove(item);
-            }
-        }
+        //private void OnRemoveSelected()
+        //{
+        //    var selectedItems = Items.SelectedItems.ToArray();
+        //    foreach (var item in selectedItems)
+        //    {
+        //        Items.Remove(item);
+        //    }
+        //}
 
-        private void OnToggleSelection()
-        {
-            foreach (var item in Items)
-            {
-                item.IsSelected = !item.IsSelected;
-            }
-        }
+        //private void OnToggleSelection()
+        //{
+        //    foreach (var item in Items)
+        //    {
+        //        item.IsSelected = !item.IsSelected;
+        //    }
+        //}
 
         private async void GetTerritories()
         {
@@ -104,6 +99,23 @@ namespace ZamjenaDomova.Mobile.Pages
                 TerritoriesCollection.Add(item);
             }
             PickerTerritory.ItemsSource = TerritoriesCollection;
+        }
+        public SelectableObservableCollection<SelectableItem<Model.AmenityModel>> AmenitiesItems { get; set; }
+
+
+        private async void GetAmenities()
+        {
+            var amenities = await APIService.GetAmenities();
+            List<AmenityModel> amenitiesModels = amenities
+                .Select(x => new AmenityModel
+                {
+                    AmenityId = x.AmenityId,
+                    Name = x.Name
+                }).ToList();
+            var amenitiesItems = amenitiesModels
+                .Select(x => new SelectableItem<AmenityModel>(x))
+                .ToList();
+            lvAmenities.ItemsSource = new SelectableObservableCollection<SelectableItem<AmenityModel>>(amenitiesItems);
         }
 
         //    private void GetGoriva()
@@ -176,36 +188,36 @@ namespace ZamjenaDomova.Mobile.Pages
         //        PickerKategorija.ItemsSource = KategorijeCollection;
         //    }
 
-        //    private async void BtnSell_Clicked(object sender, EventArgs e)
-        //    {
-        //        var vozilo = new Modeli.Vozilo();
-        //        vozilo.Naziv = EntNaslov.Text;
-        //        if (int.TryParse(EntKonjskihSnaga.Text, out int konjskihSnaga))
-        //        {
-        //            vozilo.KonjskihSnaga = konjskihSnaga;
-        //        }
-        //        if (int.TryParse(EntCijena.Text, out int cijena))
-        //        {
-        //            vozilo.Cijena = cijena;
-        //        }
-        //        vozilo.KorisnikId = Preferences.Get("korisnikId", 0);
-        //        vozilo.KategorijaId = kategorijaId;
-        //        vozilo.Stanje = stanje;
-        //        vozilo.GradId = gradId;
-        //        vozilo.GodinaProizvodnje = godiste;
-        //        vozilo.Boja = boja;
-        //        vozilo.Gorivo = gorivo;
-        //        vozilo.Kubikaza = kubikaza;
-        //        vozilo.Transmisija = transmisija;
-        //        vozilo.ModelId = modelId;
-        //        vozilo.Opis = KratkiOpis.Text;
+        private async void BtnSell_Clicked(object sender, EventArgs e)
+        {
+            //var vozilo = new Modeli.Vozilo();
+            //vozilo.Naziv = EntNaslov.Text;
+            //if (int.TryParse(EntKonjskihSnaga.Text, out int konjskihSnaga))
+            //{
+            //    vozilo.KonjskihSnaga = konjskihSnaga;
+            //}
+            //if (int.TryParse(EntCijena.Text, out int cijena))
+            //{
+            //    vozilo.Cijena = cijena;
+            //}
+            //vozilo.KorisnikId = Preferences.Get("korisnikId", 0);
+            //vozilo.KategorijaId = kategorijaId;
+            //vozilo.Stanje = stanje;
+            //vozilo.GradId = gradId;
+            //vozilo.GodinaProizvodnje = godiste;
+            //vozilo.Boja = boja;
+            //vozilo.Gorivo = gorivo;
+            //vozilo.Kubikaza = kubikaza;
+            //vozilo.Transmisija = transmisija;
+            //vozilo.ModelId = modelId;
+            //vozilo.Opis = KratkiOpis.Text;
 
-        //        var response = await APIService.DodajVozilo(vozilo);
-        //        if (response == null) return;
-        //        var voziloId = response.VoziloId;
+            //var response = await APIService.DodajVozilo(vozilo);
+            //if (response == null) return;
+            //var voziloId = response.VoziloId;
 
-        //        await Navigation.PushAsync(new DodajSlikuVozilaPage(voziloId));
-        //    }
+            await Navigation.PopAsync();
+        }
 
         //    private void PickerKategorija_SelectedIndexChanged(object sender, EventArgs e)
         //    {
@@ -305,6 +317,6 @@ namespace ZamjenaDomova.Mobile.Pages
         //        modelId = selectedModel.ModelId;
         //    }
         //}
-        
+
     }
 }
