@@ -84,18 +84,19 @@ namespace ZamjenaDomova.Mobile.Pages
                 listing.Bathrooms = bathrooms;
             }
             listing.UserId = Preferences.Get("userId", 0);
+            listing.Amenities = new List<int>();
             var selectedAmenities = AmenitiesItems.SelectedItems().ToList();
-            bool a = true;
-            //foreach(var item in lvAmenities)
-            //{
-            //    if item.is
-            //}
-           
-            //var response = await APIService.DodajVozilo(vozilo);
-            //if (response == null) return;
-            //var voziloId = response.VoziloId;
 
-            await Navigation.PopAsync();
+            foreach (var item in selectedAmenities)
+            {
+                listing.Amenities.Add(item.Data.AmenityId);
+            }
+           
+            var response = await APIService.InsertListing(listing);
+            if (response == null) return;
+            var listingId = response.ListingId;
+
+            await Navigation.PushAsync(new AddListingImagesPage(listingId));
         }
 
         private void PickerTerritory_SelectedIndexChanged(object sender, EventArgs e)

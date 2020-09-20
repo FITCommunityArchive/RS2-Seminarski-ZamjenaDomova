@@ -21,17 +21,52 @@ namespace ZamjenaDomova.WebAPI.Services
 
         public Model.ListingResponse Insert(ListingInsertRequest listing)
         {
-            var entity = new Database.Listing
+            try
             {
-                Address = listing.Address,
-                AreaDescription = listing.AreaDescription,
-                Bathrooms = listing.Bathrooms,
-                Beds = listing.Beds,
-                City = listing.City,
-                ListingDescription=listing.ListingDescription
-            };
+                var entity = new Database.Listing
+                {
+                    Address = listing.Address,
+                    AreaDescription = listing.AreaDescription,
+                    Bathrooms = listing.Bathrooms,
+                    Beds = listing.Beds,
+                    City = listing.City,
+                    ListingDescription = listing.ListingDescription,
+                    Active = true,
+                    Approved = false,
+                    DateCreated = DateTime.Now,
+                    DateApproved = new DateTime(),
+                    Name = listing.Name,
+                    Persons = listing.Persons,
+                    TerritoryId = listing.TerritoryId,
+                    UserId = listing.UserId
+                };
+                _context.Listing.Add(entity);
+                _context.SaveChanges();
 
-            return new ListingResponse { ListingId = entity.ListingId };
+                foreach(var item in listing.Amenities)
+                {
+                    var ListingAmenity = new ListingAmenity();
+                    ListingAmenity.ListingId = entity.ListingId;
+                    ListingAmenity.AmenityId = item;
+                    _context.ListingAmenity.Add(ListingAmenity);
+                    _context.SaveChanges();
+                }
+
+                return new ListingResponse
+                {
+                    ListingId = entity.ListingId,
+                    Message = "Uspješno dodan oglas",
+                    Status = true
+                };
+            }
+            catch(Exception ex)
+            {
+                return new ListingResponse
+                {
+                    Message = ex.Message,
+                    Status = false
+                };
+            }
         }
     }
 }

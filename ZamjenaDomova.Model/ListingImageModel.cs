@@ -4,10 +4,9 @@ using System.Text;
 
 namespace ZamjenaDomova.Model
 {
-    public class ListingResponse
+    public class ListingImageModel
     {
         public int ListingId { get; set; }
-        public bool Status { get; set; }
-        public string Message { get; set; }
+        public byte[] Image { get; set; }
     }
 }

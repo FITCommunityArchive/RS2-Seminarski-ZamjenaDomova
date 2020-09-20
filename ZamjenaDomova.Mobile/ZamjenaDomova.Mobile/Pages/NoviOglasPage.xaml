@@ -175,7 +175,7 @@
                     TextColor="Red">
                     <Label.Triggers>
                         <DataTrigger
-                            Binding="{Binding Source={x:Reference BtnSell}, Path=IsEnabled}"
+                            Binding="{Binding Source={x:Reference BtnList}, Path=IsEnabled}"
                             TargetType="Label"
                             Value="True">
                             <Setter Property="IsVisible" Value="False" />
@@ -189,6 +189,7 @@
                     IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                     Text="Objavi dom"
                     TextColor="White" />
+                
 
             </StackLayout>
         </ScrollView>

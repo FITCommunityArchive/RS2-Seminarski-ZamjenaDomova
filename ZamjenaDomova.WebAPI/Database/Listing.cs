@@ -27,6 +27,7 @@ namespace ZamjenaDomova.WebAPI.Database
         public int UserId { get; set; }
         public virtual User User { get; set; }
         public DateTime DateCreated { get; set; }
+        public DateTime DateApproved { get; set; }
         
         public bool Approved { get; set; }
         public bool Active { get; set; }

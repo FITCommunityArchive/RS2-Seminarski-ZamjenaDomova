@@ -104,6 +104,38 @@ namespace ZamjenaDomova.Mobile
             return JsonConvert.DeserializeObject<List<Model.Amenity>>(response);
         }
 
+        public static async Task<ListingResponse> InsertListing(Model.Requests.ListingInsertRequest request)
+        {
+            await TokenValidator.CheckTokenValidity();
+
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.PostAsync($"{_apiUrl}/Listing", content);
+            var jsonResult = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ListingResponse>(jsonResult);
+        }
+        public static async Task<bool> AddListingImage(int listingId, byte[] imageArray)
+        {
+            var listingImage = new ListingImageModel
+            {
+                ListingId = listingId,
+                Image = imageArray
+            };
+
+            await TokenValidator.CheckTokenValidity();
+
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(listingImage);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.PostAsync($"{_apiUrl}/ListingImage", content);
+            if (!response.IsSuccessStatusCode) return false;
+            return true;
+        }
+
+
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
         //        {
         //            var ocjenaModel = new Modeli.OcjenaModel
@@ -239,24 +271,6 @@ namespace ZamjenaDomova.Mobile
         //            return JsonConvert.DeserializeObject<List<Modeli.Model>>(response);
         //        }
 
-        //        public static async Task<bool> DodajSlikuVozila(int voziloId, byte[] imageArray)
-        //        {
-        //            var voziloSlika = new SlikaVozilaModel
-        //            {
-        //                VoziloId = voziloId,
-        //                Slika = imageArray
-        //            };
-
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            var json = JsonConvert.SerializeObject(voziloSlika);
-        //            var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.PostAsync($"{_apiUrl}/SlikeVozila", content);
-        //            if (!response.IsSuccessStatusCode) return false;
-        //            return true;
-        //        }
 
         //        public static async Task<VoziloDetalji> GetDetaljiVozila(int id)
         //        {
@@ -304,18 +318,6 @@ namespace ZamjenaDomova.Mobile
         //            };
         //        }
 
-        //        public static async Task<VoziloResponse> DodajVozilo(Modeli.Vozilo vozilo)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            var json = JsonConvert.SerializeObject(vozilo);
-        //            var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.PostAsync($"{_apiUrl}/Vozila", content);
-        //            var jsonResult = await response.Content.ReadAsStringAsync();
-        //            return JsonConvert.DeserializeObject<VoziloResponse>(jsonResult);
-        //        }
 
         //        public static async Task<List<Modeli.Oglas>> GetOglase()
         //        {
