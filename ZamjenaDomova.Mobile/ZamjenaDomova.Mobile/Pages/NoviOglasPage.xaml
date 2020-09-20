@@ -54,8 +54,8 @@
                 <Picker
                         x:Name="PickerTerritory"
                         Title="Odaberite kanton"
-                        ItemDisplayBinding="{Binding Name}">
-                    <!--SelectedIndexChanged="PickerProizvodjac_SelectedIndexChanged"-->
+                        ItemDisplayBinding="{Binding Name}"
+                    SelectedIndexChanged="PickerTerritory_SelectedIndexChanged">
                     <Picker.Behaviors>
                         <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="SelectedIndex">
                             <Behaviours:ValidationBehaviour.Validators>
@@ -137,12 +137,11 @@
                 <Label
                     FontSize="Subtitle"
                     HorizontalTextAlignment="Center"
-                    Text="Sadržaji" 
-                    Margin="0,0,0,20"/>
+                    Text="Sadržaji"/>
                 <BoxView BackgroundColor="Black" HeightRequest="1" />
 
                 <ListView x:Name="lvAmenities"
-                          ItemsSource="{Binding Items}"
+                          ItemsSource="{Binding AmenitiesItems}"
                           ms:MultiSelectListView.IsMultiSelect="true" Margin="0,0,50,0">
 
                     <ListView.ItemTemplate>
@@ -152,7 +151,7 @@
                                 <!--set the selected indicator (optional)-->
 
                                 <ms:SelectableViewCell.CheckView>
-                                    <BoxView Color="Red" WidthRequest="12" HeightRequest="12" />
+                                    <BoxView Color="#B83A3A" WidthRequest="12" HeightRequest="12" />
                                 </ms:SelectableViewCell.CheckView>
 
 
@@ -184,11 +183,11 @@
                     </Label.Triggers>
                 </Label>
                 <Button
-                    x:Name="BtnSell"
-                    BackgroundColor="#303F9F"
-                    Clicked="BtnSell_Clicked"
+                    x:Name="BtnList"
+                    BackgroundColor="#B83A3A"
+                    Clicked="BtnList_Clicked"
                     IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
-                    Text="Postavi oglas"
+                    Text="Objavi dom"
                     TextColor="White" />
 
             </StackLayout>

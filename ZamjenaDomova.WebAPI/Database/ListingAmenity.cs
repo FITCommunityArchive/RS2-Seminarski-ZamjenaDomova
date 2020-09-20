@@ -10,7 +10,7 @@ namespace ZamjenaDomova.WebAPI.Database
     {
         public int ListingAmenityId { get; set; }
         public int ListingId { get; set; }
-        public Listing Listing { get; set; }
+        public virtual Listing Listing { get; set; }
         public int AmenityId { get; set; }
         public Amenity Amenity { get; set; }
     }

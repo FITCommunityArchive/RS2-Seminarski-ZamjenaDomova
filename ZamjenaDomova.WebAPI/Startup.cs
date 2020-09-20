@@ -130,7 +130,6 @@ namespace ZamjenaDomova.WebAPI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IListingService, ListingService>();
             services.AddScoped<IService<Model.AmenitiesCategory, object>, BaseService<Model.AmenitiesCategory, object, Database.AmenitiesCategory>>();
-            services.AddScoped<IService<Model.PreferredSwapTime, object>, BaseService<Model.PreferredSwapTime, object, Database.PreferredSwapTime>>();
             services.AddScoped<IService<Model.Territory, object>, BaseService<Model.Territory, object, Database.Territory>>();
             services.AddScoped<IService<Model.Role, RoleSearchRequest>, RoleService>();
             services.AddScoped<ICRUDService<Model.Amenity, Model.Requests.AmenitySearchRequest, Model.Requests.AmenityUpsertRequest, Model.Requests.AmenityUpsertRequest>, AmenityService>();

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZamjenaDomova.Model;
 
-namespace ZamjenaDomova.WebAPI.Database
+namespace ZamjenaDomova.Model
 {
     public class Listing
     {
@@ -20,7 +20,6 @@ namespace ZamjenaDomova.WebAPI.Database
         public int TerritoryId { get; set; }
         public virtual Territory Territory { get; set; }
         public string TerritoryName { get; set; }
-        public ICollection<PreferredSwapTime> PreferredSwapTime { get; set; }
         public ICollection<ListingImage> ListingImages { get; set; }
         //Capacity
         public int Persons { get; set; }

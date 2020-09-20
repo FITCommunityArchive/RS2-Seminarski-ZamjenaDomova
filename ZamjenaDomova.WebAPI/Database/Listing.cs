@@ -18,7 +18,6 @@ namespace ZamjenaDomova.WebAPI.Database
         public string City { get; set; }
         public int TerritoryId { get; set; }
         public virtual Territory Territory { get; set; }
-        public ICollection<PreferredSwapTime> PreferredSwapTime { get; set; }
         public ICollection<ListingImage> ListingImages { get; set; }
         //Capacity
         public int Persons { get; set; }

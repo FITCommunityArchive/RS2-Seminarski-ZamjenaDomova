@@ -93,6 +93,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Territory");
             return JsonConvert.DeserializeObject<List<Model.Territory>>(response);
         }
+        
         public static async Task<List<Model.Amenity>> GetAmenities()
         {
             await TokenValidator.CheckTokenValidity();

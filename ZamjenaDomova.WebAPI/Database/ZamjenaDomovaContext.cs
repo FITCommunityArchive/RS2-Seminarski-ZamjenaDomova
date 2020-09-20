@@ -22,7 +22,6 @@ namespace ZamjenaDomova.WebAPI.Database
         public virtual DbSet<Listing> Listing { get; set; }
         public virtual DbSet<ListingAmenity> ListingAmenity { get; set; }
         public virtual DbSet<ListingImage> ListingImage { get; set; }
-        public virtual DbSet<PreferredSwapTime> PreferredSwapTime { get; set; }
         public virtual DbSet<Rating> Rating { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Territory> Territory { get; set; }
