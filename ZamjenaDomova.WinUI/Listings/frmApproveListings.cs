@@ -31,11 +31,11 @@ namespace ZamjenaDomova.WinUI.Listings
             txtCount.Text = count.ToString();
         }
 
-        private void dgvListings_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvListings_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            var id = dgvListings.SelectedRows[0].Cells[0].Value;
+            frmListingDetails frm = new frmListingDetails(int.Parse(id.ToString()));
+            frm.Show();
         }
-
-       
     }
 }

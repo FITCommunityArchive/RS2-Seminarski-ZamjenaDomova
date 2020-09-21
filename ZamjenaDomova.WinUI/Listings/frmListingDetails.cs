@@ -12,9 +12,11 @@ namespace ZamjenaDomova.WinUI.Listings
 {
     public partial class frmListingDetails : Form
     {
-        public frmListingDetails()
+        private int? _id = null;
+        public frmListingDetails(int? listingId = null)
         {
             InitializeComponent();
+            _id = listingId;
         }
 
     }

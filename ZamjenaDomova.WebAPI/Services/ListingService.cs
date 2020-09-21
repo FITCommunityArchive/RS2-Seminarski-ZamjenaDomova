@@ -95,7 +95,8 @@ namespace ZamjenaDomova.WebAPI.Services
                 Name = x.Name,
                 Persons = x.Persons,
                 TerritoryName = x.Territory.Name,
-                UserName = x.User.FirstName + " " + x.User.LastName
+                UserName = x.User.FirstName + " " + x.User.LastName,
+                ListingId=x.ListingId
             }).ToList();
 
             return list;

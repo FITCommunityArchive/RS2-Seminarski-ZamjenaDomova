@@ -46,6 +46,8 @@
             this.txtBeds = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBathrooms = new System.Windows.Forms.TextBox();
+            this.btnApprove = new System.Windows.Forms.Button();
+            this.btnReject = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
@@ -203,11 +205,37 @@
             this.txtBathrooms.Size = new System.Drawing.Size(42, 22);
             this.txtBathrooms.TabIndex = 27;
             // 
+            // btnApprove
+            // 
+            this.btnApprove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(149)))), ((int)(((byte)(70)))));
+            this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnApprove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnApprove.Location = new System.Drawing.Point(592, 56);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(148, 39);
+            this.btnApprove.TabIndex = 29;
+            this.btnApprove.Text = "Odobri";
+            this.btnApprove.UseVisualStyleBackColor = false;
+            // 
+            // btnReject
+            // 
+            this.btnReject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReject.Location = new System.Drawing.Point(592, 106);
+            this.btnReject.Name = "btnReject";
+            this.btnReject.Size = new System.Drawing.Size(148, 39);
+            this.btnReject.TabIndex = 30;
+            this.btnReject.Text = "Odbij";
+            this.btnReject.UseVisualStyleBackColor = false;
+            // 
             // frmListingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 543);
+            this.ClientSize = new System.Drawing.Size(800, 812);
+            this.Controls.Add(this.btnReject);
+            this.Controls.Add(this.btnApprove);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtBathrooms);
             this.Controls.Add(this.label8);
@@ -252,5 +280,7 @@
         private System.Windows.Forms.TextBox txtBeds;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBathrooms;
+        private System.Windows.Forms.Button btnApprove;
+        private System.Windows.Forms.Button btnReject;
     }
 }
