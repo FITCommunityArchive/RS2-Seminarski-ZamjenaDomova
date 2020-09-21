@@ -142,5 +142,13 @@ namespace ZamjenaDomova.WinUI
             frm.Show();
             frm.WindowState = FormWindowState.Maximized;
         }
+
+        private void odoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmApproveListings frm = new frmApproveListings();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.WindowState = FormWindowState.Maximized;
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
@@ -43,7 +45,7 @@ namespace ZamjenaDomova.WebAPI.Services
                 _context.Listing.Add(entity);
                 _context.SaveChanges();
 
-                foreach(var item in listing.Amenities)
+                foreach (var item in listing.Amenities)
                 {
                     var ListingAmenity = new ListingAmenity();
                     ListingAmenity.ListingId = entity.ListingId;
@@ -59,7 +61,7 @@ namespace ZamjenaDomova.WebAPI.Services
                     Status = true
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ListingResponse
                 {
@@ -67,6 +69,34 @@ namespace ZamjenaDomova.WebAPI.Services
                     Status = false
                 };
             }
+        }
+
+        public List<Model.Listing> Get(ListingSearchRequest request)
+        {
+            var query = _context.Listing.Include(x => x.Territory).Include(x => x.User).AsQueryable();
+
+            //if (!string.IsNullOrWhiteSpace(request?.Name))
+            //    query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
+
+            //var list = query.ToList();
+
+            var list = query.Select(x => new Model.Listing
+            {
+                Active = x.Active,
+                Address = x.Address,
+                AreaDescription = x.AreaDescription,
+                Bathrooms = x.Bathrooms,
+                Beds = x.Beds,
+                City = x.City,
+                DateCreated = x.DateCreated,
+                ListingDescription = x.ListingDescription,
+                Name = x.Name,
+                Persons = x.Persons,
+                TerritoryName = x.Territory.Name,
+                UserName = x.User.FirstName + " " + x.User.LastName
+            }).ToList();
+
+            return list;
         }
     }
 }

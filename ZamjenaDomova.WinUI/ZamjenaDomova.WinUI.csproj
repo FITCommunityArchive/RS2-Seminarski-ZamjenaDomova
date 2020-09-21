@@ -204,6 +204,12 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listings\frmApproveListings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listings\frmApproveListings.Designer.cs">
+      <DependentUpon>frmApproveListings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listings\frmListings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listings\frmApproveListings.resx">
+      <DependentUpon>frmApproveListings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listings\frmListings.resx">
       <DependentUpon>frmListings.cs</DependentUpon>

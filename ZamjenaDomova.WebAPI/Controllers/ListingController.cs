@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ZamjenaDomova.Model.Requests;
 using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
@@ -26,6 +28,12 @@ namespace ZamjenaDomova.WebAPI.Controllers
                 return BadRequest(response);
 
             return Ok(response);
+        }
+        [Authorize(Roles = "Administrator, Editor")]
+        [HttpGet]
+        public ActionResult<List<Model.Listing>> Get([FromQuery] ListingSearchRequest request)
+        {
+            return _service.Get(request);
         }
     }
 }

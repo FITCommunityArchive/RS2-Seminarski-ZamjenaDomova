@@ -118,6 +118,7 @@
             this.odoToolStripMenuItem.Name = "odoToolStripMenuItem";
             this.odoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.odoToolStripMenuItem.Text = "Odobravanje";
+            this.odoToolStripMenuItem.Click += new System.EventHandler(this.odoToolStripMenuItem_Click);
             // 
             // statusStrip
             // 

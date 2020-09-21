@@ -23,7 +23,7 @@
                     <Image
                         x:Name="Img1"
                         HeightRequest="100"
-                        Source="addImage.png"
+                        Source="add.png"
                         WidthRequest="100">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="TapImg1" Tapped="TapImg1_Tapped" />
@@ -32,7 +32,7 @@
                     <Image
                         x:Name="Img2"
                         HeightRequest="100"
-                        Source="addImage.png"
+                        Source="add.png"
                         WidthRequest="100">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="TapImg2" Tapped="TapImg2_Tapped" />
@@ -41,7 +41,7 @@
                     <Image
                         x:Name="Img3"
                         HeightRequest="100"
-                        Source="addImage.png"
+                        Source="add.png"
                         WidthRequest="100">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="TapImg3" Tapped="TapImg3_Tapped" />
@@ -50,7 +50,7 @@
                     <Image
                         x:Name="Img4"
                         HeightRequest="100"
-                        Source="addImage.png"
+                        Source="add.png"
                         WidthRequest="100">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="TapImg4" Tapped="TapImg4_Tapped" />
@@ -59,7 +59,7 @@
                     <Image
                         x:Name="Img5"
                         HeightRequest="100"
-                        Source="addImage.png"
+                        Source="add.png"
                         WidthRequest="100">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="TapImg5" Tapped="TapImg5_Tapped" />
@@ -68,7 +68,7 @@
                     <Image
                         x:Name="Img6"
                         HeightRequest="100"
-                        Source="addImage.png"
+                        Source="add.png"
                         WidthRequest="100">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="TapImg6" Tapped="TapImg6_Tapped" />

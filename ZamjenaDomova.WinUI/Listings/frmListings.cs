@@ -17,6 +17,5 @@ namespace ZamjenaDomova.WinUI.Listings
             InitializeComponent();
         }
 
-    
     }
 }
