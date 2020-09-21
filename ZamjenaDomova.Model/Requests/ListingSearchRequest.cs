@@ -6,5 +6,6 @@ namespace ZamjenaDomova.Model.Requests
 {
     public class ListingSearchRequest
     {
+        public bool Approved { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZamjenaDomova.Model;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.WinUI.Listings
 {
@@ -20,9 +21,14 @@ namespace ZamjenaDomova.WinUI.Listings
         }
         private async void frmApproveListings_Load(object sender, EventArgs e)
         {
-            var result = await _listingService.Get<List<Listing>>(null);
+            var request = new ListingSearchRequest { Approved = false };
+
+            var result = await _listingService.Get<List<Listing>>(request);
             dgvListings.AutoGenerateColumns = false;
             dgvListings.DataSource = result;
+
+            var count = result.Count;
+            txtCount.Text = count.ToString();
         }
 
         private void dgvListings_CellContentClick(object sender, DataGridViewCellEventArgs e)

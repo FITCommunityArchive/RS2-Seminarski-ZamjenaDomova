@@ -74,12 +74,14 @@ namespace ZamjenaDomova.WebAPI.Services
         public List<Model.Listing> Get(ListingSearchRequest request)
         {
             var query = _context.Listing.Include(x => x.Territory).Include(x => x.User).AsQueryable();
-
+            if (request != null)
+            {
+                query = query.Where(x => x.Approved == request.Approved);
             //if (!string.IsNullOrWhiteSpace(request?.Name))
             //    query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
 
-            //var list = query.ToList();
-
+                //var list = query.ToList();
+            }
             var list = query.Select(x => new Model.Listing
             {
                 Active = x.Active,

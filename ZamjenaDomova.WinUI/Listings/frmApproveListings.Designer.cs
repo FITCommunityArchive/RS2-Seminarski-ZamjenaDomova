@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCount = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvListings = new System.Windows.Forms.DataGridView();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,25 +45,45 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.txtCount);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1039, 610);
             this.panel1.TabIndex = 3;
             // 
+            // txtCount
+            // 
+            this.txtCount.Location = new System.Drawing.Point(200, 20);
+            this.txtCount.Name = "txtCount";
+            this.txtCount.Size = new System.Drawing.Size(26, 22);
+            this.txtCount.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(29, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Neodobreni oglasi:";
+            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.dgvListings);
-            this.groupBox1.Location = new System.Drawing.Point(29, 41);
+            this.groupBox1.Location = new System.Drawing.Point(29, 59);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(969, 488);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Korisnici";
+            this.groupBox1.Text = "Neodobreni oglasi";
             // 
             // dgvListings
             // 
@@ -137,6 +159,7 @@
             this.Text = "frmApproveListings";
             this.Load += new System.EventHandler(this.frmApproveListings_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListings)).EndInit();
             this.ResumeLayout(false);
@@ -153,5 +176,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Territory;
         private System.Windows.Forms.DataGridViewTextBoxColumn User;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
+        private System.Windows.Forms.TextBox txtCount;
+        private System.Windows.Forms.Label label1;
     }
 }
