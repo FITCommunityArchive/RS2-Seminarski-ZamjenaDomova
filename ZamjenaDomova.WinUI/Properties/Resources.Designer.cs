@@ -63,6 +63,16 @@ namespace ZamjenaDomova.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap homePlaceholder {
+            get {
+                object obj = ResourceManager.GetObject("homePlaceholder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgAvatarPlaceholder {
             get {
                 object obj = ResourceManager.GetObject("imgAvatarPlaceholder", resourceCulture);

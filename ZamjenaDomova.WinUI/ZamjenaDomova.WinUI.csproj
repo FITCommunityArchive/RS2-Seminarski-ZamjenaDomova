@@ -296,5 +296,8 @@
   <ItemGroup>
     <None Include="Resources\imgAvatarPlaceholder.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\homePlaceholder.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

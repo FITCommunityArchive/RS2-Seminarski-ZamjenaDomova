@@ -48,6 +48,14 @@
             this.txtBathrooms = new System.Windows.Forms.TextBox();
             this.btnApprove = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDateCreated = new System.Windows.Forms.TextBox();
+            this.clbAmenities = new System.Windows.Forms.CheckedListBox();
+            this.label12 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -64,7 +72,7 @@
             this.txtCity.Location = new System.Drawing.Point(45, 183);
             this.txtCity.Name = "txtCity";
             this.txtCity.ReadOnly = true;
-            this.txtCity.Size = new System.Drawing.Size(453, 22);
+            this.txtCity.Size = new System.Drawing.Size(320, 22);
             this.txtCity.TabIndex = 12;
             // 
             // label2
@@ -81,7 +89,7 @@
             this.txtAddress.Location = new System.Drawing.Point(45, 123);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(453, 22);
+            this.txtAddress.Size = new System.Drawing.Size(320, 22);
             this.txtAddress.TabIndex = 10;
             // 
             // label1
@@ -98,7 +106,7 @@
             this.txtName.Location = new System.Drawing.Point(45, 65);
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(453, 22);
+            this.txtName.Size = new System.Drawing.Size(320, 22);
             this.txtName.TabIndex = 8;
             // 
             // label5
@@ -124,7 +132,7 @@
             this.txtTerritory.Location = new System.Drawing.Point(45, 244);
             this.txtTerritory.Name = "txtTerritory";
             this.txtTerritory.ReadOnly = true;
-            this.txtTerritory.Size = new System.Drawing.Size(453, 22);
+            this.txtTerritory.Size = new System.Drawing.Size(320, 22);
             this.txtTerritory.TabIndex = 14;
             // 
             // txtHomeDesc
@@ -133,7 +141,7 @@
             this.txtHomeDesc.Multiline = true;
             this.txtHomeDesc.Name = "txtHomeDesc";
             this.txtHomeDesc.ReadOnly = true;
-            this.txtHomeDesc.Size = new System.Drawing.Size(453, 55);
+            this.txtHomeDesc.Size = new System.Drawing.Size(320, 55);
             this.txtHomeDesc.TabIndex = 20;
             // 
             // txtAreaDesc
@@ -142,7 +150,7 @@
             this.txtAreaDesc.Multiline = true;
             this.txtAreaDesc.Name = "txtAreaDesc";
             this.txtAreaDesc.ReadOnly = true;
-            this.txtAreaDesc.Size = new System.Drawing.Size(453, 55);
+            this.txtAreaDesc.Size = new System.Drawing.Size(320, 55);
             this.txtAreaDesc.TabIndex = 22;
             // 
             // label4
@@ -157,7 +165,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(69, 490);
+            this.label7.Location = new System.Drawing.Point(450, 355);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 17);
             this.label7.TabIndex = 24;
@@ -165,16 +173,16 @@
             // 
             // txtPersons
             // 
-            this.txtPersons.Location = new System.Drawing.Point(125, 491);
+            this.txtPersons.Location = new System.Drawing.Point(506, 353);
             this.txtPersons.Name = "txtPersons";
             this.txtPersons.ReadOnly = true;
-            this.txtPersons.Size = new System.Drawing.Size(40, 22);
+            this.txtPersons.Size = new System.Drawing.Size(26, 22);
             this.txtPersons.TabIndex = 23;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(208, 490);
+            this.label8.Location = new System.Drawing.Point(549, 355);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 17);
             this.label8.TabIndex = 26;
@@ -182,16 +190,16 @@
             // 
             // txtBeds
             // 
-            this.txtBeds.Location = new System.Drawing.Point(266, 491);
+            this.txtBeds.Location = new System.Drawing.Point(607, 353);
             this.txtBeds.Name = "txtBeds";
             this.txtBeds.ReadOnly = true;
-            this.txtBeds.Size = new System.Drawing.Size(40, 22);
+            this.txtBeds.Size = new System.Drawing.Size(28, 22);
             this.txtBeds.TabIndex = 25;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(359, 490);
+            this.label9.Location = new System.Drawing.Point(650, 355);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 17);
             this.label9.TabIndex = 28;
@@ -199,10 +207,10 @@
             // 
             // txtBathrooms
             // 
-            this.txtBathrooms.Location = new System.Drawing.Point(440, 491);
+            this.txtBathrooms.Location = new System.Drawing.Point(728, 353);
             this.txtBathrooms.Name = "txtBathrooms";
             this.txtBathrooms.ReadOnly = true;
-            this.txtBathrooms.Size = new System.Drawing.Size(42, 22);
+            this.txtBathrooms.Size = new System.Drawing.Size(28, 22);
             this.txtBathrooms.TabIndex = 27;
             // 
             // btnApprove
@@ -210,9 +218,9 @@
             this.btnApprove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(149)))), ((int)(((byte)(70)))));
             this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnApprove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnApprove.Location = new System.Drawing.Point(592, 56);
+            this.btnApprove.Location = new System.Drawing.Point(453, 567);
             this.btnApprove.Name = "btnApprove";
-            this.btnApprove.Size = new System.Drawing.Size(148, 39);
+            this.btnApprove.Size = new System.Drawing.Size(159, 39);
             this.btnApprove.TabIndex = 29;
             this.btnApprove.Text = "Odobri";
             this.btnApprove.UseVisualStyleBackColor = false;
@@ -222,18 +230,87 @@
             this.btnReject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReject.Location = new System.Drawing.Point(592, 106);
+            this.btnReject.Location = new System.Drawing.Point(618, 567);
             this.btnReject.Name = "btnReject";
-            this.btnReject.Size = new System.Drawing.Size(148, 39);
+            this.btnReject.Size = new System.Drawing.Size(155, 39);
             this.btnReject.TabIndex = 30;
             this.btnReject.Text = "Odbij";
             this.btnReject.UseVisualStyleBackColor = false;
+            // 
+            // pbImage
+            // 
+            this.pbImage.Image = global::ZamjenaDomova.WinUI.Properties.Resources.homePlaceholder;
+            this.pbImage.Location = new System.Drawing.Point(451, 65);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(322, 269);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImage.TabIndex = 31;
+            this.pbImage.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(453, 403);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 17);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Korisnik";
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(453, 426);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.ReadOnly = true;
+            this.txtUser.Size = new System.Drawing.Size(320, 22);
+            this.txtUser.TabIndex = 32;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(453, 466);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(108, 17);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Datum kreiranja";
+            // 
+            // txtDateCreated
+            // 
+            this.txtDateCreated.Location = new System.Drawing.Point(453, 489);
+            this.txtDateCreated.Name = "txtDateCreated";
+            this.txtDateCreated.ReadOnly = true;
+            this.txtDateCreated.Size = new System.Drawing.Size(320, 22);
+            this.txtDateCreated.TabIndex = 34;
+            // 
+            // clbAmenities
+            // 
+            this.clbAmenities.FormattingEnabled = true;
+            this.clbAmenities.Location = new System.Drawing.Point(45, 489);
+            this.clbAmenities.Name = "clbAmenities";
+            this.clbAmenities.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.clbAmenities.Size = new System.Drawing.Size(320, 191);
+            this.clbAmenities.TabIndex = 36;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(45, 469);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 17);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Sadržaji";
             // 
             // frmListingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 812);
+            this.ClientSize = new System.Drawing.Size(800, 697);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.clbAmenities);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtDateCreated);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtUser);
+            this.Controls.Add(this.pbImage);
             this.Controls.Add(this.btnReject);
             this.Controls.Add(this.btnApprove);
             this.Controls.Add(this.label9);
@@ -256,6 +333,8 @@
             this.Controls.Add(this.txtName);
             this.Name = "frmListingDetails";
             this.Text = "frmListingDetails";
+            this.Load += new System.EventHandler(this.frmListingDetails_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +361,12 @@
         private System.Windows.Forms.TextBox txtBathrooms;
         private System.Windows.Forms.Button btnApprove;
         private System.Windows.Forms.Button btnReject;
+        private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtDateCreated;
+        private System.Windows.Forms.CheckedListBox clbAmenities;
+        private System.Windows.Forms.Label label12;
     }
 }

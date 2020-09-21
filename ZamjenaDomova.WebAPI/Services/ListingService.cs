@@ -77,8 +77,8 @@ namespace ZamjenaDomova.WebAPI.Services
             if (request != null)
             {
                 query = query.Where(x => x.Approved == request.Approved);
-            //if (!string.IsNullOrWhiteSpace(request?.Name))
-            //    query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
+                //if (!string.IsNullOrWhiteSpace(request?.Name))
+                //    query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
 
                 //var list = query.ToList();
             }
@@ -96,10 +96,75 @@ namespace ZamjenaDomova.WebAPI.Services
                 Persons = x.Persons,
                 TerritoryName = x.Territory.Name,
                 UserName = x.User.FirstName + " " + x.User.LastName,
-                ListingId=x.ListingId
+                ListingId = x.ListingId
             }).ToList();
 
             return list;
+        }
+
+        public Model.Listing GetById(int id)
+        {
+            var listing = _context.Listing.Include(x => x.Territory).FirstOrDefault(x => x.ListingId == id);
+
+            if (listing == null)
+                return new Model.Listing();
+
+            //mapping properties
+            var result = new Model.Listing
+            {
+                ListingId = listing.ListingId,
+                Active = listing.Active,
+                Address = listing.Address,
+                Approved = listing.Approved,
+                AreaDescription = listing.AreaDescription,
+                Bathrooms = listing.Bathrooms,
+                Beds = listing.Beds,
+                City = listing.City,
+                DateCreated = listing.DateCreated,
+                ListingDescription = listing.ListingDescription,
+                Name = listing.Name,
+                Persons = listing.Persons,
+                TerritoryName = listing.Territory.Name,
+                UserName = listing.User.FirstName + " " + listing.User.LastName
+            };
+            //mapping amenities
+            var listingAmenities = _context.ListingAmenity.Where(x => x.ListingId == id);
+            if (listingAmenities.Count() > 0)
+            {
+                result.Amenities = new List<Model.Amenity>();
+                foreach (var item in listingAmenities.Include(x => x.Amenity))
+                    result.Amenities.Add(new Model.Amenity
+                    {
+                        AmenityId = item.AmenityId,
+                        Name = item.Amenity.Name
+                    });
+            }
+            //mapping images
+            if (_context.ListingImage.Any(x => x.ListingId == listing.ListingId))
+            {
+                result.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == listing.ListingId).Image;
+                foreach (var image in _context.ListingImage.Where(x => x.ListingId == listing.ListingId)
+                                                          .ToList())
+                {
+                    result.Images.Add(new ListingImageModel
+                    {
+                        ListingId = image.ListingId,
+                        Image = image.Image
+                    });
+                }
+            }
+
+            return result;
+        }
+        public IList<Model.AmenityModel> GetAmenities(int listingId)
+        {
+            var amenities = _context
+                .Set<Database.ListingAmenity>()
+                .Include(x => x.Amenity)
+                .Where(x => x.ListingId == listingId)
+                .ToList();
+
+            return _mapper.Map<List<Model.AmenityModel>>(amenities);
         }
     }
 }

@@ -54,7 +54,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(40, 82);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(565, 27);
             this.txtFirstName.TabIndex = 0;
@@ -83,7 +83,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(40, 155);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(565, 27);
             this.txtLastName.TabIndex = 2;
@@ -102,7 +102,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(40, 230);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(565, 27);
             this.txtEmail.TabIndex = 4;
@@ -121,7 +121,7 @@
             // txtTelephone
             // 
             this.txtTelephone.Location = new System.Drawing.Point(40, 309);
-            this.txtTelephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelephone.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.Size = new System.Drawing.Size(565, 27);
             this.txtTelephone.TabIndex = 6;
@@ -140,7 +140,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(40, 389);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(274, 27);
@@ -159,7 +159,7 @@
             // txtPasswordConfirmation
             // 
             this.txtPasswordConfirmation.Location = new System.Drawing.Point(336, 389);
-            this.txtPasswordConfirmation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPasswordConfirmation.Margin = new System.Windows.Forms.Padding(4);
             this.txtPasswordConfirmation.Name = "txtPasswordConfirmation";
             this.txtPasswordConfirmation.PasswordChar = '*';
             this.txtPasswordConfirmation.Size = new System.Drawing.Size(269, 27);
@@ -168,7 +168,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(40, 566);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(901, 40);
             this.btnSave.TabIndex = 12;
@@ -184,7 +184,7 @@
             // 
             this.pbAvatar.Image = global::ZamjenaDomova.WinUI.Properties.Resources.imgAvatarPlaceholder;
             this.pbAvatar.Location = new System.Drawing.Point(708, 82);
-            this.pbAvatar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbAvatar.Margin = new System.Windows.Forms.Padding(4);
             this.pbAvatar.Name = "pbAvatar";
             this.pbAvatar.Size = new System.Drawing.Size(234, 219);
             this.pbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -194,7 +194,7 @@
             // btn_UploadImage
             // 
             this.btn_UploadImage.Location = new System.Drawing.Point(764, 309);
-            this.btn_UploadImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_UploadImage.Margin = new System.Windows.Forms.Padding(4);
             this.btn_UploadImage.Name = "btn_UploadImage";
             this.btn_UploadImage.Size = new System.Drawing.Size(126, 44);
             this.btn_UploadImage.TabIndex = 14;
@@ -210,7 +210,7 @@
             // 
             this.clbRoles.FormattingEnabled = true;
             this.clbRoles.Location = new System.Drawing.Point(40, 436);
-            this.clbRoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clbRoles.Margin = new System.Windows.Forms.Padding(4);
             this.clbRoles.Name = "clbRoles";
             this.clbRoles.Size = new System.Drawing.Size(565, 92);
             this.clbRoles.TabIndex = 15;
@@ -237,7 +237,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFirstName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUserDetails";
             this.Text = "UserDetails";
             this.Load += new System.EventHandler(this.frmUserDetails_Load);

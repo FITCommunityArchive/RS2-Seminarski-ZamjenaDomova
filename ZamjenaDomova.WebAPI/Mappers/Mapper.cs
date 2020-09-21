@@ -17,6 +17,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
             CreateMap<Model.Requests.AmenityUpsertRequest, Database.Amenity>();
             CreateMap<Database.Role, Model.Role>();
             CreateMap<Database.Territory, Model.Territory>();
+            CreateMap<Database.Amenity, Model.AmenityModel>();
             CreateMap<Model.ListingImageModel, Database.ListingImage>().ReverseMap();
         }
     }

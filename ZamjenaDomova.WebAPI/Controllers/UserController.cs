@@ -61,7 +61,7 @@ namespace ZamjenaDomova.WebAPI.Controllers
 
             return Ok(user);
         }
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, User, Editor")]
         [HttpPost("ChangePassword")]
         public IActionResult ChangePassword(ChangePasswordModel model)
         {

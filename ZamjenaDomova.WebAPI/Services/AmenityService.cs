@@ -30,5 +30,7 @@ namespace ZamjenaDomova.WebAPI.Services
             return _mapper.Map<List<Model.Amenity>>(query.ToList());
         }
 
+       
+
     }
 }

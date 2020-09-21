@@ -10,6 +10,7 @@ using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ListingController : ControllerBase
@@ -29,11 +30,17 @@ namespace ZamjenaDomova.WebAPI.Controllers
 
             return Ok(response);
         }
-        [Authorize(Roles = "Administrator, Editor")]
         [HttpGet]
         public ActionResult<List<Model.Listing>> Get([FromQuery] ListingSearchRequest request)
         {
             return _service.Get(request);
         }
+        [HttpGet("{id}")]
+
+        public Model.Listing GetById(int id)
+        {
+            return _service.GetById(id);
+        }
+        
     }
 }

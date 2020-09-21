@@ -10,8 +10,9 @@ namespace ZamjenaDomova.WebAPI.Services
     public interface IListingService
     {
         List<Model.Listing> Get(ListingSearchRequest request);
-        //Model.User GetById(int id);
+        Model.Listing GetById(int id);
         Model.ListingResponse Insert(ListingInsertRequest listing);
         //Model.User Update(int id, UserUpsertRequest request);
+        public IList<Model.AmenityModel> GetAmenities(int listingId);
     }
 }
