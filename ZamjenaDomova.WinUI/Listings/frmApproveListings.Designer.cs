@@ -57,7 +57,7 @@
             // 
             // txtCount
             // 
-            this.txtCount.Location = new System.Drawing.Point(200, 20);
+            this.txtCount.Location = new System.Drawing.Point(209, 20);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(26, 22);
             this.txtCount.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.dgvListings);
-            this.groupBox1.Location = new System.Drawing.Point(29, 59);
+            this.groupBox1.Location = new System.Drawing.Point(33, 75);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);

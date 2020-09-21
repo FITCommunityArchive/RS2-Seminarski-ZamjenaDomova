@@ -17,7 +17,7 @@ namespace ZamjenaDomova.Mobile.Behaviours
         public string PropertyName { get; set; }
         public ValidationGroupBehaviour Group { get; set; }
         public ObservableCollection<IValidator> Validators { get; set; } = new ObservableCollection<IValidator>();
-       
+
         public bool Validate()
         {
             bool isValid = true;
@@ -40,12 +40,20 @@ namespace ZamjenaDomova.Mobile.Behaviours
                 }
                 else
                 {
-                    var value = _view.GetType()
-                                           .GetProperty(PropertyName)
-                                           .GetValue(_view) as string;
-                    result = validator.Check(value);
+                    var isEntry = (_view as Entry);
+                    if (isEntry != null)
+                    {
+                        var value = isEntry.Text;
+                        result = validator.Check(value);
+                    }
+                    else
+                    {
+                        var value = _view.GetType()
+                                               .GetProperty(PropertyName)
+                                               .GetValue(_view) as string;
+                        result = validator.Check(value);
+                    }
                 }
-
                 isValid = isValid && result;
 
                 if (!result)
@@ -54,7 +62,6 @@ namespace ZamjenaDomova.Mobile.Behaviours
                     break;
                 }
             }
-
             if (!isValid)
             {
                 _style.ShowError(_view, errorMessage);
@@ -67,6 +74,7 @@ namespace ZamjenaDomova.Mobile.Behaviours
 
                 return true;
             }
+
 
         }
 

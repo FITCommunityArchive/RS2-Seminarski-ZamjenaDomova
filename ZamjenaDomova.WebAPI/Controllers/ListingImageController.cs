@@ -9,12 +9,10 @@ using ZamjenaDomova.WebAPI.Services;
 
 namespace ZamjenaDomova.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ListingImageController : BaseCRUDController<ListingImageModel, object, ListingImageModel, ListingImageModel>
     {
         
-        public ListingImageController(ListingImageService service): base(service)
+        public ListingImageController(ICRUDService<Model.ListingImageModel, object, Model.ListingImageModel, Model.ListingImageModel> service) : base(service)
         {
             
         }

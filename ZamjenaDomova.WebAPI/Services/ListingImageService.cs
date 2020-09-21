@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZamjenaDomova.WebAPI.Services
 {
-    public class ListingImageService : BaseCRUDService<Model.ListingImageModel, object, ListingImage, Model.ListingImageModel, Model.ListingImageModel>
+    public class ListingImageService : BaseCRUDService<Model.ListingImageModel, object, Database.ListingImage, Model.ListingImageModel, Model.ListingImageModel>
     {
         public ListingImageService(ZamjenaDomovaContext context, IMapper mapper) : base(context, mapper)
         {

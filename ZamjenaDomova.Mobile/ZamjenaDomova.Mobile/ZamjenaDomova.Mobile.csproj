@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\add.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\add.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="Microsoft.UI.Xaml" Version="2.4.3" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.2.0.58" />
