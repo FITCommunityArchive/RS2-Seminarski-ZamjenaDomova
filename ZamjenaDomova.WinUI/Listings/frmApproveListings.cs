@@ -34,7 +34,7 @@ namespace ZamjenaDomova.WinUI.Listings
         private void dgvListings_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvListings.SelectedRows[0].Cells[0].Value;
-            frmListingDetails frm = new frmListingDetails(int.Parse(id.ToString()));
+            frmListingDetails frm = new frmListingDetails(int.Parse(id.ToString()), false);
             frm.Show();
         }
     }

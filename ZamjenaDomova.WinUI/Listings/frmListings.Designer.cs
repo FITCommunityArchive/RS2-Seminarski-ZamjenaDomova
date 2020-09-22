@@ -165,6 +165,7 @@
             this.dgvListings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListings.Size = new System.Drawing.Size(1201, 472);
             this.dgvListings.TabIndex = 0;
+            this.dgvListings.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvListings_MouseDoubleClick);
             // 
             // Naziv
             // 
@@ -216,6 +217,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmListings";
             this.Text = "frmListings";
+            this.Load += new System.EventHandler(this.frmListings_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

@@ -224,6 +224,7 @@
             this.btnApprove.TabIndex = 29;
             this.btnApprove.Text = "Odobri";
             this.btnApprove.UseVisualStyleBackColor = false;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // btnReject
             // 
@@ -287,7 +288,7 @@
             this.clbAmenities.Location = new System.Drawing.Point(45, 489);
             this.clbAmenities.Name = "clbAmenities";
             this.clbAmenities.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.clbAmenities.Size = new System.Drawing.Size(320, 191);
+            this.clbAmenities.Size = new System.Drawing.Size(320, 123);
             this.clbAmenities.TabIndex = 36;
             // 
             // label12
@@ -303,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 697);
+            this.ClientSize = new System.Drawing.Size(800, 627);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.clbAmenities);
             this.Controls.Add(this.label11);

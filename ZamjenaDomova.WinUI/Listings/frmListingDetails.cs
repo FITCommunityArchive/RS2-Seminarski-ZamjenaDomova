@@ -17,14 +17,21 @@ namespace ZamjenaDomova.WinUI.Listings
         private readonly APIService _listingAmenityService = new APIService("ListingAmenity");
 
         private static int _id;
-        public frmListingDetails(int listingId)
+        private bool _approved;
+        public frmListingDetails(int listingId, bool approved)
         {
             InitializeComponent();
             _id = listingId;
+            _approved = approved;
         }
 
         private async void frmListingDetails_Load(object sender, EventArgs e)
         {
+            if(_approved)
+            {
+                btnApprove.Hide();
+                btnReject.Hide();
+            }
             var listingAmenities = await _listingAmenityService
                 .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id }) ;
             clbAmenities.DataSource = listingAmenities;
@@ -53,12 +60,6 @@ namespace ZamjenaDomova.WinUI.Listings
                 //MemoryStream ms = new MemoryStream(user.Image);
                 //Image image = Image.FromStream(ms);
                 //pbAvatar.Image = image;
-
-
-
-                //var listingAmenities = await _roleService.Get<List<Model.Role>>(request);
-                //var rolesInt = userRoles.Select(x => x.RoleId);
-                
             }
             catch (Exception)
             {
@@ -66,6 +67,11 @@ namespace ZamjenaDomova.WinUI.Listings
                 this.Close();
             }
 
+        }
+
+        private async void btnApprove_Click(object sender, EventArgs e)
+        {
+            await _listingService.Update<Model.AmenityModel>(_id, (bool)true);
         }
     }
 }

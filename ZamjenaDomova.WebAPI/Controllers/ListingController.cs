@@ -41,6 +41,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.GetById(id);
         }
-        
+        [HttpPut("{id}")]
+        public Model.Listing Update(int id, bool approval)
+        {
+            return _service.Update(id, approval);
+        }
+
     }
 }

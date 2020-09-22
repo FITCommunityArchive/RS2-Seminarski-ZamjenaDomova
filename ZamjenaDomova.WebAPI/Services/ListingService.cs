@@ -166,5 +166,19 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return _mapper.Map<List<Model.AmenityModel>>(amenities);
         }
+
+        public Model.Listing Update(int id, bool approval)
+        {
+            var entity = _context.Listing.FirstOrDefault(x => x.ListingId == id);
+            _context.Listing.Attach(entity);
+            _context.Listing.Update(entity);
+
+            entity.Approved = approval;
+            entity.Active = true;
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Listing>(entity);
+        }
     }
 }
