@@ -11,7 +11,7 @@ namespace ZamjenaDomova.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ListingAmenityController
+    public class ListingAmenityController:ControllerBase
     {
         private readonly IListingService _service;
         public ListingAmenityController(IListingService service)
@@ -19,9 +19,9 @@ namespace ZamjenaDomova.WebAPI.Controllers
             _service = service;
         }
         [HttpGet]
-        public IList<Model.AmenityModel> GetByListing([FromQuery] ListingAmenitySearchRequest request)
+        public IList<Model.AmenityModel> Get(int ListingId)
         {
-            return _service.GetAmenities(request.ListingId);
+            return _service.GetAmenities(ListingId);
         }
         
     }

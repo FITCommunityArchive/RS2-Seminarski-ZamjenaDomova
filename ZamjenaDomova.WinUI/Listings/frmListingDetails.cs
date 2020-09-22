@@ -26,10 +26,14 @@ namespace ZamjenaDomova.WinUI.Listings
         private async void frmListingDetails_Load(object sender, EventArgs e)
         {
             var listingAmenities = await _listingAmenityService
-                .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id }); ;
+                .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id }) ;
             clbAmenities.DataSource = listingAmenities;
             clbAmenities.DisplayMember = "Name";
             clbAmenities.ValueMember = "AmenityId";
+
+            for (int i = 0; i < clbAmenities.Items.Count; i++)
+                clbAmenities.SetItemChecked(i, true);
+            
             try
             {
                 var listing = await _listingService.GetById<Model.Listing>(_id);
@@ -54,12 +58,7 @@ namespace ZamjenaDomova.WinUI.Listings
 
                 //var listingAmenities = await _roleService.Get<List<Model.Role>>(request);
                 //var rolesInt = userRoles.Select(x => x.RoleId);
-                //for (int i = 0; i < clbRoles.Items.Count; i++)
-                //{
-                //    var item = (clbRoles.Items[i] as Model.Role).RoleId;
-                //    if (rolesInt.Contains(item))
-                //        clbRoles.SetItemChecked(i, true);
-                //}
+                
             }
             catch (Exception)
             {
