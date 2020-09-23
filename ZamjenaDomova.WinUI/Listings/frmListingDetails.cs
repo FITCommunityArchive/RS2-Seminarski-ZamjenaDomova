@@ -27,20 +27,20 @@ namespace ZamjenaDomova.WinUI.Listings
 
         private async void frmListingDetails_Load(object sender, EventArgs e)
         {
-            if(_approved)
+            if (_approved)
             {
                 btnApprove.Hide();
                 btnReject.Hide();
             }
             var listingAmenities = await _listingAmenityService
-                .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id }) ;
+                .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id });
             clbAmenities.DataSource = listingAmenities;
             clbAmenities.DisplayMember = "Name";
             clbAmenities.ValueMember = "AmenityId";
 
             for (int i = 0; i < clbAmenities.Items.Count; i++)
                 clbAmenities.SetItemChecked(i, true);
-            
+
             try
             {
                 var listing = await _listingService.GetById<Model.Listing>(_id);
@@ -71,7 +71,17 @@ namespace ZamjenaDomova.WinUI.Listings
 
         private async void btnApprove_Click(object sender, EventArgs e)
         {
-            await _listingService.Update<Model.AmenityModel>(_id, (bool)true);
+            ListingUpdateRequest request = new ListingUpdateRequest
+            {
+                Approved = true
+            };
+            await _listingService.Update<Model.Listing>(_id, request);
+            MessageBox.Show("Uspjesno!");
+            this.Close();
+            var frm = new frmApproveListings();
+            var frmIndex = Application.OpenForms["frmIndex"];
+            frm.MdiParent = frmIndex;
+            frm.Show();
         }
     }
 }

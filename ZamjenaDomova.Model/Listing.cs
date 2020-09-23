@@ -32,8 +32,6 @@ namespace ZamjenaDomova.Model
         public DateTime DateCreated { get; set; }
 
         public bool Approved { get; set; }
-        public bool Active { get; set; }
-
         public ICollection<ListingImageModel> Images = new List<ListingImageModel>();
         
         public List<Amenity> Amenities { get; set; }

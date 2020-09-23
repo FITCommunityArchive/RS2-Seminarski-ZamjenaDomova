@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,6 @@ namespace ZamjenaDomova.WebAPI.Services
                     Beds = listing.Beds,
                     City = listing.City,
                     ListingDescription = listing.ListingDescription,
-                    Active = true,
                     Approved = false,
                     DateCreated = DateTime.Now,
                     DateApproved = new DateTime(),
@@ -84,7 +84,6 @@ namespace ZamjenaDomova.WebAPI.Services
             }
             var list = query.Select(x => new Model.Listing
             {
-                Active = x.Active,
                 Address = x.Address,
                 AreaDescription = x.AreaDescription,
                 Bathrooms = x.Bathrooms,
@@ -113,7 +112,6 @@ namespace ZamjenaDomova.WebAPI.Services
             var result = new Model.Listing
             {
                 ListingId = listing.ListingId,
-                Active = listing.Active,
                 Address = listing.Address,
                 Approved = listing.Approved,
                 AreaDescription = listing.AreaDescription,
@@ -167,14 +165,13 @@ namespace ZamjenaDomova.WebAPI.Services
             return _mapper.Map<List<Model.AmenityModel>>(amenities);
         }
 
-        public Model.Listing Update(int id, bool approval)
+        public Model.Listing Update(int id, [FromBody] ListingUpdateRequest request)
         {
             var entity = _context.Listing.FirstOrDefault(x => x.ListingId == id);
             _context.Listing.Attach(entity);
             _context.Listing.Update(entity);
 
-            entity.Approved = approval;
-            entity.Active = true;
+            entity.Approved = request.Approved;
 
             _context.SaveChanges();
 

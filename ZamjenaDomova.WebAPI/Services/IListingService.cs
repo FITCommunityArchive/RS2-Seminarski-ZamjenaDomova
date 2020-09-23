@@ -12,7 +12,7 @@ namespace ZamjenaDomova.WebAPI.Services
         List<Model.Listing> Get(ListingSearchRequest request);
         Model.Listing GetById(int id);
         Model.ListingResponse Insert(ListingInsertRequest listing);
-        Model.Listing Update(int id, bool approval);
+        Model.Listing Update(int id, ListingUpdateRequest request);
         public IList<Model.AmenityModel> GetAmenities(int listingId);
     }
 }

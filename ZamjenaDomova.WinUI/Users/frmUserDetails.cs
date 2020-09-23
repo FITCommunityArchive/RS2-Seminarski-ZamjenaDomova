@@ -127,13 +127,7 @@ namespace ZamjenaDomova.WinUI.Users
             }
             else errorProvider.SetError(txtEmail, null);
         }
-        //Regex regex = new Regex(@"[^@]+@[^\.]+\..+");
-        //    if (!regex.Match(txtEmail.Text).Success)
-        //    {
-        //        errorProvider.SetError(txtEmail, Properties.Resources.Val_EmailRegex);
-        //        e.Cancel = true;
-        //    }
-        //    else errorProvider.SetError(txtEmail, null);
+        
         private void txtTelephone_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTelephone.Text))
@@ -158,73 +152,7 @@ namespace ZamjenaDomova.WinUI.Users
 
         }
 
-        //private void txtLozinka_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (!_korisnikId.HasValue)
-        //    {
-        //        if (txtLozinka.TextLength < 8)
-        //        {
-        //            errorProvider.SetError(txtLozinka, Properties.Resources.Val_MinLengthPassword);
-        //            e.Cancel = true;
-        //        }
-        //        else
-        //        {
-        //            errorProvider.SetError(txtLozinka, null);
-        //        }
-        //    }
-        //}
-
-        //private void txtLozinkaPotvrda_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (!_korisnikId.HasValue)
-        //    {
-        //        if (txtLozinkaPotvrda.Text != txtLozinka.Text)
-        //        {
-        //            errorProvider.SetError(txtLozinkaPotvrda, Properties.Resources.Val_PasswordConfirm);
-        //            e.Cancel = true;
-        //        }
-        //        else
-        //        {
-        //            errorProvider.SetError(txtLozinkaPotvrda, null);
-        //        }
-        //    }
-        //}
-
-        //private void btnUploadSliku_Click(object sender, EventArgs e)
-        //{
-        //    var result = openFileDialog.ShowDialog();
-
-        //    if (result == DialogResult.OK)
-        //    {
-        //        var filename = openFileDialog.FileName;
-        //        var file = File.ReadAllBytes(filename);
-
-        //        Image image = Image.FromFile(filename);
-        //        Image thumb = image.GetThumbnailImage(200, 200, () => false, IntPtr.Zero);
-
-        //        ImageConverter _imageConverter = new ImageConverter();
-        //        byte[] imagethumbbyte = (byte[])_imageConverter.ConvertTo(thumb, typeof(byte[]));
-        //        request.Slika = imagethumbbyte;
-        //        pbSlikaKorisnika.Image = image;
-        //    }
-        //}
-
-        //private void txtTelefon_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (!string.IsNullOrWhiteSpace(txtTelefon.Text))
-        //    {
-        //        Regex regex = new Regex(@"^(\+)?([ 0-9]){9,16}$");
-        //        if (!regex.Match(txtTelefon.Text).Success)
-        //        {
-        //            errorProvider.SetError(txtTelefon, Properties.Resources.Val_PhoneNumberRegex);
-        //            e.Cancel = true;
-        //        }
-        //        else
-        //        {
-        //            errorProvider.SetError(txtTelefon, null);
-        //        }
-        //    }
-        //}
+        
 
     }
 }
