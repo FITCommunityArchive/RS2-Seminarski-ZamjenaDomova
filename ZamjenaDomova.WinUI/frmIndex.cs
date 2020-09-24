@@ -106,12 +106,6 @@ namespace ZamjenaDomova.WinUI
                 childForm.Close();
             }
         }
-
-        private void sadržajiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //frmAmenities frm = new frmAmenities();
@@ -135,15 +129,7 @@ namespace ZamjenaDomova.WinUI
         {
             frmUserDetails frm = new frmUserDetails();
             frm.Show();
-            
-        }
 
-        private void pretragaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmUsers frm = new frmUsers();
-            frm.MdiParent = this;
-            frm.Show();
-            frm.WindowState = FormWindowState.Maximized;
         }
 
         private void sviOglasiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,6 +156,20 @@ namespace ZamjenaDomova.WinUI
             btnListings.FlatAppearance.BorderSize = 0;
             btnReports.FlatAppearance.BorderSize = 0;
             btnApprove.FlatAppearance.BorderSize = 0;
+        }
+
+       
+
+        private void btnUsers_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            PanelHelper.RemovePanels(panelMain);
+            PanelHelper.AddPanel(panelMain, new ucUsers());
+            //ucUsers frm = new ucUsers();
+            //this.panelMain.Controls.Add(frm);
+            ////frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //frm.Dock = DockStyle.Fill;
+            //frm.Show();
         }
     }
 }

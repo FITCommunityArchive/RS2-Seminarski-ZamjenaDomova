@@ -91,10 +91,11 @@ namespace ZamjenaDomova.WinUI.Users
                 }
                 MessageBox.Show("Uspjesno!");
                 this.Close();
-                var frm = new frmUsers();
+                var frm = new ucUsers();
                 var frmIndex = Application.OpenForms["frmIndex"];
-                frm.MdiParent = frmIndex;
-                frm.Show();
+                var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
+
+                PanelHelper.AddPanel(panelContainer, frm);
             }
         }
 

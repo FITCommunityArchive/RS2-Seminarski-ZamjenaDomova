@@ -29,15 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretragaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.noviKorisnikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sadržajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oglasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sviOglasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.odoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -50,7 +41,6 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -58,81 +48,6 @@
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.korisniciToolStripMenuItem,
-            this.sadržajiToolStripMenuItem,
-            this.oglasiToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(843, 28);
-            this.menuStrip.TabIndex = 0;
-            this.menuStrip.Text = "MenuStrip";
-            // 
-            // korisniciToolStripMenuItem
-            // 
-            this.korisniciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pretragaToolStripMenuItem1,
-            this.noviKorisnikToolStripMenuItem});
-            this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
-            this.korisniciToolStripMenuItem.Text = "Korisnici";
-            // 
-            // pretragaToolStripMenuItem1
-            // 
-            this.pretragaToolStripMenuItem1.Name = "pretragaToolStripMenuItem1";
-            this.pretragaToolStripMenuItem1.Size = new System.Drawing.Size(177, 26);
-            this.pretragaToolStripMenuItem1.Text = "Pretraga";
-            this.pretragaToolStripMenuItem1.Click += new System.EventHandler(this.pretragaToolStripMenuItem1_Click);
-            // 
-            // noviKorisnikToolStripMenuItem
-            // 
-            this.noviKorisnikToolStripMenuItem.Name = "noviKorisnikToolStripMenuItem";
-            this.noviKorisnikToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
-            this.noviKorisnikToolStripMenuItem.Text = "Novi korisnik";
-            this.noviKorisnikToolStripMenuItem.Click += new System.EventHandler(this.noviKorisnikToolStripMenuItem_Click);
-            // 
-            // sadržajiToolStripMenuItem
-            // 
-            this.sadržajiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pretragaToolStripMenuItem});
-            this.sadržajiToolStripMenuItem.Name = "sadržajiToolStripMenuItem";
-            this.sadržajiToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
-            this.sadržajiToolStripMenuItem.Text = "Sadržaji";
-            this.sadržajiToolStripMenuItem.Click += new System.EventHandler(this.sadržajiToolStripMenuItem_Click);
-            // 
-            // pretragaToolStripMenuItem
-            // 
-            this.pretragaToolStripMenuItem.Name = "pretragaToolStripMenuItem";
-            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
-            this.pretragaToolStripMenuItem.Text = "Pretraga";
-            this.pretragaToolStripMenuItem.Click += new System.EventHandler(this.pretragaToolStripMenuItem_Click);
-            // 
-            // oglasiToolStripMenuItem
-            // 
-            this.oglasiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sviOglasiToolStripMenuItem,
-            this.odoToolStripMenuItem});
-            this.oglasiToolStripMenuItem.Name = "oglasiToolStripMenuItem";
-            this.oglasiToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
-            this.oglasiToolStripMenuItem.Text = "Oglasi";
-            // 
-            // sviOglasiToolStripMenuItem
-            // 
-            this.sviOglasiToolStripMenuItem.Name = "sviOglasiToolStripMenuItem";
-            this.sviOglasiToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.sviOglasiToolStripMenuItem.Text = "Aktivni oglasi";
-            this.sviOglasiToolStripMenuItem.Click += new System.EventHandler(this.sviOglasiToolStripMenuItem_Click);
-            // 
-            // odoToolStripMenuItem
-            // 
-            this.odoToolStripMenuItem.Name = "odoToolStripMenuItem";
-            this.odoToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.odoToolStripMenuItem.Text = "Odobravanje";
-            this.odoToolStripMenuItem.Click += new System.EventHandler(this.odoToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -246,22 +161,24 @@
             this.btnUsers.TabIndex = 3;
             this.btnUsers.Text = "Korisnici";
             this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.CheckedChanged += new System.EventHandler(this.btnUsers_CheckedChanged);
             // 
             // panelMain
             // 
+            this.panelMain.AccessibleName = "panelMain";
             this.panelMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panelMain.Size = new System.Drawing.Size(674, 504);
+            this.panelMain.Size = new System.Drawing.Size(674, 532);
             this.panelMain.TabIndex = 5;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -271,7 +188,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panelMain);
-            this.splitContainer1.Size = new System.Drawing.Size(843, 504);
+            this.splitContainer1.Size = new System.Drawing.Size(843, 532);
             this.splitContainer1.SplitterDistance = 165;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -289,7 +206,7 @@
             this.flowLayoutPanel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(165, 504);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(165, 532);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // frmIndex
@@ -299,16 +216,12 @@
             this.ClientSize = new System.Drawing.Size(843, 558);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmIndex";
             this.Text = "Ključ za ključ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmIndex_Load);
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -323,20 +236,9 @@
         }
         #endregion
 
-
-        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripMenuItem sadržajiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noviKorisnikToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem oglasiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sviOglasiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem odoToolStripMenuItem;
-        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.RadioButton btnAmenities;
         private System.Windows.Forms.RadioButton btnNewUser;
@@ -345,6 +247,7 @@
         private System.Windows.Forms.RadioButton btnApprove;
         private System.Windows.Forms.RadioButton btnListings;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        public System.Windows.Forms.Panel panelMain;
     }
 }
 

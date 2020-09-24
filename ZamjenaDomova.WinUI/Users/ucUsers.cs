@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +13,17 @@ using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.WinUI.Users
 {
-    public partial class frmUsers : Form
+    public partial class ucUsers : UserControl
     {
-        private readonly APIService _apiService = new APIService("User");
-        public frmUsers()
+        public ucUsers()
         {
             InitializeComponent();
         }
+        private readonly APIService _apiService = new APIService("User");
 
         private async void btnPrikazi_Click(object sender, EventArgs e)
         {
-            var search = new UserSearchRequest { Name = txtSearch.Text};
+            var search = new UserSearchRequest { Name = txtSearch.Text };
 
             var result = await _apiService.Get<List<Model.User>>(search);
             dgvUsers.AutoGenerateColumns = false;
@@ -38,11 +38,12 @@ namespace ZamjenaDomova.WinUI.Users
             frm.Show();
         }
 
-        private async void frmUsers_Load(object sender, EventArgs e)
+        private async void ucUsers_Load(object sender, EventArgs e)
         {
             var result = await _apiService.Get<List<Model.User>>(null);
             dgvUsers.AutoGenerateColumns = false;
             dgvUsers.DataSource = result;
         }
+
     }
 }
