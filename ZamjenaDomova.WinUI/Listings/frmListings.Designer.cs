@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblClear = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvListings = new System.Windows.Forms.DataGridView();
+            this.ListingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lokacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Territory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateApproved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListings)).BeginInit();
@@ -50,11 +52,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblClear);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtCity);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.dtpEnd);
+            this.panel1.Controls.Add(this.dtpStart);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.groupBox1);
@@ -65,6 +68,18 @@
             this.panel1.Size = new System.Drawing.Size(1282, 689);
             this.panel1.TabIndex = 2;
             // 
+            // lblClear
+            // 
+            this.lblClear.AutoSize = true;
+            this.lblClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblClear.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblClear.Location = new System.Drawing.Point(432, 19);
+            this.lblClear.Name = "lblClear";
+            this.lblClear.Size = new System.Drawing.Size(54, 20);
+            this.lblClear.TabIndex = 8;
+            this.lblClear.Text = "Clear";
+            this.lblClear.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblClear_MouseClick);
+            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(451, 65);
@@ -74,14 +89,15 @@
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Traži";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // textBox1
+            // txtCity
             // 
-            this.textBox1.Location = new System.Drawing.Point(116, 68);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 27);
-            this.textBox1.TabIndex = 6;
+            this.txtCity.Location = new System.Drawing.Point(116, 68);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(295, 27);
+            this.txtCity.TabIndex = 6;
             // 
             // label3
             // 
@@ -93,23 +109,25 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Lokacija";
             // 
-            // dateTimePicker2
+            // dtpEnd
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(270, 16);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(142, 27);
-            this.dateTimePicker2.TabIndex = 4;
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEnd.Location = new System.Drawing.Point(270, 16);
+            this.dtpEnd.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(142, 27);
+            this.dtpEnd.TabIndex = 4;
+            this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
-            // dateTimePicker1
+            // dtpStart
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(76, 16);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(142, 27);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStart.Location = new System.Drawing.Point(76, 16);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(142, 27);
+            this.dtpStart.TabIndex = 3;
+            this.dtpStart.ValueChanged += new System.EventHandler(this.dtpStart_ValueChanged);
             // 
             // label2
             // 
@@ -150,11 +168,12 @@
             this.dgvListings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ListingId,
             this.Naziv,
             this.Lokacija,
             this.Territory,
             this.User,
-            this.DateCreated});
+            this.DateApproved});
             this.dgvListings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListings.Location = new System.Drawing.Point(5, 25);
             this.dgvListings.Margin = new System.Windows.Forms.Padding(5);
@@ -166,6 +185,15 @@
             this.dgvListings.Size = new System.Drawing.Size(1201, 472);
             this.dgvListings.TabIndex = 0;
             this.dgvListings.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvListings_MouseDoubleClick);
+            // 
+            // ListingId
+            // 
+            this.ListingId.DataPropertyName = "ListingId";
+            this.ListingId.HeaderText = "ListingId";
+            this.ListingId.MinimumWidth = 6;
+            this.ListingId.Name = "ListingId";
+            this.ListingId.ReadOnly = true;
+            this.ListingId.Visible = false;
             // 
             // Naziv
             // 
@@ -199,13 +227,13 @@
             this.User.Name = "User";
             this.User.ReadOnly = true;
             // 
-            // DateCreated
+            // DateApproved
             // 
-            this.DateCreated.DataPropertyName = "DateCreated";
-            this.DateCreated.HeaderText = "Datum objavljivanja";
-            this.DateCreated.MinimumWidth = 6;
-            this.DateCreated.Name = "DateCreated";
-            this.DateCreated.ReadOnly = true;
+            this.DateApproved.DataPropertyName = "DateApproved";
+            this.DateApproved.HeaderText = "Datum objavljivanja";
+            this.DateApproved.MinimumWidth = 6;
+            this.DateApproved.Name = "DateApproved";
+            this.DateApproved.ReadOnly = true;
             // 
             // frmListings
             // 
@@ -231,17 +259,19 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvListings;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
+        private System.Windows.Forms.Label lblClear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ListingId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lokacija;
         private System.Windows.Forms.DataGridViewTextBoxColumn Territory;
         private System.Windows.Forms.DataGridViewTextBoxColumn User;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateApproved;
     }
 }

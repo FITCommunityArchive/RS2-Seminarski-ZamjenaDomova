@@ -30,6 +30,7 @@ namespace ZamjenaDomova.Model
         public virtual User User { get; set; }
         public string UserName { get; set; }
         public DateTime DateCreated { get; set; }
+        public DateTime DateApproved { get; set; }
 
         public bool Approved { get; set; }
         public ICollection<ListingImageModel> Images = new List<ListingImageModel>();

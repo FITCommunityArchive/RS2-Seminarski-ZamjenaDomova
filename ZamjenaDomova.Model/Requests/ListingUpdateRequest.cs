@@ -7,5 +7,6 @@ namespace ZamjenaDomova.Model.Requests
     public class ListingUpdateRequest
     {
         public bool Approved { get; set; }
+        public DateTime ApprovalTime { get; set; }
     }
 }

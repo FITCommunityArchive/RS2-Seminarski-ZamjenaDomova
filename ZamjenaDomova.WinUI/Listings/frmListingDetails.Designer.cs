@@ -237,6 +237,7 @@
             this.btnReject.TabIndex = 30;
             this.btnReject.Text = "Odbij";
             this.btnReject.UseVisualStyleBackColor = false;
+            this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
             // 
             // pbImage
             // 

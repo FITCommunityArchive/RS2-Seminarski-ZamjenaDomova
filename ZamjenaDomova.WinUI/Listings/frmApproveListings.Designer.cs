@@ -120,6 +120,7 @@
             this.ListingId.MinimumWidth = 6;
             this.ListingId.Name = "ListingId";
             this.ListingId.ReadOnly = true;
+            this.ListingId.Visible = false;
             // 
             // Naziv
             // 

@@ -18,6 +18,7 @@ namespace ZamjenaDomova.WinUI.Listings
         public frmApproveListings()
         {
             InitializeComponent();
+            dgvListings.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
         private async void frmApproveListings_Load(object sender, EventArgs e)
         {

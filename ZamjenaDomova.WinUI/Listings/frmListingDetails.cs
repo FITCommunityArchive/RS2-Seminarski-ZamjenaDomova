@@ -73,10 +73,26 @@ namespace ZamjenaDomova.WinUI.Listings
         {
             ListingUpdateRequest request = new ListingUpdateRequest
             {
-                Approved = true
+                Approved = true,
+                ApprovalTime = DateTime.Now
             };
             await _listingService.Update<Model.Listing>(_id, request);
-            MessageBox.Show("Uspjesno!");
+            MessageBox.Show("Oglas odobren!");
+            this.Close();
+            var frm = new frmApproveListings();
+            var frmIndex = Application.OpenForms["frmIndex"];
+            frm.MdiParent = frmIndex;
+            frm.Show();
+        }
+
+        private async void btnReject_Click(object sender, EventArgs e)
+        {
+            ListingUpdateRequest request = new ListingUpdateRequest
+            {
+                Approved = false
+            };
+            await _listingService.Update<Model.Listing>(_id, request);
+            MessageBox.Show("Oglas odbijen!");
             this.Close();
             var frm = new frmApproveListings();
             var frmIndex = Application.OpenForms["frmIndex"];

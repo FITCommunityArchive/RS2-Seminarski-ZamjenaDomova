@@ -77,10 +77,12 @@ namespace ZamjenaDomova.WebAPI.Services
             if (request != null)
             {
                 query = query.Where(x => x.Approved == request.Approved);
-                //if (!string.IsNullOrWhiteSpace(request?.Name))
-                //    query = query.Where(x => x.FirstName.StartsWith(request.Name) || x.LastName.StartsWith(request.Name));
-
-                //var list = query.ToList();
+                if (!string.IsNullOrWhiteSpace(request.City))
+                    query = query.Where(x => x.City.StartsWith(request.City));
+                if (request.StartDate != null)
+                    query = query.Where(x => x.DateApproved > request.StartDate);
+                if (request.EndDate != null)
+                    query = query.Where(x => x.DateApproved < request.EndDate);
             }
             var list = query.Select(x => new Model.Listing
             {
@@ -90,6 +92,7 @@ namespace ZamjenaDomova.WebAPI.Services
                 Beds = x.Beds,
                 City = x.City,
                 DateCreated = x.DateCreated,
+                DateApproved=x.DateApproved,
                 ListingDescription = x.ListingDescription,
                 Name = x.Name,
                 Persons = x.Persons,
@@ -170,12 +173,21 @@ namespace ZamjenaDomova.WebAPI.Services
             var entity = _context.Listing.FirstOrDefault(x => x.ListingId == id);
             _context.Listing.Attach(entity);
             _context.Listing.Update(entity);
+            if (request.Approved)
+            {
+                entity.Approved = request.Approved;
+                entity.DateApproved = request.ApprovalTime;
+                _context.SaveChanges();
 
-            entity.Approved = request.Approved;
+                return _mapper.Map<Model.Listing>(entity);
+            }
 
-            _context.SaveChanges();
-
-            return _mapper.Map<Model.Listing>(entity);
+            else
+            {
+                _context.Listing.Remove(entity);
+                _context.SaveChanges();
+                return new Model.Listing();
+            }
         }
     }
 }
