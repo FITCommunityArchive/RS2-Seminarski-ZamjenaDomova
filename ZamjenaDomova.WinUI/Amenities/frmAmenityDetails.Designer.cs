@@ -61,6 +61,7 @@
             this.btnSave.TabIndex = 25;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label4
             // 

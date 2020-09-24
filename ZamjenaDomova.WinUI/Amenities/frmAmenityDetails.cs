@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.WinUI.Amenities
 {
@@ -20,7 +21,7 @@ namespace ZamjenaDomova.WinUI.Amenities
         {
             InitializeComponent();
             AmenityId = amenityId;
-            
+
         }
         private async Task LoadAmenityCategories()
         {
@@ -53,6 +54,28 @@ namespace ZamjenaDomova.WinUI.Amenities
         {
             var amenity = await _amenityService.Delete<Model.Amenity>(AmenityId);
             MessageBox.Show("Obrisano!");
+            this.Close();
+            var frm = new frmAmenities();
+            var frmIndex = Application.OpenForms["frmIndex"];
+            frm.MdiParent = frmIndex;
+            frm.Show();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+
+            var request = new AmenityUpsertRequest
+            {
+                Name = txtName.Text
+            };
+            var idObj = cmbCategory.SelectedValue;
+            if (int.TryParse(idObj.ToString(), out int id))
+            {
+                request.AmenitiesCategoryId = id;
+            }
+
+            var amenity = await _amenityService.Update<Model.Amenity>(AmenityId,request);
+            MessageBox.Show("Spremljeno!");
             this.Close();
             var frm = new frmAmenities();
             var frmIndex = Application.OpenForms["frmIndex"];
