@@ -144,6 +144,7 @@
             this.btnNewUser.TabIndex = 3;
             this.btnNewUser.Text = "Novi korisnik";
             this.btnNewUser.UseVisualStyleBackColor = true;
+            this.btnNewUser.CheckedChanged += new System.EventHandler(this.btnNewUser_CheckedChanged);
             // 
             // btnUsers
             // 

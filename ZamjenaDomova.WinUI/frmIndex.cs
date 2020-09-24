@@ -125,12 +125,6 @@ namespace ZamjenaDomova.WinUI
             frm.Show();
         }
 
-        private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmUserDetails frm = new frmUserDetails();
-            frm.Show();
-
-        }
 
         private void sviOglasiToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -165,11 +159,12 @@ namespace ZamjenaDomova.WinUI
             
             PanelHelper.RemovePanels(panelMain);
             PanelHelper.AddPanel(panelMain, new ucUsers());
-            //ucUsers frm = new ucUsers();
-            //this.panelMain.Controls.Add(frm);
-            ////frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            //frm.Dock = DockStyle.Fill;
-            //frm.Show();
+        }
+
+        private void btnNewUser_CheckedChanged(object sender, EventArgs e)
+        {
+            frmUserDetails frm = new frmUserDetails();
+            frm.Show();
         }
     }
 }
