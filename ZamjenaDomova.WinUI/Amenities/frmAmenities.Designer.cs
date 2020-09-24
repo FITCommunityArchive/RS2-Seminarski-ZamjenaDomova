@@ -67,7 +67,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(436, 315);
+            this.groupBox1.Size = new System.Drawing.Size(464, 315);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Amenities";
@@ -98,7 +98,7 @@
             this.dgvAmenities.RowHeadersWidth = 51;
             this.dgvAmenities.RowTemplate.Height = 24;
             this.dgvAmenities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAmenities.Size = new System.Drawing.Size(428, 287);
+            this.dgvAmenities.Size = new System.Drawing.Size(456, 287);
             this.dgvAmenities.TabIndex = 0;
             this.dgvAmenities.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvAmenities_MouseDoubleClick);
             // 

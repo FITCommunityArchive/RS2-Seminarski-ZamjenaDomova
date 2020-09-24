@@ -48,5 +48,16 @@ namespace ZamjenaDomova.WinUI.Amenities
                 this.Close();
             }
         }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            var amenity = await _amenityService.Delete<Model.Amenity>(AmenityId);
+            MessageBox.Show("Obrisano!");
+            this.Close();
+            var frm = new frmAmenities();
+            var frmIndex = Application.OpenForms["frmIndex"];
+            frm.MdiParent = frmIndex;
+            frm.Show();
+        }
     }
 }

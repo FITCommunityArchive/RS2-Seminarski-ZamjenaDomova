@@ -29,5 +29,10 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.Update(id, request);
         }
+        [HttpDelete("{id}")]
+        public TModel Delete(int id)
+        {
+            return _service.Delete(id);
+        }
     }
 }
