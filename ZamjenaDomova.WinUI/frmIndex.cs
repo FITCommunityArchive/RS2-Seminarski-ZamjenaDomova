@@ -114,10 +114,21 @@ namespace ZamjenaDomova.WinUI
 
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //frmAmenities frm = new frmAmenities();
+            //frm.MdiParent = this;
+            //frm.Show();
+            //frm.WindowState = FormWindowState.Maximized;
+            //frmAmenities frm = new frmAmenities();
+            //this.panelMain.Controls.Add(frm);
+            //frm.MdiParent = this.panelMain;
+            //frm.Show();
+            //frm.WindowState = FormWindowState.Maximized;
             frmAmenities frm = new frmAmenities();
-            frm.MdiParent = this;
+            frm.TopLevel = false;
+            this.panelMain.Controls.Add(frm);
+            frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
-            frm.WindowState = FormWindowState.Maximized;
         }
 
         private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,6 +160,16 @@ namespace ZamjenaDomova.WinUI
             frm.MdiParent = this;
             frm.Show();
             frm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmIndex_Load(object sender, EventArgs e)
+        {
+            btnAmenities.FlatAppearance.BorderSize = 0;
+            btnUsers.FlatAppearance.BorderSize = 0;
+            btnNewUser.FlatAppearance.BorderSize = 0;
+            btnListings.FlatAppearance.BorderSize = 0;
+            btnReports.FlatAppearance.BorderSize = 0;
+            btnApprove.FlatAppearance.BorderSize = 0;
         }
     }
 }

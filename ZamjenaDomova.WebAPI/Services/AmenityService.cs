@@ -39,10 +39,6 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.Amenity>(entity);
-
-
-
-
         }
     }
 }
