@@ -191,6 +191,12 @@
     <Compile Include="Amenities\frmAmenityDetails.Designer.cs">
       <DependentUpon>frmAmenityDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Amenities\ucAmenities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Amenities\ucAmenities.Designer.cs">
+      <DependentUpon>ucAmenities.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIService.cs" />
     <Compile Include="frmIndex.cs">
       <SubType>Form</SubType>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Amenities\frmAmenityDetails.resx">
       <DependentUpon>frmAmenityDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Amenities\ucAmenities.resx">
+      <DependentUpon>ucAmenities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>

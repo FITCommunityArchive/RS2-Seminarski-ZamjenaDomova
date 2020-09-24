@@ -128,6 +128,7 @@
             this.btnAmenities.TabIndex = 4;
             this.btnAmenities.Text = "Sadržaji";
             this.btnAmenities.UseVisualStyleBackColor = true;
+            this.btnAmenities.CheckedChanged += new System.EventHandler(this.btnAmenities_CheckedChanged);
             // 
             // btnNewUser
             // 
