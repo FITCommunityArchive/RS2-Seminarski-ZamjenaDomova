@@ -122,12 +122,14 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(209, 296);
+            this.btnSave.Location = new System.Drawing.Point(32, 296);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(76, 35);
+            this.btnSave.Size = new System.Drawing.Size(253, 35);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label4
             // 
@@ -175,13 +177,14 @@
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(135, 160);
+            this.btnShow.Location = new System.Drawing.Point(106, 163);
             this.btnShow.Margin = new System.Windows.Forms.Padding(4);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(304, 39);
             this.btnShow.TabIndex = 2;
             this.btnShow.Text = "Prikazi";
             this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
             // groupBox1
             // 
@@ -252,7 +255,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 111);
+            this.label2.Location = new System.Drawing.Point(103, 90);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 17);
@@ -261,7 +264,7 @@
             // 
             // txtSearchName
             // 
-            this.txtSearchName.Location = new System.Drawing.Point(135, 51);
+            this.txtSearchName.Location = new System.Drawing.Point(106, 54);
             this.txtSearchName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchName.Name = "txtSearchName";
             this.txtSearchName.Size = new System.Drawing.Size(304, 22);
@@ -272,7 +275,7 @@
             this.cmbSearchCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbSearchCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSearchCategory.FormattingEnabled = true;
-            this.cmbSearchCategory.Location = new System.Drawing.Point(135, 108);
+            this.cmbSearchCategory.Location = new System.Drawing.Point(106, 111);
             this.cmbSearchCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSearchCategory.Name = "cmbSearchCategory";
             this.cmbSearchCategory.Size = new System.Drawing.Size(304, 24);
@@ -281,7 +284,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 51);
+            this.label1.Location = new System.Drawing.Point(103, 23);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
@@ -305,6 +308,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "ucAmenities";
             this.Size = new System.Drawing.Size(833, 433);
+            this.Load += new System.EventHandler(this.ucAmenities_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -34,11 +34,12 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.btnPrikazi = new System.Windows.Forms.Button();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojTelefona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrikazi = new System.Windows.Forms.Button();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +82,8 @@
             this.UserId,
             this.Ime,
             this.Prezime,
-            this.BrojTelefona});
+            this.BrojTelefona,
+            this.Email});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -109,6 +111,17 @@
             this.dgvUsers.Size = new System.Drawing.Size(730, 339);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvUsers_MouseDoubleClick);
+            // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.Location = new System.Drawing.Point(619, 23);
+            this.btnPrikazi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(114, 28);
+            this.btnPrikazi.TabIndex = 1;
+            this.btnPrikazi.Text = "Prikazi";
+            this.btnPrikazi.UseVisualStyleBackColor = true;
+            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
             // 
             // UserId
             // 
@@ -143,16 +156,13 @@
             this.BrojTelefona.Name = "BrojTelefona";
             this.BrojTelefona.ReadOnly = true;
             // 
-            // btnPrikazi
+            // Email
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(619, 23);
-            this.btnPrikazi.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(114, 28);
-            this.btnPrikazi.TabIndex = 1;
-            this.btnPrikazi.Text = "Prikazi";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
             // 
             // ucUsers
             // 
@@ -176,10 +186,11 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUsers;
+        private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojTelefona;
-        private System.Windows.Forms.Button btnPrikazi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
     }
 }

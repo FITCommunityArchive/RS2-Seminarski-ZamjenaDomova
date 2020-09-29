@@ -106,25 +106,6 @@ namespace ZamjenaDomova.WinUI
                 childForm.Close();
             }
         }
-        private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //frmAmenities frm = new frmAmenities();
-            //frm.MdiParent = this;
-            //frm.Show();
-            //frm.WindowState = FormWindowState.Maximized;
-            //frmAmenities frm = new frmAmenities();
-            //this.panelMain.Controls.Add(frm);
-            //frm.MdiParent = this.panelMain;
-            //frm.Show();
-            //frm.WindowState = FormWindowState.Maximized;
-            frmAmenities frm = new frmAmenities();
-            frm.TopLevel = false;
-            this.panelMain.Controls.Add(frm);
-            frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-        }
-
 
         private void sviOglasiToolStripMenuItem_Click(object sender, EventArgs e)
         {

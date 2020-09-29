@@ -55,10 +55,11 @@ namespace ZamjenaDomova.WinUI.Amenities
             var amenity = await _amenityService.Delete<Model.Amenity>(AmenityId);
             MessageBox.Show("Obrisano!");
             this.Close();
-            var frm = new frmAmenities();
+            var frm = new ucAmenities();
             var frmIndex = Application.OpenForms["frmIndex"];
-            frm.MdiParent = frmIndex;
-            frm.Show();
+            var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
+
+            PanelHelper.AddPanel(panelContainer, frm);
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -77,10 +78,11 @@ namespace ZamjenaDomova.WinUI.Amenities
             var amenity = await _amenityService.Update<Model.Amenity>(AmenityId,request);
             MessageBox.Show("Spremljeno!");
             this.Close();
-            var frm = new frmAmenities();
+            var frm = new ucAmenities();
             var frmIndex = Application.OpenForms["frmIndex"];
-            frm.MdiParent = frmIndex;
-            frm.Show();
+            var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
+
+            PanelHelper.AddPanel(panelContainer, frm);
         }
     }
 }
