@@ -226,6 +226,7 @@
             this.dgvAmenities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAmenities.Size = new System.Drawing.Size(405, 182);
             this.dgvAmenities.TabIndex = 0;
+            this.dgvAmenities.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvAmenities_MouseDoubleClick);
             // 
             // AmenityId
             // 
