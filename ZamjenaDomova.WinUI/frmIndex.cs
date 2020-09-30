@@ -153,5 +153,11 @@ namespace ZamjenaDomova.WinUI
             PanelHelper.RemovePanels(panelMain);
             PanelHelper.AddPanel(panelMain, new ucAmenities());
         }
+
+        private void btnListings_CheckedChanged(object sender, EventArgs e)
+        {
+            PanelHelper.RemovePanels(panelMain);
+            PanelHelper.AddPanel(panelMain, new ucListings());
+        }
     }
 }

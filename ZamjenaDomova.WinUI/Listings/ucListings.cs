@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
+using ZamjenaDomova.Model;
 
 namespace ZamjenaDomova.WinUI.Listings
 {
-    public partial class frmListings : Form
+    public partial class ucListings : UserControl
     {
         private readonly APIService _listingService = new APIService("Listing");
         bool IsStartDateNull = true;
         bool IsEndDateNull = true;
-        public frmListings()
+
+        public ucListings()
         {
             InitializeComponent();
             dtpStart.Format = DateTimePickerFormat.Custom;
@@ -26,7 +27,6 @@ namespace ZamjenaDomova.WinUI.Listings
             dtpStart.CustomFormat = " ";
             dgvListings.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
-
         private void dgvListings_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var id = dgvListings.SelectedRows[0].Cells[0].Value;
@@ -34,7 +34,7 @@ namespace ZamjenaDomova.WinUI.Listings
             frm.Show();
         }
 
-        private async void frmListings_Load(object sender, EventArgs e)
+        private async void ucListings_Load(object sender, EventArgs e)
         {
             var request = new ListingSearchRequest { Approved = true };
 
@@ -52,11 +52,11 @@ namespace ZamjenaDomova.WinUI.Listings
                 City = txtCity.Text,
             };
 
-            if (IsStartDateNull) 
+            if (IsStartDateNull)
                 request.StartDate = null;
-            else request.StartDate = dtpStart.Value; 
-            
-            if (IsEndDateNull) 
+            else request.StartDate = dtpStart.Value;
+
+            if (IsEndDateNull)
                 request.EndDate = null;
             else request.EndDate = dtpEnd.Value;
 
@@ -84,5 +84,6 @@ namespace ZamjenaDomova.WinUI.Listings
             dtpEnd.CustomFormat = "dd/MM/yyyy";
             IsEndDateNull = false;
         }
+
     }
 }

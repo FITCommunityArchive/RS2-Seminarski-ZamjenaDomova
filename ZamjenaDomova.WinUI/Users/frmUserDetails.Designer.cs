@@ -47,6 +47,7 @@
             this.btn_UploadImage = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.SuspendLayout();
@@ -167,10 +168,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(40, 566);
+            this.btnSave.Location = new System.Drawing.Point(777, 566);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(901, 40);
+            this.btnSave.Size = new System.Drawing.Size(164, 40);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Snimi";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -215,11 +216,23 @@
             this.clbRoles.Size = new System.Drawing.Size(565, 92);
             this.clbRoles.TabIndex = 15;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(605, 566);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(164, 40);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "Odustani";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 621);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.clbRoles);
             this.Controls.Add(this.btn_UploadImage);
             this.Controls.Add(this.pbAvatar);
@@ -268,5 +281,6 @@
         private System.Windows.Forms.Button btn_UploadImage;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckedListBox clbRoles;
+        private System.Windows.Forms.Button btnClose;
     }
 }

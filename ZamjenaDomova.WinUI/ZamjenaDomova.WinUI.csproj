@@ -216,11 +216,11 @@
     <Compile Include="Listings\frmListingDetails.Designer.cs">
       <DependentUpon>frmListingDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listings\frmListings.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Listings\ucListings.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Listings\frmListings.Designer.cs">
-      <DependentUpon>frmListings.cs</DependentUpon>
+    <Compile Include="Listings\ucListings.Designer.cs">
+      <DependentUpon>ucListings.cs</DependentUpon>
     </Compile>
     <Compile Include="PanelHelper.cs" />
     <Compile Include="Program.cs" />
@@ -255,8 +255,8 @@
     <EmbeddedResource Include="Listings\frmListingDetails.resx">
       <DependentUpon>frmListingDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listings\frmListings.resx">
-      <DependentUpon>frmListings.cs</DependentUpon>
+    <EmbeddedResource Include="Listings\ucListings.resx">
+      <DependentUpon>ucListings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -112,6 +112,7 @@
             this.btnListings.TabIndex = 1;
             this.btnListings.Text = "Oglasi";
             this.btnListings.UseVisualStyleBackColor = true;
+            this.btnListings.CheckedChanged += new System.EventHandler(this.btnListings_CheckedChanged);
             // 
             // btnAmenities
             // 
