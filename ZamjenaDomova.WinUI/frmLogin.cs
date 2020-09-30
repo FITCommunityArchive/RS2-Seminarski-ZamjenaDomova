@@ -18,6 +18,8 @@ namespace ZamjenaDomova.WinUI
         public frmLogin()
         {
             InitializeComponent();
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label2.BackColor = System.Drawing.Color.Transparent;
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)

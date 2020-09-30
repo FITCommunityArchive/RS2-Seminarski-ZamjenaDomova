@@ -108,14 +108,6 @@ namespace ZamjenaDomova.WinUI
         }
 
 
-        private void odoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmApproveListings frm = new frmApproveListings();
-            frm.MdiParent = this;
-            frm.Show();
-            frm.WindowState = FormWindowState.Maximized;
-        }
-
         private void frmIndex_Load(object sender, EventArgs e)
         {
             btnAmenities.FlatAppearance.BorderSize = 0;
