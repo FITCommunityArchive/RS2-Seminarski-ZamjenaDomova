@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
+using ZamjenaDomova.Model;
 
 namespace ZamjenaDomova.WinUI.Listings
 {
-    public partial class frmApproveListings : Form
+    public partial class ucApproveListings : UserControl
     {
         private readonly APIService _listingService = new APIService("Listing");
-        public frmApproveListings()
+        public ucApproveListings()
         {
             InitializeComponent();
             dgvListings.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
-        private async void frmApproveListings_Load(object sender, EventArgs e)
+        private async void ucApproveListings_Load(object sender, EventArgs e)
         {
             var request = new ListingSearchRequest { Approved = false };
 

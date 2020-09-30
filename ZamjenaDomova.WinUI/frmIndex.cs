@@ -107,13 +107,6 @@ namespace ZamjenaDomova.WinUI
             }
         }
 
-        private void sviOglasiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmListings frm = new frmListings();
-            frm.MdiParent = this;
-            frm.Show();
-            frm.WindowState = FormWindowState.Maximized;
-        }
 
         private void odoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -158,6 +151,12 @@ namespace ZamjenaDomova.WinUI
         {
             PanelHelper.RemovePanels(panelMain);
             PanelHelper.AddPanel(panelMain, new ucListings());
+        }
+
+        private void btnApprove_CheckedChanged(object sender, EventArgs e)
+        {
+            PanelHelper.RemovePanels(panelMain);
+            PanelHelper.AddPanel(panelMain, new ucApproveListings());
         }
     }
 }

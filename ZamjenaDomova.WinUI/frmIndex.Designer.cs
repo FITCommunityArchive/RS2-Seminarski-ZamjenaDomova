@@ -97,6 +97,7 @@
             this.btnApprove.TabIndex = 2;
             this.btnApprove.Text = "Odobravanje";
             this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.CheckedChanged += new System.EventHandler(this.btnApprove_CheckedChanged);
             // 
             // btnListings
             // 

@@ -79,10 +79,11 @@ namespace ZamjenaDomova.WinUI.Listings
             await _listingService.Update<Model.Listing>(_id, request);
             MessageBox.Show("Oglas odobren!");
             this.Close();
-            var frm = new frmApproveListings();
+            var frm = new ucListings();
             var frmIndex = Application.OpenForms["frmIndex"];
-            frm.MdiParent = frmIndex;
-            frm.Show();
+            var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
+
+            PanelHelper.AddPanel(panelContainer, frm);
         }
 
         private async void btnReject_Click(object sender, EventArgs e)
@@ -94,10 +95,11 @@ namespace ZamjenaDomova.WinUI.Listings
             await _listingService.Update<Model.Listing>(_id, request);
             MessageBox.Show("Oglas odbijen!");
             this.Close();
-            var frm = new frmApproveListings();
+            var frm = new ucListings();
             var frmIndex = Application.OpenForms["frmIndex"];
-            frm.MdiParent = frmIndex;
-            frm.Show();
+            var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
+
+            PanelHelper.AddPanel(panelContainer, frm);
         }
     }
 }
