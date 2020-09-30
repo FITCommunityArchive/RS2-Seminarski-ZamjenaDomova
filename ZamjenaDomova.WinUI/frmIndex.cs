@@ -159,8 +159,12 @@ namespace ZamjenaDomova.WinUI
 
         private void btnNewUser_CheckedChanged(object sender, EventArgs e)
         {
-            frmUserDetails frm = new frmUserDetails();
-            frm.Show();
+            if (btnNewUser.Checked)
+            {
+                btnNewUser.Checked = false;
+                frmUserDetails frm = new frmUserDetails();
+                frm.Show();
+            }
         }
 
         private void btnAmenities_CheckedChanged(object sender, EventArgs e)

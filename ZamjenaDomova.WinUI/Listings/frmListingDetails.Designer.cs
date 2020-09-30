@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListingDetails));
             this.label3 = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -216,7 +217,8 @@
             // btnApprove
             // 
             this.btnApprove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(149)))), ((int)(((byte)(70)))));
-            this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnApprove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnApprove.Location = new System.Drawing.Point(453, 567);
             this.btnApprove.Name = "btnApprove";
@@ -229,7 +231,8 @@
             // btnReject
             // 
             this.btnReject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnReject.Location = new System.Drawing.Point(618, 567);
             this.btnReject.Name = "btnReject";
@@ -305,6 +308,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 627);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.clbAmenities);
@@ -333,8 +337,9 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListingDetails";
-            this.Text = "frmListingDetails";
+            this.Text = "Pojedinosti oglasa";
             this.Load += new System.EventHandler(this.frmListingDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);

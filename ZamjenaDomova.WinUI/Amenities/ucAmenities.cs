@@ -97,5 +97,6 @@ namespace ZamjenaDomova.WinUI.Amenities
             dgvAmenities.AutoGenerateColumns = false;
             dgvAmenities.DataSource = result;
         }
+
     }
 }
