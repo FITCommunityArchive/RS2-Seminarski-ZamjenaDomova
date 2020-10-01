@@ -22,5 +22,6 @@ namespace ZamjenaDomova.WinUI.Reports
             PanelHelper.RemovePanels(pnlReports);
             PanelHelper.AddPanel(pnlReports, new ucListingsCount());
         }
+
     }
 }

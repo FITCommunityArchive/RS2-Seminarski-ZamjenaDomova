@@ -44,7 +44,7 @@
             this.btnListingsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnListingsCount.Location = new System.Drawing.Point(3, 3);
             this.btnListingsCount.Name = "btnListingsCount";
-            this.btnListingsCount.Size = new System.Drawing.Size(254, 45);
+            this.btnListingsCount.Size = new System.Drawing.Size(241, 45);
             this.btnListingsCount.TabIndex = 0;
             this.btnListingsCount.Text = "Broj oglasa po gradovima";
             this.btnListingsCount.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             this.btnDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDetails.Location = new System.Drawing.Point(523, 3);
+            this.btnDetails.Location = new System.Drawing.Point(497, 3);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(292, 45);
+            this.btnDetails.Size = new System.Drawing.Size(277, 45);
             this.btnDetails.TabIndex = 1;
             this.btnDetails.Text = "Detalji svih oglasa";
             this.btnDetails.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             this.btnTopRated.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTopRated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTopRated.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnTopRated.Location = new System.Drawing.Point(263, 3);
+            this.btnTopRated.Location = new System.Drawing.Point(250, 3);
             this.btnTopRated.Name = "btnTopRated";
-            this.btnTopRated.Size = new System.Drawing.Size(254, 45);
+            this.btnTopRated.Size = new System.Drawing.Size(241, 45);
             this.btnTopRated.TabIndex = 2;
             this.btnTopRated.Text = "Najbolje ocijenjeni domovi";
             this.btnTopRated.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(818, 51);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 51);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // pnlReports

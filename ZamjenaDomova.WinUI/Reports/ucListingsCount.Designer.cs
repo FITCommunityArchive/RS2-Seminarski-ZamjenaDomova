@@ -31,9 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtTerritory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbTerritory = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvCount = new System.Windows.Forms.DataGridView();
             this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,14 +55,7 @@
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "Traži";
             this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // txtTerritory
-            // 
-            this.txtTerritory.Location = new System.Drawing.Point(149, 31);
-            this.txtTerritory.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTerritory.Name = "txtTerritory";
-            this.txtTerritory.Size = new System.Drawing.Size(295, 22);
-            this.txtTerritory.TabIndex = 9;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label3
             // 
@@ -78,8 +71,8 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cmbTerritory);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.txtTerritory);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -87,6 +80,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(723, 363);
             this.panel1.TabIndex = 11;
+            // 
+            // cmbTerritory
+            // 
+            this.cmbTerritory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbTerritory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbTerritory.FormattingEnabled = true;
+            this.cmbTerritory.Location = new System.Drawing.Point(140, 31);
+            this.cmbTerritory.Name = "cmbTerritory";
+            this.cmbTerritory.Size = new System.Drawing.Size(310, 24);
+            this.cmbTerritory.TabIndex = 18;
             // 
             // groupBox1
             // 
@@ -185,7 +188,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtTerritory;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -193,5 +195,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Grad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kanton;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojOglasa;
+        private System.Windows.Forms.ComboBox cmbTerritory;
     }
 }

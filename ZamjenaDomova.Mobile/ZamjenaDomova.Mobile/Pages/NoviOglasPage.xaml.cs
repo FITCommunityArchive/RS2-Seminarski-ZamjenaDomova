@@ -103,7 +103,7 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             var picker = sender as Picker;
             var selectedTerritory = (Model.Territory)picker.SelectedItem;
-            territoryId = selectedTerritory.TerritoryId;
+            territoryId = (int)selectedTerritory.TerritoryId;
         }
 
     }

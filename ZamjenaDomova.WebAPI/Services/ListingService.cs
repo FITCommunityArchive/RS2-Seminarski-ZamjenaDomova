@@ -195,7 +195,7 @@ namespace ZamjenaDomova.WebAPI.Services
             public string City { get; set; }
             public List<Model.Listing> Listings { get; set; }
         }
-        public List<ListingCountModel> GetCount()
+        public List<ListingCountModel> GetCount(ListingsCountSearchRequest request)
         {
             var grouping = _context.Listing.Include(x=> x.Territory).ToList().GroupBy(x => x.City);
             var list = new List<GroupedListItem>();
@@ -214,7 +214,10 @@ namespace ZamjenaDomova.WebAPI.Services
                 Territory = x.Listings.First().Territory.Name,
                 Count = x.Listings.Count()
             }).ToList();
-
+            if(request.TerritoryId.HasValue ==true && request.TerritoryId!=null)
+            {
+                result = result.Where(x => x.TerritoryId == request.TerritoryId).ToList();
+            }     
             return result;
             
         }

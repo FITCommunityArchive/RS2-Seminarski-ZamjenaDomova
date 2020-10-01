@@ -33,6 +33,11 @@ namespace ZamjenaDomova.WinUI
         public async Task<List<T>> GetListingsCount<T>(object search)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/Count";
+            if (search != null)
+            {
+                url += "?";
+                url += await search.ToQueryString();
+            }
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<List<T>>();
         }
 

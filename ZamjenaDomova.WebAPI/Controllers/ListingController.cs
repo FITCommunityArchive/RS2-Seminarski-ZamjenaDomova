@@ -36,9 +36,9 @@ namespace ZamjenaDomova.WebAPI.Controllers
             return _service.Get(request);
         }
         [HttpGet("Count")]
-        public ActionResult<List<Model.ListingCountModel>>GetCount()
+        public ActionResult<List<Model.ListingCountModel>>GetCount([FromQuery] ListingsCountSearchRequest request)
         {
-            return _service.GetCount();
+            return _service.GetCount(request);
         }
         [HttpGet("{id}")]
 

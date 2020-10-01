@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZamjenaDomova.Model
+namespace ZamjenaDomova.Model.Requests
 {
-    public class Territory
+    public class ListingsCountSearchRequest
     {
         public int? TerritoryId { get; set; }
-        public string Name { get; set; }
     }
 }
