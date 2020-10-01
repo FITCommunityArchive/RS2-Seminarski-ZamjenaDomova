@@ -55,10 +55,10 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 532);
+            this.statusStrip.Location = new System.Drawing.Point(0, 587);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(843, 26);
+            this.statusStrip.Size = new System.Drawing.Size(850, 26);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -76,13 +76,14 @@
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnReports.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnReports.Location = new System.Drawing.Point(348, 13);
+            this.btnReports.Location = new System.Drawing.Point(13, 456);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.btnReports.Size = new System.Drawing.Size(151, 68);
+            this.btnReports.Size = new System.Drawing.Size(329, 68);
             this.btnReports.TabIndex = 7;
             this.btnReports.Text = "Izvještaji";
             this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.CheckedChanged += new System.EventHandler(this.btnReports_CheckedChanged);
             // 
             // btnApprove
             // 
@@ -185,7 +186,7 @@
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panelMain.Size = new System.Drawing.Size(647, 532);
+            this.panelMain.Size = new System.Drawing.Size(653, 587);
             this.panelMain.TabIndex = 5;
             // 
             // splitContainer1
@@ -202,8 +203,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panelMain);
-            this.splitContainer1.Size = new System.Drawing.Size(843, 532);
-            this.splitContainer1.SplitterDistance = 192;
+            this.splitContainer1.Size = new System.Drawing.Size(850, 587);
+            this.splitContainer1.SplitterDistance = 193;
             this.splitContainer1.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -223,7 +224,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(192, 532);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(193, 587);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // frmIndex
@@ -231,7 +232,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(843, 558);
+            this.ClientSize = new System.Drawing.Size(850, 613);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

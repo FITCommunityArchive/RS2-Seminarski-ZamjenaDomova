@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -188,6 +189,34 @@ namespace ZamjenaDomova.WebAPI.Services
                 _context.SaveChanges();
                 return new Model.Listing();
             }
+        }
+        class GroupedListItem
+        {
+            public string City { get; set; }
+            public List<Model.Listing> Listings { get; set; }
+        }
+        public List<ListingCountModel> GetCount()
+        {
+            var grouping = _context.Listing.Include(x=> x.Territory).ToList().GroupBy(x => x.City);
+            var list = new List<GroupedListItem>();
+            foreach(var group in grouping)
+            {
+                list.Add(new GroupedListItem
+                {
+                    City = group.Key,
+                    Listings = _mapper.Map <List< Model.Listing > >(group.ToList())
+                });
+            }
+            var result = list.Select(x => new ListingCountModel
+            {
+                City = x.City,
+                TerritoryId = x.Listings.First().TerritoryId,
+                Territory = x.Listings.First().Territory.Name,
+                Count = x.Listings.Count()
+            }).ToList();
+
+            return result;
+            
         }
     }
 }

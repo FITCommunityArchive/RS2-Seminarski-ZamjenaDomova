@@ -29,6 +29,11 @@ namespace ZamjenaDomova.WinUI
             }
 
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
+        } 
+        public async Task<List<T>> GetListingsCount<T>(object search)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/Count";
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<List<T>>();
         }
 
         public async Task<T> GetById<T>(object id)

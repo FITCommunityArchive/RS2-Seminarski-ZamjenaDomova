@@ -225,6 +225,18 @@
     <Compile Include="PanelHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ucListingsCount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\ucListingsCount.Designer.cs">
+      <DependentUpon>ucListingsCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ucReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\ucReports.Designer.cs">
+      <DependentUpon>ucReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmUserDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +280,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\ucListingsCount.resx">
+      <DependentUpon>ucListingsCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ucReports.resx">
+      <DependentUpon>ucReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\frmUserDetails.resx">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,5 +322,6 @@
     <Content Include="Resources\Key.ico" />
     <Content Include="Resources\wood.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
