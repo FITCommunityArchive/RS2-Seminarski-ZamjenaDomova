@@ -134,7 +134,7 @@ namespace ZamjenaDomova.WebAPI
             services.AddScoped<IService<Model.Role, RoleSearchRequest>, RoleService>();
             services.AddScoped<ICRUDService<Model.Amenity, Model.Requests.AmenitySearchRequest, Model.Requests.AmenityUpsertRequest, Model.Requests.AmenityUpsertRequest>, AmenityService>();
             services.AddScoped<ICRUDService<Model.ListingImageModel, object, Model.ListingImageModel, Model.ListingImageModel>, ListingImageService>();
-
+            services.AddScoped<RatingService>();
             services.AddMvc(x => x.Filters.Add<ErrorFilter>());
 
 
