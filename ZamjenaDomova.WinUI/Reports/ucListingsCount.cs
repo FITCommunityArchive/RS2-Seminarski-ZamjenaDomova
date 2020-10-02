@@ -42,11 +42,12 @@ namespace ZamjenaDomova.WinUI.Reports
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
-            ListingsCountSearchRequest request = new ListingsCountSearchRequest();
+            ListingsCountSearchRequest request = null;
 
             var idObj = cmbTerritory.SelectedValue;
             if (idObj!= null && int.TryParse(idObj.ToString(), out int id))
             {
+                request = new ListingsCountSearchRequest();
                 request.TerritoryId = id;
             }
             var result = await _listingService.GetListingsCount<ListingCountModel>(request);
