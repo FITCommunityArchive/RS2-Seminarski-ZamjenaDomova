@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZamjenaDomova.Mobile.Views;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
@@ -25,6 +26,12 @@ namespace ZamjenaDomova.Mobile.Pages
         private void TapAccSettings_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PostavkeKorisnickogRacunaPage());
+        }
+        private void TapLogout_Tapped(object sender, EventArgs e)
+        {
+            Preferences.Set("access_token", string.Empty);
+            Preferences.Set("token_expiration_time", DateTime.Now.AddYears(-1));
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

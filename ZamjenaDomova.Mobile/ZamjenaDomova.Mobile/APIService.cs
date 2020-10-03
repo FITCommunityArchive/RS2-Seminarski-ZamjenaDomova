@@ -19,27 +19,25 @@ namespace ZamjenaDomova.Mobile
         public readonly static string _apiUrl = "https://mywebsite.azure.com/api/";
 #endif
 
+        public static async Task<bool> RegisterUser(string firstName, string lastName, string email, string phoneNumber, string password, string passwordConfirmation)
+        {
+            var registerModel = new RegisterModel
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                PhoneNumber = phoneNumber,
+                Password = password,
+                PasswordConfirmation = passwordConfirmation
+            };
 
-
-        //public static async Task<bool> RegisterUser(string ime, string prezime, string email, string telefon, string password, string passwordConfirmation)
-        //{
-        //    var registerModel = new RegisterModel
-        //    {
-        //        Ime = ime,
-        //        Prezime = prezime,
-        //        Email = email,
-        //        Telefon = telefon,
-        //        Password = password,
-        //        PasswordConfirmation = passwordConfirmation
-        //    };
-
-        //    var httpClient = new HttpClient();
-        //    var json = JsonConvert.SerializeObject(registerModel);
-        //    var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //    var response = await httpClient.PostAsync($"{_apiUrl}/Korisnici/Register", content);
-        //    if (!response.IsSuccessStatusCode) return false;
-        //    return true;
-        //}
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(registerModel);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync($"{_apiUrl}/User/Register", content);
+            if (!response.IsSuccessStatusCode) return false;
+            return true;
+        }
 
         public static async Task<bool> Login(string email, string password)
         {

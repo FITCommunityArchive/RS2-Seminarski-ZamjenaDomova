@@ -70,5 +70,14 @@ namespace ZamjenaDomova.WebAPI.Controllers
             _service.ChangePassword(userEmail, model);
             return Ok("Password uspješno promijenjen!");
         }
+
+        [AllowAnonymous]
+        [HttpPost("Register")]
+        public IActionResult Register([FromBody] UserUpsertRequest request)
+        {
+            request.Roles.Add(1);
+            _service.Insert(request);
+            return StatusCode(StatusCodes.Status201Created);
+        }
     }
 }

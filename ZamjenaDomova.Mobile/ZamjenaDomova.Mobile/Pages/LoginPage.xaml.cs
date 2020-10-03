@@ -31,5 +31,9 @@ namespace ZamjenaDomova.Mobile.Views
                 await DisplayAlert("Notifikacija", "Neuspješna prijava na sistem.", "Cancel");
             }
         }
+        private async void BtnRegister_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new RegisterPage());
+        }
     }
 }

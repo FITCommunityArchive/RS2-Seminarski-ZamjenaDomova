@@ -44,10 +44,10 @@
             <Button
                 x:Name="BtnRegister"
                 BackgroundColor="#B83A3A"
-                
+                Clicked="BtnRegister_Clicked"
                 Text="Registracija"
                 TextColor="White" />
-            <!--Clicked="BtnRegister_Clicked"-->
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

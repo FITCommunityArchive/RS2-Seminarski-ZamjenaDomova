@@ -32,7 +32,7 @@
                         Text="Naslov" />
                 <Entry x:Name="EntName">
                     <Entry.Behaviors>
-                    <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="SelectedIndex">
+                    <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
                         <Behaviours:ValidationBehaviour.Validators>
                             <Validators:RequiredValidator />
                         </Behaviours:ValidationBehaviour.Validators>

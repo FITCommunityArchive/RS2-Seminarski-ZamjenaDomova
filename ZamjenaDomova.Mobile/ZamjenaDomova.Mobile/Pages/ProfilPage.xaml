@@ -56,6 +56,19 @@
             </Label>
             
             <BoxView BackgroundColor="black" HeightRequest="1" />
+            <Label
+                    Margin="20,0,20,0"
+                    FontSize="Subtitle"
+                    Text="Moji oglasi na čekanju">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_Tapped" />
+                </Label.GestureRecognizers>
+
+            </Label>
+            
+            <BoxView BackgroundColor="black" HeightRequest="1" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
