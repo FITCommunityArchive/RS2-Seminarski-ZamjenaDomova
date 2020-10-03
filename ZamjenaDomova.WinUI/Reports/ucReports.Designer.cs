@@ -62,6 +62,7 @@
             this.btnDetails.TabIndex = 1;
             this.btnDetails.Text = "Detalji svih oglasa";
             this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // btnTopRated
             // 
@@ -85,7 +86,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnDetails, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnTopRated, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnListingsCount, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 41);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -95,9 +96,9 @@
             // 
             // pnlReports
             // 
-            this.pnlReports.Location = new System.Drawing.Point(11, 115);
+            this.pnlReports.Location = new System.Drawing.Point(13, 84);
             this.pnlReports.Name = "pnlReports";
-            this.pnlReports.Size = new System.Drawing.Size(815, 312);
+            this.pnlReports.Size = new System.Drawing.Size(831, 425);
             this.pnlReports.TabIndex = 5;
             // 
             // ucReports
@@ -109,7 +110,7 @@
             this.Controls.Add(this.pnlReports);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ucReports";
-            this.Size = new System.Drawing.Size(836, 430);
+            this.Size = new System.Drawing.Size(863, 531);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -10,32 +10,23 @@ using System.Windows.Forms;
 using ZamjenaDomova.Model.Requests;
 using ZamjenaDomova.Model;
 
-namespace ZamjenaDomova.WinUI.Listings
+namespace ZamjenaDomova.WinUI.Reports
 {
-    public partial class ucListings : UserControl
+    public partial class ucListingDetails : UserControl
     {
         private readonly APIService _listingService = new APIService("Listing");
         bool IsStartDateNull = true;
         bool IsEndDateNull = true;
-
-        public ucListings()
+        public ucListingDetails()
         {
             InitializeComponent();
             dtpStart.Format = DateTimePickerFormat.Custom;
             dtpEnd.Format = DateTimePickerFormat.Custom;
             dtpEnd.CustomFormat = " ";
             dtpStart.CustomFormat = " ";
-            dgvListings.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvListings.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
-        private void dgvListings_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            var id = dgvListings.SelectedRows[0].Cells[0].Value;
-            frmListingDetails frm = new frmListingDetails(int.Parse(id.ToString()), true);
-            frm.Show();
-        }
-
-        private async void ucListings_Load(object sender, EventArgs e)
+        private async void ucListingDetails_Load(object sender, EventArgs e)
         {
             var request = new ListingSearchRequest { Approved = true };
 
@@ -44,7 +35,6 @@ namespace ZamjenaDomova.WinUI.Listings
             dgvListings.DataSource = result;
 
         }
-
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             var request = new ListingSearchRequest
@@ -85,6 +75,7 @@ namespace ZamjenaDomova.WinUI.Listings
             dtpEnd.CustomFormat = "dd/MM/yyyy";
             IsEndDateNull = false;
         }
+
 
     }
 }

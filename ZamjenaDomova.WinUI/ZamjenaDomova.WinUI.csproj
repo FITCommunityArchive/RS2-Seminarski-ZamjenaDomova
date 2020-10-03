@@ -225,6 +225,12 @@
     <Compile Include="PanelHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ucListingDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\ucListingDetails.Designer.cs">
+      <DependentUpon>ucListingDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ucListingsCount.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -280,6 +286,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\ucListingDetails.resx">
+      <DependentUpon>ucListingDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ucListingsCount.resx">
       <DependentUpon>ucListingsCount.cs</DependentUpon>
     </EmbeddedResource>

@@ -82,7 +82,7 @@ namespace ZamjenaDomova.WinUI.Listings
             var frm = new ucApproveListings();
             var frmIndex = Application.OpenForms["frmIndex"];
             var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
-
+            PanelHelper.RemovePanels(panelContainer);
             PanelHelper.AddPanel(panelContainer, frm);
         }
 
@@ -98,7 +98,7 @@ namespace ZamjenaDomova.WinUI.Listings
             var frm = new ucApproveListings();
             var frmIndex = Application.OpenForms["frmIndex"];
             var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
-
+            PanelHelper.RemovePanels(panelContainer);
             PanelHelper.AddPanel(panelContainer, frm);
         }
     }

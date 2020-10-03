@@ -78,7 +78,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(723, 363);
+            this.panel1.Size = new System.Drawing.Size(723, 421);
             this.panel1.TabIndex = 11;
             // 
             // cmbTerritory
@@ -99,7 +99,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(659, 189);
+            this.groupBox1.Size = new System.Drawing.Size(659, 289);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
@@ -141,7 +141,7 @@
             this.dgvCount.RowHeadersWidth = 51;
             this.dgvCount.RowTemplate.Height = 24;
             this.dgvCount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCount.Size = new System.Drawing.Size(649, 164);
+            this.dgvCount.Size = new System.Drawing.Size(649, 264);
             this.dgvCount.TabIndex = 0;
             // 
             // Grad
@@ -174,7 +174,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "ucListingsCount";
-            this.Size = new System.Drawing.Size(723, 363);
+            this.Size = new System.Drawing.Size(723, 421);
             this.Load += new System.EventHandler(this.ucListingsCount_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
