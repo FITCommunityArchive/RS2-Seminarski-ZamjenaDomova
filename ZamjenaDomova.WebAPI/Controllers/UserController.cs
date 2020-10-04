@@ -75,7 +75,8 @@ namespace ZamjenaDomova.WebAPI.Controllers
         [HttpPost("Register")]
         public IActionResult Register([FromBody] UserUpsertRequest request)
         {
-            request.Roles.Add(1);
+            request.Roles = new List<int>();
+            request.Roles.Add(3);
             _service.Insert(request);
             return StatusCode(StatusCodes.Status201Created);
         }
