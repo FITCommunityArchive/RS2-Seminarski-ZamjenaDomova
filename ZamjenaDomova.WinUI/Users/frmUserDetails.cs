@@ -43,12 +43,12 @@ namespace ZamjenaDomova.WinUI.Users
                     txtEmail.Text = user.Email;
                     txtTelephone.Text = user.PhoneNumber;
 
-                    
-                        //MemoryStream ms = new MemoryStream(user.Image);
-                        //Image image = Image.FromStream(ms);
-                        //pbAvatar.Image = image;
-                    
-
+                    if (user.Image != null)
+                    {
+                        MemoryStream ms = new MemoryStream(user.Image);
+                        Image image = Image.FromStream(ms);
+                        pbAvatar.Image = image;
+                    }
                     var request = new RoleSearchRequest { UserId = user.UserId };
                     var userRoles = await _roleService.Get<List<Model.Role>>(request);
                     var rolesInt = userRoles.Select(x => x.RoleId);

@@ -9,7 +9,6 @@
                     <Behaviours:ValidationGroupBehaviour x:Name="form"/>
                 </StackLayout.Behaviors>
                 <Label
-                Grid.Column="1"
                 Margin="30"
                 FontSize="Title"
                 HorizontalOptions="Center"

@@ -6,10 +6,41 @@
              mc:Ignorable="d"
              x:Class="ZamjenaDomova.Mobile.Pages.TraziPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <SearchBar 
+                 Grid.Column="0" 
+                 x:Name="searchBar"           
+                 WidthRequest="1"/>
+                <!--TextChanged="SearchBar_TextChanged"-->
+
+                <Image
+                x:Name="iconFilter"
+                Grid.Column="1"
+                Source="equalizer.png"
+                    Margin="5">
+                    <!--VerticalOptions="Fill"
+                HorizontalOptions="End"
+                WidthRequest="25"            
+                Aspect="AspectFit"
+                Margin="0,0,20,0"-->
+                    <Image.GestureRecognizers>
+                        <!--<TapGestureRecognizer NumberOfTapsRequired="1" Tapped="IconFilter_Tapped" />-->
+                    </Image.GestureRecognizers>
+                </Image>
+
+            </Grid>
+            <ScrollView>
+                
+            </ScrollView>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

@@ -16,5 +16,6 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             InitializeComponent();
         }
+       
     }
 }

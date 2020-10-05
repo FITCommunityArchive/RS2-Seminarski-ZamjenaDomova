@@ -93,7 +93,7 @@ namespace ZamjenaDomova.WebAPI.Services
                 Beds = x.Beds,
                 City = x.City,
                 DateCreated = x.DateCreated,
-                DateApproved=x.DateApproved,
+                DateApproved = x.DateApproved,
                 ListingDescription = x.ListingDescription,
                 Name = x.Name,
                 Persons = x.Persons,
@@ -127,7 +127,8 @@ namespace ZamjenaDomova.WebAPI.Services
                 Name = listing.Name,
                 Persons = listing.Persons,
                 TerritoryName = listing.Territory.Name,
-                UserName = listing.User.FirstName + " " + listing.User.LastName
+                UserName = listing.User.FirstName + " " + listing.User.LastName,
+                UserId=listing.UserId,
             };
             //mapping amenities
             var listingAmenities = _context.ListingAmenity.Where(x => x.ListingId == id);

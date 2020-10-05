@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,9 +58,12 @@ namespace ZamjenaDomova.WinUI.Listings
                 txtUser.Text = listing.UserName;
                 txtDateCreated.Text = listing.DateCreated.ToString();
 
-                //MemoryStream ms = new MemoryStream(user.Image);
-                //Image image = Image.FromStream(ms);
-                //pbAvatar.Image = image;
+                if (listing.Image != null)
+                {
+                    MemoryStream ms = new MemoryStream(listing.Image);
+                    Image image = Image.FromStream(ms);
+                    pbImage.Image = image;
+                }
             }
             catch (Exception)
             {
