@@ -40,6 +40,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.GetCount(request);
         }
+        [HttpGet("GetListingsModels")]
+        public ActionResult<List<Model.ListingModel>> GetListingsModels([FromQuery] ListingsModelsSearchRequest request)
+        {
+            return _service.GetListingsModels(request);
+        }
         [HttpGet("{id}")]
 
         public Model.Listing GetById(int id)

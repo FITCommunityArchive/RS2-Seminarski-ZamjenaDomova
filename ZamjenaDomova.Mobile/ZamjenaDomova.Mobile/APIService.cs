@@ -132,6 +132,15 @@ namespace ZamjenaDomova.Mobile
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
+        public static async Task<List<Model.ListingModel>> GetListingsModels(Model.Requests.ListingsModelsSearchRequest request)
+        {
+            await TokenValidator.CheckTokenValidity();
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/GetListingsModels");
+            return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
+        }
 
 
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
@@ -280,15 +289,7 @@ namespace ZamjenaDomova.Mobile
         //            return JsonConvert.DeserializeObject<VoziloDetalji>(response);
         //        }
 
-        //        public static async Task<List<VoziloPoKategoriji>> GetVozilaPoKategoriji(int kategorijaId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Vozila/GetByKategorija/{kategorijaId}");
-        //            return JsonConvert.DeserializeObject<List<VoziloPoKategoriji>>(response);
-        //        }
 
         //        public static async Task<List<SlikaVozilaModel>> GetSlikeVozila(int voziloId)
         //        {

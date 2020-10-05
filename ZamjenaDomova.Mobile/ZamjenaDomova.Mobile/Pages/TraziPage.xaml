@@ -2,11 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters"
              mc:Ignorable="d"
              x:Class="ZamjenaDomova.Mobile.Pages.TraziPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="5">
+            <!--SEARCH BAR + FILTER ICON-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="7*"/>
@@ -18,28 +26,44 @@
                 <SearchBar 
                  Grid.Column="0" 
                  x:Name="searchBar"           
-                 WidthRequest="1"/>
+                 WidthRequest="1"
+                    />
                 <!--TextChanged="SearchBar_TextChanged"-->
 
                 <Image
-                x:Name="iconFilter"
-                Grid.Column="1"
-                Source="equalizer.png"
-                    Margin="5">
-                    <!--VerticalOptions="Fill"
-                HorizontalOptions="End"
-                WidthRequest="25"            
-                Aspect="AspectFit"
-                Margin="0,0,20,0"-->
+                 x:Name="iconFilter"
+                 Grid.Column="1"
+                 Source="equalizer.png"
+                 Margin="5">
                     <Image.GestureRecognizers>
                         <!--<TapGestureRecognizer NumberOfTapsRequired="1" Tapped="IconFilter_Tapped" />-->
                     </Image.GestureRecognizers>
                 </Image>
 
             </Grid>
-            <ScrollView>
-                
-            </ScrollView>
+            
+            <!--CONTENT-->
+            <ListView x:Name="lvListings">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Spacing="25">
+                                <forms:CachedImage
+                                            Aspect="AspectFill"
+                                            LoadingPlaceholder="homePlaceholder.png"
+                                            HeightRequest="100"
+                                            Source="{Binding Image, Converter={StaticResource imgConv}}" />
+                                <Label
+                                            Margin="0,0,0,20"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Name}"
+                                            TextColor="#303F9F" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
         
     </ContentPage.Content>

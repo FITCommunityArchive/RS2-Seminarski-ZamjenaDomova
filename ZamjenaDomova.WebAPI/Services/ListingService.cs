@@ -222,5 +222,42 @@ namespace ZamjenaDomova.WebAPI.Services
             return result;
             
         }
+
+        public List<ListingModel> GetListingsModels(ListingsModelsSearchRequest request)
+        {
+            var query = _context.Listing.Include(x => x.ListingImages).AsQueryable();
+            if (request != null)
+            {
+                //query = query.Where(x => x.Approved == request.Approved);
+                //if (!string.IsNullOrWhiteSpace(request.City))
+                //    query = query.Where(x => x.City.StartsWith(request.City));
+                //if (request.StartDate != null)
+                //    query = query.Where(x => x.DateApproved > request.StartDate);
+                //if (request.EndDate != null)
+                //    query = query.Where(x => x.DateApproved < request.EndDate);
+            }
+            var list = query.ToList();
+            List<Model.ListingModel> result = new List<ListingModel>();
+            foreach(var item in list)
+            {
+                var newListingModel = new Model.ListingModel
+                {
+                    Bathrooms = item.Bathrooms,
+                    Beds = item.Beds,
+                    Persons = item.Persons,
+                    City = item.City,
+                    Name = item.Name,
+                    ListingId = item.ListingId
+                };
+                //mapping images
+                if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
+                    newListingModel.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
+                
+                result.Add(newListingModel);
+
+            }
+            
+            return result;
+        }
     }
 }

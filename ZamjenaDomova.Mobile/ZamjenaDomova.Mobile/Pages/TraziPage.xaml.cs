@@ -15,6 +15,12 @@ namespace ZamjenaDomova.Mobile.Pages
         public TraziPage()
         {
             InitializeComponent();
+            GetListingsModels();
+        }
+        private async void GetListingsModels()
+        {
+            var listings = await APIService.GetListingsModels(null);
+            lvListings.ItemsSource = listings;
         }
        
     }
