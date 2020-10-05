@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FFImageLoading.Forms.Platform;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace ZamjenaDomova.Mobile.UWP
             this.InitializeComponent();
 
             LoadApplication(new ZamjenaDomova.Mobile.App());
+            CachedImageRenderer.Init();
         }
     }
 }

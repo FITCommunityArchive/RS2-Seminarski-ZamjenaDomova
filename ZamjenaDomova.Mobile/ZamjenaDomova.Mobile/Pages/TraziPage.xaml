@@ -34,7 +34,8 @@
                  x:Name="iconFilter"
                  Grid.Column="1"
                  Source="equalizer.png"
-                 Margin="5">
+                 Margin="5"
+                 Opacity="0.5">
                     <Image.GestureRecognizers>
                         <!--<TapGestureRecognizer NumberOfTapsRequired="1" Tapped="IconFilter_Tapped" />-->
                     </Image.GestureRecognizers>
@@ -43,7 +44,9 @@
             </Grid>
             
             <!--CONTENT-->
-            <ListView x:Name="lvListings">
+            <ListView x:Name="lvListings"
+                      CachingStrategy="RecycleElement"
+                      SeparatorColor="black">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -63,6 +66,9 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout HeightRequest="85" />
+                </ListView.Footer>
             </ListView>
         </StackLayout>
         
