@@ -11,10 +11,16 @@ namespace ZamjenaDomova.WebAPI.Controllers
 {
     public class ListingImageController : BaseCRUDController<ListingImageModel, object, ListingImageModel, ListingImageModel>
     {
-        
-        public ListingImageController(ICRUDService<Model.ListingImageModel, object, Model.ListingImageModel, Model.ListingImageModel> service) : base(service)
+        private readonly ListingImageService _service;
+        public ListingImageController(ListingImageService service) : base(service)
         {
-            
+            _service = service;
         }
+        [HttpGet("GetByListing/{listingId}")]
+        public IList<Model.ListingImageModel> GetByListing(int listingId)
+        {
+            return _service.GetByListing(listingId);
+        }
+        
     }
 }

@@ -114,6 +114,7 @@ namespace ZamjenaDomova.Mobile
             var jsonResult = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ListingResponse>(jsonResult);
         }
+       
         public static async Task<bool> AddListingImage(int listingId, byte[] imageArray)
         {
             var listingImage = new ListingImageModel
@@ -132,6 +133,7 @@ namespace ZamjenaDomova.Mobile
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
+        
         public static async Task<List<Model.ListingModel>> GetListingsModels(Model.Requests.ListingsModelsSearchRequest request)
         {
             await TokenValidator.CheckTokenValidity();
@@ -142,6 +144,16 @@ namespace ZamjenaDomova.Mobile
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
         }
 
+
+        public static async Task<List<ListingImageModel>> GetListingImages(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/ListingImage/GetByListing/{listingId}");
+            return JsonConvert.DeserializeObject<List<ListingImageModel>>(response);
+        }
 
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
         //        {
@@ -290,16 +302,6 @@ namespace ZamjenaDomova.Mobile
         //        }
 
 
-
-        //        public static async Task<List<SlikaVozilaModel>> GetSlikeVozila(int voziloId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/SlikeVozila/GetByVozilo/{voziloId}");
-        //            return JsonConvert.DeserializeObject<List<SlikaVozilaModel>>(response);
-        //        }
 
         //        public static async Task<List<VoziloSearch>> PretragaVozila(string search)
         //        {

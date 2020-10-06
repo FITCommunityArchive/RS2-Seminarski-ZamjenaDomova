@@ -50,7 +50,8 @@
                       Margin="5,20,5,5"
                       SeparatorVisibility="Default"
                       HasUnevenRows="true"
-                      ItemsSource="{Binding}">
+                      ItemsSource="{Binding}"
+                      ItemSelected="lvListings_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
