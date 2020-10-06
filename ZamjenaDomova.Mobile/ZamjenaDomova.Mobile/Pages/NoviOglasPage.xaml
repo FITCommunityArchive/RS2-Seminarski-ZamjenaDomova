@@ -155,15 +155,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ms:SelectableViewCell>
-
-                                <!--set the selected indicator (optional)-->
-
                                 <ms:SelectableViewCell.CheckView>
-                                    <BoxView Color="#B83A3A" WidthRequest="12" HeightRequest="12" />
+                                    <BoxView Color="#B83A3A" 
+                                             WidthRequest="12" 
+                                             HeightRequest="12" />
                                 </ms:SelectableViewCell.CheckView>
-
-
-                                <!--set the content (optional)-->
 
                                 <ms:SelectableViewCell.DataView>
                                     <Label Text="{Binding Data.Name}" />

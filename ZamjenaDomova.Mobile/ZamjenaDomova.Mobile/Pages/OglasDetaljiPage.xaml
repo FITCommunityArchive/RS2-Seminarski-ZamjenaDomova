@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters"
+             xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters" xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
              x:Class="ZamjenaDomova.Mobile.Pages.OglasDetaljiPage" 
              NavigationPage.HasBackButton="True">
     <ContentPage.Resources>
@@ -12,26 +12,35 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
-                <Grid>
+            <StackLayout Spacing="10" Margin="30,30,30,0">
+                <Label x:Name="lblName" 
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center">
+                </Label>
+                <BoxView BackgroundColor="Black" HeightRequest="1" />
+                <Grid
+                    HeightRequest="250"
+                    RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                </Grid>
-                <CarouselView
+
+                    <CarouselView
                     Grid.Row="0"
                     Grid.RowSpan="2"
-                    x:Name="crvImages"
-                    Scrolled="crvImages_Scrolled">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <forms:CachedImage LoadingPlaceholder="homePlaceholder.png" 
-                                               Source="{Binding Image, Converter={StaticResource imgConv}}" />
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-                <Label
+                    x:Name="crvImages">
+
+                        <!--Scrolled="crvImages_Scrolled"-->
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <forms:CachedImage LoadingPlaceholder="homePlaceholder.png" 
+                                               Source="{Binding Image, Converter={StaticResource imgConv}}"
+                                               Aspect="AspectFill"/>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <Label
                     x:Name="lblCounter"
                     Grid.Row="1"
                     HorizontalOptions="Center"
@@ -40,7 +49,68 @@
                     FontAttributes="Bold" 
                     Margin="5" 
                     Padding="5"></Label>
-        </StackLayout>
+                </Grid>
+                <Grid RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="users.png" Grid.Row="0" Grid.Column="0" WidthRequest="25"></Image>
+                    <Image Source="bed.png" Grid.Row="0" Grid.Column="1" WidthRequest="25"></Image>
+                    <Image Source="shower.png" Grid.Row="0" Grid.Column="2" WidthRequest="25" HorizontalOptions="Center"></Image>
+                    <Label Grid.Row="1" Grid.Column="0" x:Name="lblPersons" HorizontalOptions="Center"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="lblBeds" HorizontalOptions="Center"></Label>
+                    <Label Grid.Row="1" Grid.Column="2" x:Name="lblBathrooms" HorizontalOptions="Center"></Label>
+                </Grid>
+
+
+                <Label Text="Dom" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Label x:Name="lblHomeDesc" FontSize="Body"></Label>
+
+                <Label Text="U blizini" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Label x:Name="lblAreaDesc" FontSize="Body"></Label>
+
+                <Label Text="Vlasnik" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" x:Name="lblOwner" FontSize="Body"></Label>
+                    <Button Grid.Column="1"
+                            x:Name="BtnContact"
+                            BackgroundColor="#B83A3A"
+                            Clicked="BtnContact_Clicked"
+                            Text="Kontaktiraj"
+                            TextColor="White" />
+                </Grid>
+                <Label Text="Sadržaji" FontSize="Medium" Margin="0,15,0,0"></Label>
+
+                <StackLayout Spacing="0" VerticalOptions="Start" HeightRequest="{Binding Height}" Margin="10">
+                <ListView x:Name="lvAmenities"
+                          ItemsSource="{Binding AmenitiesItems}" 
+                          VerticalOptions="Start" 
+                          RowHeight="30">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <Label Text="{Binding Name}" 
+                                           Padding="5"
+                                           Grid.Column="1">
+                                </Label>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

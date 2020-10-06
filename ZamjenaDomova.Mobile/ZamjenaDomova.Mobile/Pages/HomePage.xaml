@@ -12,7 +12,7 @@
     mc:Ignorable="d" BarBackgroundColor="#FFFFFF" BarTextColor="#000000">
 
     <pages:MojDomPage Title="Moj dom" />
-    <pages:TraziPage Title="Trazi" />
+    <pages:TraziPage Title="Traži" />
     <pages:ProfilPage Title="Profil"/>
 
 </TabbedPage>

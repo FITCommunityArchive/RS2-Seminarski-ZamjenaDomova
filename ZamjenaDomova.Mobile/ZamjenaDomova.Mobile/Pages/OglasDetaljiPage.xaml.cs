@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZamjenaDomova.Controls;
+using ZamjenaDomova.Model;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
@@ -14,9 +16,13 @@ namespace ZamjenaDomova.Mobile.Pages
     public partial class OglasDetaljiPage : ContentPage
     {
         public ObservableCollection<Model.ListingImageModel> listingImages;
+        public SelectableObservableCollection<SelectableItem<Model.AmenityModel>> AmenitiesItems { get; set; }
+
         private int _listingId;
         private int _totalImages = 0;
-
+        private string email;
+        private string phone;
+        private int Height = 0;
         public OglasDetaljiPage(int listingId)
         {
             InitializeComponent();
@@ -26,6 +32,22 @@ namespace ZamjenaDomova.Mobile.Pages
         }
         private async void GetListingDetails(int listingId)
         {
+            var listing = await APIService.GetListingDetails(listingId);
+
+            lblName.Text = listing.Name;
+            lblHomeDesc.Text = listing.ListingDescription;
+            lblAreaDesc.Text = listing.AreaDescription;
+            lblPersons.Text = listing.Persons.ToString();
+            lblBeds.Text = listing.Beds.ToString();
+            lblBathrooms.Text = listing.Bathrooms.ToString();
+            lblOwner.Text = listing.UserName;
+            email = listing.UserEmail;
+            phone = listing.UserPhone;
+
+            Height = 30 * listing.Amenities.Count;
+            lvAmenities.ItemsSource = listing.Amenities;
+            
+
             var images = await APIService.GetListingImages(listingId);
             if (images != null)
             {
@@ -45,6 +67,9 @@ namespace ZamjenaDomova.Mobile.Pages
                 lblCounter.Text = counter + " od " + _totalImages;
             }
         }
-
+        private async void BtnContact_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Kontaktiraj", $"Email:{email}\nTelefon:{phone}", "OK");
+        }
     }
 }

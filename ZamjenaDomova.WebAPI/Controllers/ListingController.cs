@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
 using ZamjenaDomova.WebAPI.Services;
 
@@ -44,6 +45,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
         public ActionResult<List<Model.ListingModel>> GetListingsModels([FromQuery] ListingsModelsSearchRequest request)
         {
             return _service.GetListingsModels(request);
+        }
+        [HttpGet("GetListingDetails/{listingId}")]
+        public ActionResult<ListingDetailsModel> GetListingDetails(int listingId)
+        {
+            return _service.GetListingDetails(listingId);
         }
         [HttpGet("{id}")]
 

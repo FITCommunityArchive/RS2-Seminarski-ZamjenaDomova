@@ -144,7 +144,6 @@ namespace ZamjenaDomova.Mobile
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
         }
 
-
         public static async Task<List<ListingImageModel>> GetListingImages(int listingId)
         {
             await TokenValidator.CheckTokenValidity();
@@ -154,6 +153,19 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/ListingImage/GetByListing/{listingId}");
             return JsonConvert.DeserializeObject<List<ListingImageModel>>(response);
         }
+
+        public static async Task<ListingDetailsModel> GetListingDetails(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/GetListingDetails/{listingId}");
+            return JsonConvert.DeserializeObject<Model.ListingDetailsModel>(response);
+        }
+
+
+
 
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
         //        {
@@ -258,50 +270,6 @@ namespace ZamjenaDomova.Mobile
         //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Kategorije");
         //            return JsonConvert.DeserializeObject<List<Modeli.Kategorija>>(response);
         //        }
-
-        //        public static async Task<List<Modeli.Drzava>> GetDrzave()
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Drzave");
-        //            return JsonConvert.DeserializeObject<List<Modeli.Drzava>>(response);
-        //        }
-
-        //        public static async Task<List<Modeli.Grad>> GetGradovePoDrzavi(int drzavaId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Gradovi/GetByDrzava/{drzavaId}");
-        //            return JsonConvert.DeserializeObject<List<Modeli.Grad>>(response);
-        //        }
-
-
-        //        public static async Task<List<Modeli.Model>> GetModelePoProizvodjacu(int proizvodjacId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Modeli?ProizvodjacId={proizvodjacId}");
-        //            return JsonConvert.DeserializeObject<List<Modeli.Model>>(response);
-        //        }
-
-
-        //        public static async Task<VoziloDetalji> GetDetaljiVozila(int id)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Vozila/{id}");
-        //            return JsonConvert.DeserializeObject<VoziloDetalji>(response);
-        //        }
-
-
 
         //        public static async Task<List<VoziloSearch>> PretragaVozila(string search)
         //        {
