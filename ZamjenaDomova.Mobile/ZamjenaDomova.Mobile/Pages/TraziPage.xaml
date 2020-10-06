@@ -49,7 +49,8 @@
                       SeparatorColor="black"
                       Margin="5,20,5,5"
                       SeparatorVisibility="Default"
-                      HasUnevenRows="true">
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -103,7 +104,7 @@
                                     <Image Source="shower.png" Grid.Row="0" Grid.Column="2" WidthRequest="25" HorizontalOptions="Center"></Image>
                                     <Label Grid.Row="1" Grid.Column="0" Text="{Binding Persons}" HorizontalOptions="Center"></Label>
                                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding Beds}" HorizontalOptions="Center"></Label>
-                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding Persons}" HorizontalOptions="Center"></Label>
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding Bathrooms}" HorizontalOptions="Center"></Label>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>
