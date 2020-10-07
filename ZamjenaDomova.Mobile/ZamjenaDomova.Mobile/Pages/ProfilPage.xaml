@@ -50,7 +50,7 @@
                     Text="Moji oglasi na čekanju">
 
                 <Label.GestureRecognizers>
-                    <!--<TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_Tapped" />-->
+                    <TapGestureRecognizer x:Name="TapUnapproved" Tapped="TapUnapproved_Tapped" />
                 </Label.GestureRecognizers>
 
             </Label>

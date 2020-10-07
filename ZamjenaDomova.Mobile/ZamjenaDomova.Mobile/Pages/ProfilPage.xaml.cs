@@ -27,6 +27,10 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             Navigation.PushAsync(new PostavkeKorisnickogRacunaPage());
         }
+        private void TapUnapproved_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MojiOglasiNaCekanju());
+        }
         private void TapLogout_Tapped(object sender, EventArgs e)
         {
             Preferences.Set("access_token", string.Empty);
