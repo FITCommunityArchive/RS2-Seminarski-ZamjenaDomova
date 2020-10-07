@@ -24,8 +24,9 @@ namespace ZamjenaDomova.WinUI
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            btnLogin.Enabled = false;
+            try
+            {
                 var request = new AuthenticateModel
                 {
                     Email = txtEmail.Text,
@@ -42,11 +43,12 @@ namespace ZamjenaDomova.WinUI
                 var frm = new frmIndex();
                 frm.ShowDialog();
                 this.Close();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Login podaci nisu ispravni!", "Autentikacija", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Login podaci nisu ispravni!", "Autentikacija", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnLogin.Enabled = true;
+            }
         }
     }
 }

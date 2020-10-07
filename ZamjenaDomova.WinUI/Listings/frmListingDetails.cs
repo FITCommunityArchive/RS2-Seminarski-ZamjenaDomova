@@ -99,6 +99,7 @@ namespace ZamjenaDomova.WinUI.Listings
             await _listingService.Update<Model.Listing>(_id, request);
             MessageBox.Show("Oglas odbijen!");
             this.Close();
+
             var frm = new ucApproveListings();
             var frmIndex = Application.OpenForms["frmIndex"];
             var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;

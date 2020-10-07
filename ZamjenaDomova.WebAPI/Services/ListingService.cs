@@ -222,10 +222,12 @@ namespace ZamjenaDomova.WebAPI.Services
 
         public List<ListingModel> GetListingsModels(ListingsModelsSearchRequest request)
         {
-            var query = _context.Listing.Include(x => x.ListingImages).AsQueryable();
+            var query = _context.Listing
+                .Include(x => x.ListingImages)
+                .Where(x=> x.Approved)
+                .AsQueryable();
             if (request != null)
             {
-                //query = query.Where(x => x.Approved == request.Approved);
                 //if (!string.IsNullOrWhiteSpace(request.City))
                 //    query = query.Where(x => x.City.StartsWith(request.City));
                 //if (request.StartDate != null)
