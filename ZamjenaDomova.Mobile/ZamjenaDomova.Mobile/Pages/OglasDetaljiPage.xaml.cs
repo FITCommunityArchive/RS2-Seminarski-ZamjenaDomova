@@ -41,12 +41,16 @@ namespace ZamjenaDomova.Mobile.Pages
             lblBeds.Text = listing.Beds.ToString();
             lblBathrooms.Text = listing.Bathrooms.ToString();
             lblOwner.Text = listing.UserName;
+            lblAddress.Text = listing.Address;
+            lblCity.Text = listing.City;
+            lblTerritory.Text = listing.TerritoryName;
+            lblDate.Text = listing.DateApproved.ToString("dd/MM/yyyy");
             email = listing.UserEmail;
             phone = listing.UserPhone;
 
-            Height = 30 * listing.Amenities.Count;
+            Height = 32 * listing.Amenities.Count;
             lvAmenities.ItemsSource = listing.Amenities;
-            
+            lvAmenities.HeightRequest = Height;
 
             var images = await APIService.GetListingImages(listingId);
             if (images != null)

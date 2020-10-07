@@ -12,7 +12,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="10" Margin="30,30,30,0">
+            <StackLayout Spacing="10" Margin="30,30,30,30">
                 <Label x:Name="lblName" 
                        FontSize="Large" 
                        HorizontalTextAlignment="Center">
@@ -75,13 +75,22 @@
                 <Label Text="U blizini" FontSize="Medium" Margin="0,15,0,0"></Label>
                 <Label x:Name="lblAreaDesc" FontSize="Body"></Label>
 
+                <Label Text="Adresa" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Label x:Name="lblAddress" FontSize="Body"></Label>
+
+                <Label Text="Grad" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Label x:Name="lblCity" FontSize="Body"></Label>
+
+                <Label Text="Područje" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Label x:Name="lblTerritory" FontSize="Body"></Label>
+
                 <Label Text="Vlasnik" FontSize="Medium" Margin="0,15,0,0"></Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" x:Name="lblOwner" FontSize="Body"></Label>
+                    <Label Grid.Column="0" x:Name="lblOwner" VerticalOptions="Center" FontSize="Body"></Label>
                     <Button Grid.Column="1"
                             x:Name="BtnContact"
                             BackgroundColor="#B83A3A"
@@ -91,39 +100,46 @@
                 </Grid>
                 <Label Text="Sadržaji" FontSize="Medium" Margin="0,15,0,0"></Label>
 
-                <StackLayout Spacing="0" VerticalOptions="Start" HeightRequest="{Binding Height}" Margin="10">
-                    <ListView x:Name="lvAmenities"
+
+                <ListView x:Name="lvAmenities"
                           ItemsSource="{Binding AmenitiesItems}" 
                           VerticalOptions="Start" 
-                          RowHeight="30">
+                          RowHeight="30"
+                          HeightRequest="{Binding Height}"
+                          VerticalScrollBarVisibility="Never">
 
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Image
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image
                                          x:Name="iconFilter"
                                          Grid.Column="0"
                                          Source="checked.png"
-                                         WidthRequest="10"
+                                         HorizontalOptions="Center"
                                          Margin="10"
-                                         Opacity="0.5">
-                                        </Image>
-                                        <Label Text="{Binding Name}" 
+                                         Opacity="0.5"
+                                         WidthRequest="15"
+                                         VerticalOptions="Center">
+                                    </Image>
+                                    <Label Text="{Binding Name}" 
                                            Padding="5"
-                                           Grid.Column="1">
-                                        </Label>
-                                    </Grid>
+                                           Grid.Column="1"
+                                           VerticalOptions="Center">
+                                    </Label>
+                                </Grid>
 
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="Datum objavljivanja" FontSize="Medium" Margin="0,15,0,0"></Label>
+                <Label x:Name="lblDate" FontSize="Body"></Label>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
