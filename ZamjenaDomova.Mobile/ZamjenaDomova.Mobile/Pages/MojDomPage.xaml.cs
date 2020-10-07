@@ -20,5 +20,9 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             Navigation.PushAsync(new NoviOglasPage());
         }
+        private void TapMyHome_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MojiOglasiPage());
+        }
     }
 }

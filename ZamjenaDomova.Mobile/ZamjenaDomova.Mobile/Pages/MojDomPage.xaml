@@ -4,17 +4,30 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ZamjenaDomova.Mobile.Pages.MojDomPage">
+             x:Class="ZamjenaDomova.Mobile.Pages.MojDomPage" 
+             NavigationPage.HasNavigationBar="False" >
     <ContentPage.Content>
-        <StackLayout>
-        <Label
+        <StackLayout Margin="0,20,0,0"
+                BackgroundColor="White"
+                Spacing="20">
+            <Label
                 FontSize="Subtitle"
                     Margin="20,0,20,0"
                     Text="Dodaj novi dom">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer x:Name="TapNewHome" Tapped="TapNewHome_Tapped" />
-            </Label.GestureRecognizers>
-        </Label>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapNewHome" Tapped="TapNewHome_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView BackgroundColor="black" HeightRequest="1" />
+            <Label
+                FontSize="Subtitle"
+                    Margin="20,0,20,0"
+                    Text="Moji aktivni oglasi">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="TapMyHome" Tapped="TapMyHome_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView BackgroundColor="black" HeightRequest="1" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
