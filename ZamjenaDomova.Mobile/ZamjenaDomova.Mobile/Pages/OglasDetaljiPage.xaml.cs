@@ -73,7 +73,7 @@ namespace ZamjenaDomova.Mobile.Pages
         }
         private async void BtnContact_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Kontaktiraj", $"Email:{email}\nTelefon:{phone}", "OK");
+            await DisplayAlert("Kontaktiraj", $"Email: {email}\nTelefon: {phone}", "OK");
         }
     }
 }
