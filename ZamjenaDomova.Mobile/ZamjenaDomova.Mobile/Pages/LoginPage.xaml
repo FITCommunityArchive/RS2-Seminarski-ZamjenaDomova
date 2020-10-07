@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="ZamjenaDomova.Mobile.Views.LoginPage">
+             x:Class="ZamjenaDomova.Mobile.Views.LoginPage" 
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout Margin="50" Spacing="15">
             <Label

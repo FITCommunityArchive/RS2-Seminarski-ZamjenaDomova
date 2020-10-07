@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
 using ZamjenaDomova.WebAPI.Database;
@@ -298,6 +299,38 @@ namespace ZamjenaDomova.WebAPI.Services
                         AmenityId = item.AmenityId,
                         Name = item.Amenity.Name
                     });
+            }
+
+            return result;
+        }
+
+        public List<ListingModel> MyListings(int userId, bool approved)
+        {
+            var query = _context.Listing
+               .Include(x => x.ListingImages)
+               .Where(x=> x.UserId==userId)
+               .Where(x => x.Approved==approved)
+               .AsQueryable();
+            
+            var list = query.ToList();
+            List<Model.ListingModel> result = new List<ListingModel>();
+            foreach (var item in list)
+            {
+                var newListingModel = new Model.ListingModel
+                {
+                    Bathrooms = item.Bathrooms,
+                    Beds = item.Beds,
+                    Persons = item.Persons,
+                    City = item.City,
+                    Name = item.Name,
+                    ListingId = item.ListingId
+                };
+                //mapping images
+                if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
+                    newListingModel.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
+
+                result.Add(newListingModel);
+
             }
 
             return result;

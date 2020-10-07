@@ -16,6 +16,7 @@ namespace ZamjenaDomova.WebAPI.Services
         public IList<Model.AmenityModel> GetAmenities(int listingId);
         public List<Model.ListingCountModel> GetCount(ListingsCountSearchRequest request);
         public List<Model.ListingModel> GetListingsModels(ListingsModelsSearchRequest request);
+        public List<Model.ListingModel> MyListings(int userId, bool approved);
         public Model.ListingDetailsModel GetListingDetails(int listingId);
     }
 }

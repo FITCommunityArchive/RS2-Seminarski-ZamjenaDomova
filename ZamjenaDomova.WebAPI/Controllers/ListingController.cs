@@ -51,6 +51,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.GetListingDetails(listingId);
         }
+        [HttpGet("MyListings/{userId}/{approved}")]
+        public ActionResult<List<Model.ListingModel>> MyListings(int userId, bool approved)
+        {
+            return _service.MyListings(userId,approved);
+        }
         [HttpGet("{id}")]
 
         public Model.Listing GetById(int id)

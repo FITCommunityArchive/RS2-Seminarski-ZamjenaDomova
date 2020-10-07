@@ -1,13 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters" 
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="ZamjenaDomova.Mobile.Pages.MojiOglasiPage" 
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Spacing="10" Margin="30,50,30,30">
+            <!--NASLOV-->
+            <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Moji aktivni oglasi" 
+                    Margin="0,0,0,20"/>
+            <BoxView BackgroundColor="Black" HeightRequest="1" />
+            <!--CONTENT-->
+            <ListView x:Name="lvListings"
+                      CachingStrategy="RecycleElement"
+                      SeparatorColor="black"
+                      Margin="5,20,5,5"
+                      SeparatorVisibility="Default"
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding}"
+                      ItemSelected="lvListings_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Spacing="25" Margin="0,20,0,20">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="5*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <forms:CachedImage
+                                            Aspect="AspectFill"
+                                            Grid.RowSpan="3"
+                                            LoadingPlaceholder="homePlaceholder.png"
+                                            HeightRequest="200"
+                                            Source="{Binding Image, Converter={StaticResource imgConv}}" />
+                                    <Label 
+                                        Grid.Row="0" 
+                                        Text="{Binding City}" 
+                                        HorizontalOptions="Start" 
+                                        BackgroundColor="#7F000000" 
+                                        TextColor="White" 
+                                        FontAttributes="Bold" 
+                                        Margin="5" 
+                                        Padding="5">
+                                    </Label>
+                                    <Label 
+                                        Grid.Row="2" 
+                                        Text="{Binding Name}" 
+                                        HorizontalOptions="Start" 
+                                        BackgroundColor="#7F000000" 
+                                        TextColor="White" 
+                                        FontAttributes="Bold" 
+                                        Margin="5" 
+                                        Padding="5">
+                                    </Label>
+                                </Grid>
+                                <Grid RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="users.png" Grid.Row="0" Grid.Column="0" WidthRequest="25"></Image>
+                                    <Image Source="bed.png" Grid.Row="0" Grid.Column="1" WidthRequest="25"></Image>
+                                    <Image Source="shower.png" Grid.Row="0" Grid.Column="2" WidthRequest="25" HorizontalOptions="Center"></Image>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Persons}" HorizontalOptions="Center"></Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Beds}" HorizontalOptions="Center"></Label>
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding Bathrooms}" HorizontalOptions="Center"></Label>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout HeightRequest="85" />
+                </ListView.Footer>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
