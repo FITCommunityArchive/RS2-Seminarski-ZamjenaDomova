@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bed.png" />
+    <Content Include="checked.png" />
     <Content Include="equalizer.png" />
     <Content Include="homePlaceholder.png" />
     <Content Include="Properties\Default.rd.xml" />

@@ -92,23 +92,37 @@
                 <Label Text="Sadržaji" FontSize="Medium" Margin="0,15,0,0"></Label>
 
                 <StackLayout Spacing="0" VerticalOptions="Start" HeightRequest="{Binding Height}" Margin="10">
-                <ListView x:Name="lvAmenities"
+                    <ListView x:Name="lvAmenities"
                           ItemsSource="{Binding AmenitiesItems}" 
                           VerticalOptions="Start" 
                           RowHeight="30">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-
-                                <Label Text="{Binding Name}" 
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image
+                                         x:Name="iconFilter"
+                                         Grid.Column="0"
+                                         Source="checked.png"
+                                         WidthRequest="10"
+                                         Margin="10"
+                                         Opacity="0.5">
+                                        </Image>
+                                        <Label Text="{Binding Name}" 
                                            Padding="5"
                                            Grid.Column="1">
-                                </Label>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                        </Label>
+                                    </Grid>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
