@@ -23,10 +23,14 @@ namespace ZamjenaDomova.WinUI.Users
         {
             InitializeComponent();
             _id = userId;
-            LoadRoles();
-            LoadUserDetails();
+            
         }
-        private async void LoadRoles()
+        private async void frmUserDetails_Load(object sender, EventArgs e)
+        {
+            await LoadRoles();
+            await LoadUserDetails();
+        }
+        private async Task LoadRoles()
         {
             var roles = await _roleService.Get<List<Model.Role>>(null);
             clbRoles.DataSource = roles;
@@ -34,7 +38,7 @@ namespace ZamjenaDomova.WinUI.Users
             clbRoles.ValueMember = "RoleId";
         }
 
-        private async void LoadUserDetails()
+        private async Task LoadUserDetails()
         {
             if (_id.HasValue)
             {
@@ -47,7 +51,7 @@ namespace ZamjenaDomova.WinUI.Users
                 txtEmail.Text = user.Email;
                 txtTelephone.Text = user.PhoneNumber;
 
-                if (user.Image != null)
+                if (user.Image.Length>0 && user.Image != null)
                 {
                     MemoryStream ms = new MemoryStream(user.Image);
                     Image image = Image.FromStream(ms);
@@ -204,5 +208,7 @@ namespace ZamjenaDomova.WinUI.Users
 
             PanelHelper.AddPanel(panelContainer, frm);
         }
+
+        
     }
 }

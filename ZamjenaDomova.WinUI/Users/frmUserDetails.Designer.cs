@@ -294,6 +294,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUserDetails";
             this.Text = "Pojedinosti korisnika";
+            this.Load += new System.EventHandler(this.frmUserDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
             this.ResumeLayout(false);
