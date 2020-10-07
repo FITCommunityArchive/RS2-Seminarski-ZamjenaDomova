@@ -229,5 +229,16 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.SaveChanges();
             return _mapper.Map<Model.User>(user);
         }
+
+        public Model.User Delete(int id)
+        {
+            var entity = _context.User.Find(id);
+
+            _context.User.Remove(entity);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.User>(entity);
+        }
+ 
     }
 }

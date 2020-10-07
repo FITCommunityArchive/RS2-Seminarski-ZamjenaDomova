@@ -80,5 +80,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
             _service.Insert(request);
             return StatusCode(StatusCodes.Status201Created);
         }
+        [Authorize]
+        [HttpDelete("{id}")]
+        public User Delete(int id)
+        {
+            return _service.Delete(id);
+        }
     }
 }

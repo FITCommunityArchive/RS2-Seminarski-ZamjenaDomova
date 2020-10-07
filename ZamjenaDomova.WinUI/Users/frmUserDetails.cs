@@ -23,49 +23,84 @@ namespace ZamjenaDomova.WinUI.Users
         {
             InitializeComponent();
             _id = userId;
+            LoadRoles();
+            LoadUserDetails();
         }
-
-        private async void frmUserDetails_Load(object sender, EventArgs e)
+        private async void LoadRoles()
         {
             var roles = await _roleService.Get<List<Model.Role>>(null);
             clbRoles.DataSource = roles;
             clbRoles.DisplayMember = "Name";
             clbRoles.ValueMember = "RoleId";
+        }
 
+        private async void LoadUserDetails()
+        {
             if (_id.HasValue)
             {
-                try
-                {
-                    var user = await _userService.GetById<Model.User>(_id);
 
-                    txtFirstName.Text = user.FirstName;
-                    txtLastName.Text = user.LastName;
-                    txtEmail.Text = user.Email;
-                    txtTelephone.Text = user.PhoneNumber;
+                btnDelete.Show();
+                var user = await _userService.GetById<Model.User>(_id);
 
-                    if (user.Image != null)
-                    {
-                        MemoryStream ms = new MemoryStream(user.Image);
-                        Image image = Image.FromStream(ms);
-                        pbAvatar.Image = image;
-                    }
-                    var request = new RoleSearchRequest { UserId = user.UserId };
-                    var userRoles = await _roleService.Get<List<Model.Role>>(request);
-                    var rolesInt = userRoles.Select(x => x.RoleId);
-                    for (int i = 0; i < clbRoles.Items.Count; i++)
-                    {
-                        var item = (clbRoles.Items[i] as Model.Role).RoleId;
-                        if (rolesInt.Contains(item))
-                            clbRoles.SetItemChecked(i, true);
-                    }
-                }
-                catch (Exception)
+                txtFirstName.Text = user.FirstName;
+                txtLastName.Text = user.LastName;
+                txtEmail.Text = user.Email;
+                txtTelephone.Text = user.PhoneNumber;
+
+                if (user.Image != null)
                 {
-                    MessageBox.Show("Nemate pristup!", "Authorization", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    MemoryStream ms = new MemoryStream(user.Image);
+                    Image image = Image.FromStream(ms);
+                    pbAvatar.Image = image;
                 }
+                var request = new RoleSearchRequest { UserId = user.UserId };
+                var userRoles = await _roleService.Get<List<Model.Role>>(request);
+                var rolesInt = userRoles.Select(x => x.RoleId);
+                for (int i = 0; i < clbRoles.Items.Count; i++)
+                {
+                    var item = (clbRoles.Items[i] as Model.Role).RoleId;
+                    if (rolesInt.Contains(item))
+                        clbRoles.SetItemChecked(i, true);
+                }
+
             }
         }
+        //private async void frmUserDetails_Load(object sender, EventArgs e)
+        //{
+        //    //var roles = await _roleService.Get<List<Model.Role>>(null);
+        //    //clbRoles.DataSource = roles;
+        //    //clbRoles.DisplayMember = "Name";
+        //    //clbRoles.ValueMember = "RoleId";
+
+        //    if (_id.HasValue)
+        //    {
+
+        //        btnDelete.Show();
+        //        var user = await _userService.GetById<Model.User>(_id);
+
+        //        txtFirstName.Text = user.FirstName;
+        //        txtLastName.Text = user.LastName;
+        //        txtEmail.Text = user.Email;
+        //        txtTelephone.Text = user.PhoneNumber;
+
+        //        if (user.Image != null)
+        //        {
+        //            MemoryStream ms = new MemoryStream(user.Image);
+        //            Image image = Image.FromStream(ms);
+        //            pbAvatar.Image = image;
+        //        }
+        //        var request = new RoleSearchRequest { UserId = user.UserId };
+        //        var userRoles = await _roleService.Get<List<Model.Role>>(request);
+        //        var rolesInt = userRoles.Select(x => x.RoleId);
+        //        for (int i = 0; i < clbRoles.Items.Count; i++)
+        //        {
+        //            var item = (clbRoles.Items[i] as Model.Role).RoleId;
+        //            if (rolesInt.Contains(item))
+        //                clbRoles.SetItemChecked(i, true);
+        //        }
+
+        //    }
+        //}
         UserUpsertRequest request = new UserUpsertRequest();
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -156,6 +191,18 @@ namespace ZamjenaDomova.WinUI.Users
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            var user = await _userService.Delete<Model.User>(_id);
+
+            MessageBox.Show("Uspjesno obrisano!");
+            this.Close();
+            var frm = new ucUsers();
+            var frmIndex = Application.OpenForms["frmIndex"];
+            var panelContainer = frmIndex.Controls.Find("panelMain", true).FirstOrDefault() as Panel;
+
+            PanelHelper.AddPanel(panelContainer, frm);
         }
     }
 }

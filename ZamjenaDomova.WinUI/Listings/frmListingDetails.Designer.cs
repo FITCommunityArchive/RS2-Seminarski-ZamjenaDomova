@@ -220,7 +220,7 @@
             this.btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnApprove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnApprove.Location = new System.Drawing.Point(453, 567);
+            this.btnApprove.Location = new System.Drawing.Point(614, 573);
             this.btnApprove.Name = "btnApprove";
             this.btnApprove.Size = new System.Drawing.Size(159, 39);
             this.btnApprove.TabIndex = 29;
@@ -234,7 +234,7 @@
             this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReject.Location = new System.Drawing.Point(618, 567);
+            this.btnReject.Location = new System.Drawing.Point(453, 573);
             this.btnReject.Name = "btnReject";
             this.btnReject.Size = new System.Drawing.Size(155, 39);
             this.btnReject.TabIndex = 30;
