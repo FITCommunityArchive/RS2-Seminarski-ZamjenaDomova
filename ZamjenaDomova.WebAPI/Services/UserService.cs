@@ -172,7 +172,7 @@ namespace ZamjenaDomova.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public Model.User Authenticate(string email, string password)
+        public Model.UserResponse Authenticate(string email, string password)
         {
             var user = _context.User.Include("UserRoles.Role").FirstOrDefault(x => x.Email == email);
 
@@ -205,9 +205,15 @@ namespace ZamjenaDomova.WebAPI.Services
                 var token = tokenHandler.CreateToken(tokenDescriptor);
                 var tokenString = tokenHandler.WriteToken(token);
 
-                var loggedUser = _mapper.Map<Model.User>(user);
-                loggedUser.Token = tokenString;
-                loggedUser.Token_Expiration_Time = token.ValidTo;
+                var loggedUser = new Model.UserResponse
+                {
+                    UserId = user.UserId,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Token = tokenString,
+                    Token_Expiration_Time = token.ValidTo,
+                    WishlistId = _context.Wishlist.First(x => x.UserId == user.UserId).WishlistId
+                };
 
                 return loggedUser;
             }

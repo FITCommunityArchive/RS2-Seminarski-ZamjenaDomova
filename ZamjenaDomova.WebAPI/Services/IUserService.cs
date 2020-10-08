@@ -15,7 +15,7 @@ namespace ZamjenaDomova.WebAPI.Services
         Model.User Update(int id, UserUpsertRequest request);
         Model.User Delete(int id);
 
-        Model.User Authenticate(string email, string password);
+        Model.UserResponse Authenticate(string email, string password);
         Model.User ChangePassword(string userEmail, ChangePasswordModel model);
     }
 }

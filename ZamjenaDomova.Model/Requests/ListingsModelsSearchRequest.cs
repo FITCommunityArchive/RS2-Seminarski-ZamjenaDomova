@@ -10,5 +10,6 @@ namespace ZamjenaDomova.Model.Requests
         public int? Persons { get; set; }
         public int? Beds { get; set; }
         public int? Bathrooms { get; set; }
+        public int? UserId { get; set; }
     }
 }

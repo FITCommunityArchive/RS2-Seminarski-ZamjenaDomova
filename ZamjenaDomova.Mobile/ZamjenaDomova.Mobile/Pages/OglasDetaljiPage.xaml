@@ -23,7 +23,7 @@
                     HeightRequest="250"
                     RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -57,8 +57,9 @@
                     Grid.Row="0"
                     HorizontalOptions="End"
                     Source="heart-shape-outline.png"
-                    Margin="10"
-                    IsVisible="False">
+                    Margin="15"
+                    IsVisible="False"
+                    HeightRequest="35">
                         <Image.GestureRecognizers>
                             <!--<TapGestureRecognizer NumberOfTapsRequired="1" Tapped="IconFilter_Tapped" />-->
                         </Image.GestureRecognizers>

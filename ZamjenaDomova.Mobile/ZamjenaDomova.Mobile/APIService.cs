@@ -54,11 +54,12 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.PostAsync(url, content);
             if (!response.IsSuccessStatusCode) return false;
             var jsonResult = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<Model.User>(jsonResult);
+            var result = JsonConvert.DeserializeObject<Model.UserResponse>(jsonResult);
             Preferences.Set("access_token", result.Token);
             Preferences.Set("userId", result.UserId);
             Preferences.Set("token_expiration_time", result.Token_Expiration_Time);
             Preferences.Set("userName", result.FirstName + " " + result.LastName);
+            Preferences.Set("wishlistId", result.WishlistId);
             return true;
         }
 
@@ -173,6 +174,11 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/MyListings/{userId}/{approved}");
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
         }
+
+        //public static async Task<List<Model.WishlistListing>> GetWishlistListings(int wishlistId)
+        //{
+
+        //}
 
 
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
