@@ -87,6 +87,10 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.User.Add(entity);
             _context.SaveChanges();
 
+            var wishlist = new Database.Wishlist { UserId = entity.UserId };
+            _context.Wishlist.Add(wishlist);
+            _context.SaveChanges();
+            
             if (request.Roles != null && request.Roles.Count() > 0 && request.Roles[0] != 0)
             {
                 foreach (var role in request.Roles)

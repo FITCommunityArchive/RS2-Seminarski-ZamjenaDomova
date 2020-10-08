@@ -24,6 +24,7 @@ namespace ZamjenaDomova.Mobile.Pages
         private string email;
         private string phone;
         private int Height = 0;
+        private bool _deletable = false;
         public OglasDetaljiPage(int listingId, bool deletable)
         {
             InitializeComponent();
@@ -31,7 +32,14 @@ namespace ZamjenaDomova.Mobile.Pages
             _listingId = listingId;
             GetListingDetails(_listingId);
             if (deletable)
+            {
                 BtnDelete.IsVisible = true;
+                _deletable = true;
+            }
+            else
+            {
+                WishlistOptions();
+            }
         }
         private async void GetListingDetails(int listingId)
         {
@@ -90,6 +98,10 @@ namespace ZamjenaDomova.Mobile.Pages
                 await APIService.UpdateListing(_listingId, listing);
                 await Navigation.PopAsync();
             }
+        }
+        private async void WishlistOptions()
+        {
+            iconHeart.IsVisible = true;
         }
     }
 }

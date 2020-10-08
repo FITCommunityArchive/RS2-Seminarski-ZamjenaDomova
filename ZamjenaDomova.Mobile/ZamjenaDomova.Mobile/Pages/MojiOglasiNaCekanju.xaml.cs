@@ -35,7 +35,7 @@ namespace ZamjenaDomova.Mobile.Pages
         private void lvListings_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var listingId = (e.SelectedItem as Model.ListingModel).ListingId;
-            Navigation.PushAsync(new OglasDetaljiPage(listingId, false));
+            Navigation.PushAsync(new OglasDetaljiPage(listingId, true));
         }
     }
 }

@@ -23,6 +23,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
             CreateMap<Model.ListingImageModel, Database.ListingImage>().ReverseMap();
             CreateMap<Database.ListingAmenity, Model.AmenityModel>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Amenity.Name));
+            CreateMap<Model.Requests.WishlistListingInsertRequest, Database.WishlistListing>();
         }
     }
 }

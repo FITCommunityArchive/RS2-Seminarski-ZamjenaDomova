@@ -107,6 +107,8 @@
     <Content Include="bed.png" />
     <Content Include="checked.png" />
     <Content Include="equalizer.png" />
+    <Content Include="heart-shape-outline.png" />
+    <Content Include="heart-shape-silhouette.png" />
     <Content Include="homePlaceholder.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
