@@ -286,13 +286,13 @@ namespace ZamjenaDomova.WebAPI.Services
                 TerritoryName = listing.Territory.Name,
                 UserName = listing.User.FirstName + " " + listing.User.LastName,
                 UserEmail = listing.User.Email,
-                UserPhone = listing.User.PhoneNumber
+                UserPhone = listing.User.PhoneNumber,
+                Amenities=new List<Model.Amenity>()
             };
             //mapping amenities
             var listingAmenities = _context.ListingAmenity.Where(x => x.ListingId == listingId);
             if (listingAmenities.Count() > 0)
             {
-                result.Amenities = new List<Model.Amenity>();
                 foreach (var item in listingAmenities.Include(x => x.Amenity))
                     result.Amenities.Add(new Model.Amenity
                     {

@@ -141,6 +141,14 @@
 
                 <Label Text="Datum objavljivanja" FontSize="Medium" Margin="0,15,0,0"></Label>
                 <Label x:Name="lblDate" FontSize="Body"></Label>
+                <Button
+                    x:Name="BtnDelete"
+                    BackgroundColor="#B83A3A"
+                    Clicked="BtnDelete_Clicked"
+                    Text="Obriši oglas"
+                    TextColor="White" 
+                    IsVisible="False" Margin="0,30,0,15"
+                    />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

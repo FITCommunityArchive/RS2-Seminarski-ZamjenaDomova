@@ -194,17 +194,29 @@ namespace ZamjenaDomova.Mobile
         //            return JsonConvert.DeserializeObject<OcjenaModel>(response);
         //        }
 
-        //        public static async Task<bool> ChangePhoneNumber(string phoneNumber)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
+        public static async Task<bool> UpdateListing(int listingId, Model.Requests.ListingUpdateRequest request)
+        {
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            var content = new StringContent($"PhoneNumber={phoneNumber}", Encoding.UTF8, "application/x-www-form-urlencoded");
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.PostAsync($"{_apiUrl}/Korisnici/ChangePhoneNumber", content);
-        //            if (!response.IsSuccessStatusCode) return false;
-        //            return true;
-        //        }
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.PutAsync($"{_apiUrl}/Listing/{listingId}", content);
+
+            return true;
+        }  
+        //public static async Task<bool> DeleteListing(int listingId)
+        //{
+        //    await TokenValidator.CheckTokenValidity();
+
+        //    var httpClient = new HttpClient();
+        //    var content = new StringContent($"PhoneNumber={phoneNumber}", Encoding.UTF8, "application/x-www-form-urlencoded");
+        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+        //    var response = await httpClient.PostAsync($"{_apiUrl}/Korisnici/ChangePhoneNumber", content);
+        //    if (!response.IsSuccessStatusCode) return false;
+        //    return true;
+        //}
 
         //        public static async Task<List<OcjenaModel>> GetOcjeneByVozilo(int voziloId)
         //        {
