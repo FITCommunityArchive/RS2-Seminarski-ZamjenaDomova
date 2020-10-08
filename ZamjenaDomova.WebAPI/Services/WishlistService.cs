@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using ZamjenaDomova.Model;
 using ZamjenaDomova.Model.Requests;
@@ -24,6 +25,29 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.WishlistListing.Add(entity);
             _context.SaveChanges();
             return _mapper.Map<Model.WishlistListing>(entity);
+        }
+
+        public List<ListingModel> GetWishlistItems(int wishlistId)
+        {
+            var wishlistItems = _context.WishlistListing.Where(x => x.WishlistId == wishlistId).ToList();
+            var result = new List<ListingModel>();
+            foreach (var item in wishlistItems)
+            {
+                var listing = _context.Listing.First(x => x.ListingId == item.ListingId);
+                var newListingModel = new ListingModel
+                {
+                    ListingId = listing.ListingId,
+                    Bathrooms = listing.Bathrooms,
+                    Beds = listing.Beds,
+                    City = listing.City,
+                    Name = listing.Name,
+                    Persons = listing.Persons
+                };
+                if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
+                    newListingModel.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
+                result.Add(newListingModel);
+            }
+            return result;
         }
     }
 }
