@@ -139,11 +139,15 @@ namespace ZamjenaDomova.Mobile
         public static async Task<List<Model.ListingModel>> GetListingsModels(Model.Requests.ListingsModelsSearchRequest request)
         {
             await TokenValidator.CheckTokenValidity();
-
+            request.UserId = Preferences.Get("userId", 0);
             var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-            var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/GetListingsModels");
-            return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
+            var response = await httpClient.PostAsync($"{_apiUrl}/Listing/GetListingsModels", content);
+      
+            var jsonResult = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Model.ListingModel>>(jsonResult);
         }
 
         public static async Task<List<ListingImageModel>> GetListingImages(int listingId)

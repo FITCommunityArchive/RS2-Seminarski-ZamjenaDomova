@@ -41,8 +41,8 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.GetCount(request);
         }
-        [HttpGet("GetListingsModels")]
-        public ActionResult<List<Model.ListingModel>> GetListingsModels([FromQuery] ListingsModelsSearchRequest request)
+        [HttpPost("GetListingsModels")]
+        public ActionResult<List<Model.ListingModel>> GetListingsModels(ListingsModelsSearchRequest request)
         {
             return _service.GetListingsModels(request);
         }

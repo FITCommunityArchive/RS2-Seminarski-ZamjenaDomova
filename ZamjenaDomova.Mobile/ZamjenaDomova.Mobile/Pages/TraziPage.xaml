@@ -27,8 +27,8 @@
                  Grid.Column="0" 
                  x:Name="searchBar"           
                  WidthRequest="1"
-                    />
-                <!--TextChanged="SearchBar_TextChanged"-->
+                 TextChanged="SearchBar_TextChanged"/>
+
 
                 <Image
                  x:Name="iconFilter"

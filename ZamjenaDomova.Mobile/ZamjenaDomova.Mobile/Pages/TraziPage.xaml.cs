@@ -7,18 +7,22 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TraziPage : ContentPage
     {
+        private string _searchText;
         public ObservableCollection<Model.ListingModel> listings;
         public TraziPage()
         {
             InitializeComponent();
             listings = new ObservableCollection<Model.ListingModel>();
-            this.Appearing += async (object sender, EventArgs e) => {
+            this.Appearing += async (object sender, EventArgs e) =>
+            {
                 await GetListingsModels();
             };
         }
@@ -26,8 +30,12 @@ namespace ZamjenaDomova.Mobile.Pages
         async Task GetListingsModels()
         {
             listings.Clear();
-            var list = await APIService.GetListingsModels(null);
-            foreach(var item in list)
+            var request = new ListingsModelsSearchRequest
+            {
+                Name = _searchText
+            };
+            var list = await APIService.GetListingsModels(request);
+            foreach (var item in list)
             {
                 listings.Add(item);
             }
@@ -38,6 +46,9 @@ namespace ZamjenaDomova.Mobile.Pages
             var listingId = (e.SelectedItem as Model.ListingModel).ListingId;
             Navigation.PushAsync(new OglasDetaljiPage(listingId, false));
         }
-       
+        public async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _searchText = searchBar.Text;
+        }
     }
 }
