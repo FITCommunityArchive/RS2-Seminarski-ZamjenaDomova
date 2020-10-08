@@ -24,6 +24,7 @@ namespace ZamjenaDomova.WebAPI.Mappers
             CreateMap<Database.ListingAmenity, Model.AmenityModel>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Amenity.Name));
             CreateMap<Model.Requests.WishlistListingInsertRequest, Database.WishlistListing>();
+            CreateMap<Database.WishlistListing, Model.WishlistListing>();
         }
     }
 }

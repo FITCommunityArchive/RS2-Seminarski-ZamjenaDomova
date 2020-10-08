@@ -8,7 +8,9 @@ namespace ZamjenaDomova.WebAPI.Services
 {
     public interface IWishlistService
     {
-        Model.WishlistListing Insert(Model.Requests.WishlistListingInsertRequest request);
+        Model.WishlistListing Save(Model.Requests.WishlistListingInsertRequest request);
+        bool Remove(int wishlistId, int listingId);
         List<ListingModel> GetWishlistItems(int wishlistId);
+        bool IsOnWishlist(int wishlistId, int listingId);
     }
 }

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters" xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
+             xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters" 
+             xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
              x:Class="ZamjenaDomova.Mobile.Pages.OglasDetaljiPage" 
              NavigationPage.HasBackButton="True" 
              NavigationPage.HasNavigationBar="False">
@@ -61,7 +62,9 @@
                     IsVisible="False"
                     HeightRequest="35">
                         <Image.GestureRecognizers>
-                            <!--<TapGestureRecognizer NumberOfTapsRequired="1" Tapped="IconFilter_Tapped" />-->
+                            <TapGestureRecognizer 
+                                                  x:Name="TapHeart" 
+                                                  Tapped="TapHeart_Tapped" />
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>

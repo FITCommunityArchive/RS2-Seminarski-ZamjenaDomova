@@ -19,12 +19,23 @@ namespace ZamjenaDomova.WebAPI.Services
             _context = context;
             _mapper = mapper;
         }
-        public Model.WishlistListing Insert(WishlistListingInsertRequest request)
+        public Model.WishlistListing Save(WishlistListingInsertRequest request)
         {
             var entity = _mapper.Map<Database.WishlistListing>(request);
             _context.WishlistListing.Add(entity);
             _context.SaveChanges();
             return _mapper.Map<Model.WishlistListing>(entity);
+        }
+
+        public bool Remove(int wishlistId, int listingId)
+        {
+            var entity = _context.WishlistListing
+                .First(x => x.WishlistId == wishlistId && x.ListingId == listingId);
+
+            _context.WishlistListing.Remove(entity);
+            _context.SaveChanges();
+
+            return true;
         }
 
         public List<ListingModel> GetWishlistItems(int wishlistId)
@@ -48,6 +59,13 @@ namespace ZamjenaDomova.WebAPI.Services
                 result.Add(newListingModel);
             }
             return result;
+        }
+
+        public bool IsOnWishlist(int wishlistId, int listingId)
+        {
+            return _context.WishlistListing
+                .Where(x => x.WishlistId == wishlistId)
+                .Where(x => x.ListingId == listingId).Any();
         }
     }
 }

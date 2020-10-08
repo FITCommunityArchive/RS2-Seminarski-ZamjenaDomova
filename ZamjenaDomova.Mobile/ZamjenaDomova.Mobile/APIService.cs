@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.Mobile
 {
@@ -92,7 +93,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Territory");
             return JsonConvert.DeserializeObject<List<Model.Territory>>(response);
         }
-        
+
         public static async Task<List<Model.Amenity>> GetAmenities()
         {
             await TokenValidator.CheckTokenValidity();
@@ -115,7 +116,7 @@ namespace ZamjenaDomova.Mobile
             var jsonResult = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<ListingResponse>(jsonResult);
         }
-       
+
         public static async Task<bool> AddListingImage(int listingId, byte[] imageArray)
         {
             var listingImage = new ListingImageModel
@@ -134,7 +135,7 @@ namespace ZamjenaDomova.Mobile
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
-        
+
         public static async Task<List<Model.ListingModel>> GetListingsModels(Model.Requests.ListingsModelsSearchRequest request)
         {
             await TokenValidator.CheckTokenValidity();
@@ -184,7 +185,45 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Wishlist/{wishlistId}");
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
         }
+        public static async Task<Model.WishlistListing> SaveWishlistListing(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
+            var wishlistInsertRequest = new WishlistListingInsertRequest
+            {
+                ListingId = listingId,
+                WishlistId = Preferences.Get("wishlistId", 0),
+                DateAdded = DateTime.Now
+            };
 
+            var httpClient = new HttpClient();
+
+            var json = JsonConvert.SerializeObject(wishlistInsertRequest);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync($"{_apiUrl}/Wishlist", content);
+            var jsonResult = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Model.WishlistListing>(jsonResult);
+        }
+        public static async Task<bool> RemoveWishlistListing(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
+            var wishlistId = Preferences.Get("wishlistId", 0);
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.DeleteAsync($"{_apiUrl}/Wishlist/{wishlistId }/{listingId}");
+            if (!response.IsSuccessStatusCode) return false;
+            return true;
+
+        }
+        public static async Task<bool> IsOnWishlist(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
+            int wishlistId = Preferences.Get("wishlistId", 0);
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Wishlist/IsOnWishlist/{wishlistId}/{listingId}");
+            return JsonConvert.DeserializeObject<bool>(response);
+
+        }
 
         //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
         //        {
@@ -216,7 +255,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.PutAsync($"{_apiUrl}/Listing/{listingId}", content);
 
             return true;
-        }  
+        }
         //public static async Task<bool> DeleteListing(int listingId)
         //{
         //    await TokenValidator.CheckTokenValidity();

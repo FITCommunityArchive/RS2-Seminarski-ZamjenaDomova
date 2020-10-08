@@ -25,6 +25,7 @@ namespace ZamjenaDomova.Mobile.Pages
         private string phone;
         private int Height = 0;
         private bool _deletable = false;
+        private bool wishlist = false;
         public OglasDetaljiPage(int listingId, bool deletable)
         {
             InitializeComponent();
@@ -102,6 +103,18 @@ namespace ZamjenaDomova.Mobile.Pages
         private async void WishlistOptions()
         {
             iconHeart.IsVisible = true;
+            if (await APIService.IsOnWishlist(_listingId))
+                iconHeart.Source = "heart-shape-silhouette.png";
+            else iconHeart.Source = "heart-shape-outline.png";
+        }
+        private async void TapHeart_Tapped(object sender, EventArgs e)
+        {
+            if (await APIService.IsOnWishlist(_listingId))
+                await APIService.RemoveWishlistListing(_listingId);
+            else
+                await APIService.SaveWishlistListing(_listingId);
+
+            WishlistOptions();
         }
     }
 }
