@@ -11,10 +11,10 @@ using Xamarin.Forms.Xaml;
 namespace ZamjenaDomova.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MojiOglasiNaCekanju : ContentPage
+    public partial class MojiOglasiNaCekanjuPage : ContentPage
     {
         public ObservableCollection<Model.ListingModel> listings;
-        public MojiOglasiNaCekanju()
+        public MojiOglasiNaCekanjuPage()
         {
             InitializeComponent();
             listings = new ObservableCollection<Model.ListingModel>();

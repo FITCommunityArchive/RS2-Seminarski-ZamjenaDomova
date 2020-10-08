@@ -50,7 +50,7 @@
     <EmbeddedResource Update="Pages\MojDomPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\MojiOglasiNaCekanju.xaml">
+    <EmbeddedResource Update="Pages\MojiOglasiNaCekanjuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MojiOglasiPage.xaml">
@@ -77,9 +77,18 @@
     <EmbeddedResource Update="Pages\TraziPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\WishlistPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\MojiOglasiNaCekanjuPage.xaml.cs">
+      <DependentUpon>MojiOglasiNaCekanjuPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -29,7 +29,11 @@ namespace ZamjenaDomova.Mobile.Pages
         }
         private void TapUnapproved_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MojiOglasiNaCekanju());
+            Navigation.PushAsync(new MojiOglasiNaCekanjuPage());
+        }
+        private void TapWishlist_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new WishlistPage());
         }
         private void TapLogout_Tapped(object sender, EventArgs e)
         {

@@ -13,7 +13,10 @@ namespace ZamjenaDomova.WebAPI.Controllers
     public class WishlistController : ControllerBase
     {
         private readonly IWishlistService _service;
-
+        public WishlistController(IWishlistService service)
+        {
+            _service = service;
+        }
         [HttpGet("{wishlistId}")]
         public ActionResult<List<Model.ListingModel>> Get(int wishlistId)
         {

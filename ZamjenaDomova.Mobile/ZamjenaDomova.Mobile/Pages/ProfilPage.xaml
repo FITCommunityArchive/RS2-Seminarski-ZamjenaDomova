@@ -40,7 +40,7 @@
                     Margin="20,0,20,0"
                     Text="Spremljeno">
                 <Label.GestureRecognizers>
-                    <!--<TapGestureRecognizer x:Name="TapChangePhone" Tapped="TapChangePhone_Tapped" />-->
+                    <TapGestureRecognizer x:Name="TapWishlist" Tapped="TapWishlist_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
             <BoxView BackgroundColor="black" HeightRequest="1" />
