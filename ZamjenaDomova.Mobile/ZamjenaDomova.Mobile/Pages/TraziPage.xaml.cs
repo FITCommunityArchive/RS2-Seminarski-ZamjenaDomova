@@ -46,9 +46,9 @@ namespace ZamjenaDomova.Mobile.Pages
             var listingId = (e.SelectedItem as Model.ListingModel).ListingId;
             Navigation.PushAsync(new OglasDetaljiPage(listingId, false));
         }
-        public async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+       public async void BtnFilter_Clicked(object sender, EventArgs e)
         {
-            _searchText = searchBar.Text;
+            await Navigation.PushModalAsync(new RegisterPage());
         }
     }
 }

@@ -33,7 +33,7 @@ namespace ZamjenaDomova.Mobile.Views
         }
         private async void BtnRegister_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new RegisterPage());
+            await Navigation.PushModalAsync(new FilterPage());
         }
     }
 }

@@ -229,8 +229,9 @@ namespace ZamjenaDomova.WebAPI.Services
                 .AsQueryable();
             if (request != null)
             {
-                //if (!string.IsNullOrWhiteSpace(request.City))
-                //    query = query.Where(x => x.City.StartsWith(request.City));
+                query = query.Where(x => x.UserId != request.UserId);
+                if (!string.IsNullOrWhiteSpace(request.City))
+                    query = query.Where(x => x.City.StartsWith(request.City));
                 //if (request.StartDate != null)
                 //    query = query.Where(x => x.DateApproved > request.StartDate);
                 //if (request.EndDate != null)
