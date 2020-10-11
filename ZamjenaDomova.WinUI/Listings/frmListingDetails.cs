@@ -56,7 +56,7 @@ namespace ZamjenaDomova.WinUI.Listings
                 txtBeds.Text = listing.Beds.ToString();
                 txtBathrooms.Text = listing.Bathrooms.ToString();
                 txtUser.Text = listing.UserName;
-                txtDateCreated.Text = listing.DateCreated.ToString();
+                txtDateCreated.Text = listing.DateCreated.ToString("dd/MM/yyyy");
 
                 if (listing.Image != null)
                 {
