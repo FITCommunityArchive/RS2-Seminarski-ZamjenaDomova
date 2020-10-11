@@ -28,5 +28,11 @@ namespace ZamjenaDomova.WinUI.Reports
             PanelHelper.RemovePanels(pnlReports);
             PanelHelper.AddPanel(pnlReports, new ucListingDetails());
         }
+
+        private void btnTopRated_Click(object sender, EventArgs e)
+        {
+            PanelHelper.RemovePanels(pnlReports);
+            PanelHelper.AddPanel(pnlReports, new ucHighestRatedListings());
+        }
     }
 }

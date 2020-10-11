@@ -97,7 +97,8 @@ namespace ZamjenaDomova.WebAPI.Services
                 Persons = x.Persons,
                 TerritoryName = x.Territory.Name,
                 UserName = x.User.FirstName + " " + x.User.LastName,
-                ListingId = x.ListingId
+                ListingId = x.ListingId,
+                AverageRating = _context.Rating.Where(y => y.ListingId == x.ListingId).Average(y => y.RatingValue)
             }).ToList();
 
             return list;

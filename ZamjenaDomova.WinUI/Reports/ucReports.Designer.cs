@@ -76,6 +76,7 @@
             this.btnTopRated.TabIndex = 2;
             this.btnTopRated.Text = "Najbolje ocijenjeni domovi";
             this.btnTopRated.UseVisualStyleBackColor = true;
+            this.btnTopRated.Click += new System.EventHandler(this.btnTopRated_Click);
             // 
             // tableLayoutPanel1
             // 

@@ -37,5 +37,6 @@ namespace ZamjenaDomova.Model
         
         public List<Amenity> Amenities { get; set; }
         public byte[] Image { get; set; }
+        public double AverageRating { get; set; }
     }
 }
