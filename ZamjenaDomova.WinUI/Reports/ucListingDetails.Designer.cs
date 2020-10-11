@@ -47,6 +47,7 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnPDF = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListings)).BeginInit();
@@ -56,6 +57,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnPDF);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.lblClear);
             this.panel1.Controls.Add(this.btnSearch);
@@ -259,6 +261,19 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "OD";
             // 
+            // btnPDF
+            // 
+            this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnPDF.Location = new System.Drawing.Point(593, 56);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(94, 30);
+            this.btnPDF.TabIndex = 21;
+            this.btnPDF.Text = "PDF";
+            this.btnPDF.UseVisualStyleBackColor = true;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
             // ucListingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -295,5 +310,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Territory;
         private System.Windows.Forms.DataGridViewTextBoxColumn User;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateApproved;
+        private System.Windows.Forms.Button btnPDF;
     }
 }
