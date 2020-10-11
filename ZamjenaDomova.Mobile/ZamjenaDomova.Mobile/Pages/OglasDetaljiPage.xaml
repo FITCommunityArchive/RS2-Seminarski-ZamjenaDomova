@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters" 
-             xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
+             xmlns:ms="clr-namespace:ZamjenaDomova.Controls" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="ZamjenaDomova.Mobile.Pages.OglasDetaljiPage" 
              NavigationPage.HasBackButton="True" 
              NavigationPage.HasNavigationBar="False">
@@ -43,6 +43,7 @@
                             </DataTemplate>
                         </CarouselView.ItemTemplate>
                     </CarouselView>
+
                     <Label
                     x:Name="lblCounter"
                     Grid.Row="2"
@@ -68,6 +69,9 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>
+
+
+
                 <Grid RowSpacing="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
@@ -85,8 +89,55 @@
                     <Label Grid.Row="1" Grid.Column="1" x:Name="lblBeds" HorizontalOptions="Center"></Label>
                     <Label Grid.Row="1" Grid.Column="2" x:Name="lblBathrooms" HorizontalOptions="Center"></Label>
                 </Grid>
+                <rating:SfRating
+                    x:Name="Rating"
+                    Margin="0,5"
+                    HorizontalOptions="Center"
+                    Precision="Exact"
+                    ReadOnly="True"
+                    ItemSize="20">
+                    <rating:SfRating.RatingSettings>
+                        <rating:SfRatingSettings RatedFill="#B83A3A" UnRatedFill="white" RatedStrokeWidth="3" UnRatedStrokeWidth="2" />
+                    </rating:SfRating.RatingSettings>
+                </rating:SfRating>
 
+                <Label
+                    x:Name="LblRating"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center" />
+                <StackLayout x:Name="RatingOptions" 
+                             IsVisible="false">
+                    <Button
+                    x:Name="BtnUserRating"
+                    Margin="0,5"
+                    Clicked="BtnUserRating_Clicked"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Ocijenite oglas" />
 
+                    <rating:SfRating
+                    x:Name="UserRating"
+                    Margin="0,5"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    Precision="Standard"
+                    ValueChanged="UserRating_ValueChanged"
+                    ItemSize="20">
+                        <rating:SfRating.RatingSettings>
+                            <rating:SfRatingSettings RatedFill="#B83A3A" UnRatedFill="Gray" RatedStrokeWidth="3" UnRatedStrokeWidth="2" />
+                        </rating:SfRating.RatingSettings>
+                    </rating:SfRating>
+
+                    <Label
+                    x:Name="LblUserRatingMessage"
+                    Margin="0,5"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    TextColor="#B83A3A" />
+                </StackLayout>
                 <Label Text="Dom" FontSize="Medium" Margin="0,15,0,0"></Label>
                 <Label x:Name="lblHomeDesc" FontSize="Body"></Label>
 
@@ -166,6 +217,48 @@
                     TextColor="White" 
                     IsVisible="False" Margin="0,30,0,15"
                     />
+
+                <CollectionView
+                    x:Name="CvRecommendedListings"
+                    IsVisible="False"
+                    SelectionChanged="CvRecommendedListings_SelectionChanged"
+                    SelectionMode="Single">
+                    <CollectionView.Header>
+                        <StackLayout Padding="5" Spacing="20">
+                            <Label Text="Preporučeni oglasi" 
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center">
+                            </Label>
+                            <BoxView BackgroundColor="Black" HeightRequest="1" />
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView Padding="10">
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <StackLayout Spacing="25">
+                                        <forms:CachedImage
+                                            Aspect="AspectFill"
+                                            LoadingPlaceholder="homePlaceholder.png"
+                                            Source="{Binding Image, Converter={StaticResource imgConv}}" />
+                                        <Label
+                                            Margin="0,0,0,20"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Name}"
+                                            TextColor="black" />
+                                    </StackLayout>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

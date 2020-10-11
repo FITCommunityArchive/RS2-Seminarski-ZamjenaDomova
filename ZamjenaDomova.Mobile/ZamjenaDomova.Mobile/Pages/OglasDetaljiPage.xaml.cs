@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZamjenaDomova.Controls;
@@ -24,22 +24,24 @@ namespace ZamjenaDomova.Mobile.Pages
         private string email;
         private string phone;
         private int Height = 0;
-        private bool _deletable = false;
-        private bool wishlist = false;
+        private bool _deletable;
         public OglasDetaljiPage(int listingId, bool deletable)
         {
             InitializeComponent();
             listingImages = new ObservableCollection<Model.ListingImageModel>();
             _listingId = listingId;
             GetListingDetails(_listingId);
-            if (deletable)
+            GetAverageRating();
+            _deletable = deletable;
+            if (_deletable)
             {
                 BtnDelete.IsVisible = true;
-                _deletable = true;
             }
             else
             {
                 WishlistOptions();
+                UserRatingOptions();
+                GetRecommendedListings(_listingId);
             }
         }
         private async void GetListingDetails(int listingId)
@@ -115,6 +117,85 @@ namespace ZamjenaDomova.Mobile.Pages
                 await APIService.SaveWishlistListing(_listingId);
 
             WishlistOptions();
+        }
+
+        private async void GetUserRating(int listingId)
+        {
+            var response = await APIService.GetRatingByListingAndUser(listingId, Preferences.Get("userId", 0));
+
+            if (response != -1)
+            {
+                UserRating.Value = response;
+            }
+        }
+
+        private async void GetRecommendedListings(int listingId)
+        {
+            Recommender recommender = new Recommender();
+            var listings = await recommender.GetSimilarListings(listingId);
+            if (listings.Count > 0)
+            {
+                CvRecommendedListings.IsVisible = true;
+                CvRecommendedListings.ItemsSource = listings;
+            }
+        }
+
+        private async void GetAverageRating()
+        {
+            var ratings = await APIService.GetRatingsByListing(_listingId);
+
+            if (ratings == null && !_deletable)
+            {
+                LblRating.Text = "Budite prvi koji će ocijeniti ovaj oglas!";
+            }
+            else if (ratings == null && _deletable)
+            {
+                LblRating.Text = "Oglas nema ocjena!";
+            }
+            else
+            {
+                var averageRating = ratings.Average(x => x.RatingValue);
+                Rating.Value = averageRating;
+                LblRating.Text = $"Trenutna prosječna ocjena: {averageRating}";
+            }
+        }
+        private void CvRecommendedListings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var currentSelection = e.CurrentSelection.FirstOrDefault() as ListingModel;
+            Navigation.PushModalAsync(new OglasDetaljiPage(currentSelection.ListingId, false));
+        }
+
+        private async void UserRating_ValueChanged(object sender, Syncfusion.SfRating.XForms.ValueEventArgs e)
+        {
+            int rating = Convert.ToInt32(e.Value);
+            var model = await APIService.SetRating(_listingId, rating);
+            UserRating.Value = rating;
+            UserRating.IsVisible = false;
+
+            LblUserRatingMessage.Text = "Uspješno ste ocijenili oglas.";
+            Device.StartTimer(new TimeSpan(0, 0, 4), () =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LblUserRatingMessage.IsVisible = false;
+                    LblUserRatingMessage.Text = "";
+                });
+                return false;
+            });
+
+            Rating.Value = model.AverageRating;
+
+            LblRating.Text = $"Trenutna prosječna ocjena: {model.AverageRating}";
+        }
+
+        private void BtnUserRating_Clicked(object sender, EventArgs e)
+        {
+            UserRating.IsVisible = !UserRating.IsVisible;
+        }
+
+        private async void UserRatingOptions()
+        {
+            RatingOptions.IsVisible = true;
         }
     }
 }

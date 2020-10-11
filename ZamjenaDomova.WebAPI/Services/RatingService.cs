@@ -50,7 +50,7 @@ namespace ZamjenaDomova.WebAPI.Services
             }
         }
 
-        public List<Model.Rating> GetByListing(int listingId)
+        public List<Model.Rating> GetRatingsByListing(int listingId)
         {
             var existingRating = _context.Rating.FirstOrDefault(x => x.ListingId == listingId);
             if (existingRating == null)

@@ -21,7 +21,7 @@
             Clicked="BtnFilter_Clicked"
             Text="Filteri"
             TextColor="White" 
-            IsVisible="False" 
+            IsVisible="True" 
             Margin="0,30,0,15"
             />
 

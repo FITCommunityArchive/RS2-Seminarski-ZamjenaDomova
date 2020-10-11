@@ -229,24 +229,24 @@ namespace ZamjenaDomova.Mobile
 
         }
 
-        //        public static async Task<OcjenaModel> SetOcjena(int voziloId, int ocjena)
-        //        {
-        //            var ocjenaModel = new Modeli.OcjenaModel
-        //            {
-        //                VoziloId = voziloId,
-        //                KorisnikId = Preferences.Get("korisnikId", 0),
-        //                DataOcjena = ocjena
-        //            };
+        public static async Task<Rating> SetRating(int listingId, int ratingValue)
+        {
+            var rating = new Model.Rating
+            {
+                ListingId = listingId,
+                UserId = Preferences.Get("userId", 0),
+                RatingValue = ratingValue
+            };
 
-        //            await TokenValidator.CheckTokenValidity();
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            var json = JsonConvert.SerializeObject(ocjenaModel);
-        //            var content = new StringContent(json, Encoding.UTF8, "application/json");
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.PostAsync($"{_apiUrl}/Ocjene", content).Result.Content.ReadAsStringAsync();
-        //            return JsonConvert.DeserializeObject<OcjenaModel>(response);
-        //        }
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(rating);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.PostAsync($"{_apiUrl}/Rating", content).Result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Rating>(response);
+        }
 
         public static async Task<bool> UpdateListing(int listingId, Model.Requests.ListingUpdateRequest request)
         {
@@ -272,35 +272,35 @@ namespace ZamjenaDomova.Mobile
         //    return true;
         //}
 
-        //        public static async Task<List<OcjenaModel>> GetOcjeneByVozilo(int voziloId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
+        public static async Task<List<Rating>> GetRatingsByListing(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Ocjene/GetOcjeneByVozilo/{voziloId}");
-        //            return JsonConvert.DeserializeObject<List<OcjenaModel>>(response);
-        //        }
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Rating/GetRatingsByListing/{listingId}");
+            return JsonConvert.DeserializeObject<List<Rating>>(response);
+        }
 
-        //        public static async Task<int> GetOcjenaByVoziloAndKorisnik(int voziloId, int korisnikId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
+        public static async Task<int> GetRatingByListingAndUser(int listingId, int userId)
+        {
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Ocjene/GetOcjenaByVoziloAndKorisnik/{voziloId}/{korisnikId}");
-        //            return JsonConvert.DeserializeObject<int>(response);
-        //        }
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Rating/GetRatingByListingAndUser/{listingId}/{userId}");
+            return JsonConvert.DeserializeObject<int>(response);
+        }
 
-        //        public static async Task<Modeli.Oglas> GetOglasByVozilo(int voziloId)
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
+        public static async Task<Model.ListingModel> GetListing(int listingId)
+        {
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Vozila/GetOglasByVozilo/{voziloId}");
-        //            return JsonConvert.DeserializeObject<Modeli.Oglas>(response);
-        //        }
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/GetListing/{listingId}");
+            return JsonConvert.DeserializeObject<Model.ListingModel>(response);
+        }
 
         //        public static async Task<string> GetPhoneNumber()
         //        {
@@ -362,15 +362,15 @@ namespace ZamjenaDomova.Mobile
         //        }
 
 
-        //        public static async Task<List<Modeli.Oglas>> GetOglase()
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
+        public static async Task<List<Model.Listing>> GetListings()
+        {
+            await TokenValidator.CheckTokenValidity();
 
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Vozila/GetOglase");
-        //            return JsonConvert.DeserializeObject<List<Modeli.Oglas>>(response);
-        //        }
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/Listings/GetListings");
+            return JsonConvert.DeserializeObject<List<Model.Listing>>(response);
+        }
 
         //        public static async Task<List<Modeli.MojOglas>> GetMojeOglase()
         //        {

@@ -48,7 +48,7 @@ namespace ZamjenaDomova.Mobile.Pages
         }
        public async void BtnFilter_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new RegisterPage());
+            await Navigation.PushModalAsync(new FilterPage());
         }
     }
 }

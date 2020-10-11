@@ -18,5 +18,6 @@ namespace ZamjenaDomova.WebAPI.Services
         public List<Model.ListingModel> GetListingsModels(ListingsModelsSearchRequest request);
         public List<Model.ListingModel> MyListings(int userId, bool approved);
         public Model.ListingDetailsModel GetListingDetails(int listingId);
+        public Model.ListingModel GetListing(int listingId);
     }
 }

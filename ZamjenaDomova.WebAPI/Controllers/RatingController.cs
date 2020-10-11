@@ -20,10 +20,10 @@ namespace ZamjenaDomova.WebAPI.Controllers
             this.service = service;
         }
 
-        [HttpGet("GetByListing/{listingId}")]
-        public List<Model.Rating> GetByListing(int listingId)
+        [HttpGet("GetRatingsByListing/{listingId}")]
+        public List<Model.Rating> GetRatingsByListing(int listingId)
         {
-            return service.GetByListing(listingId);
+            return service.GetRatingsByListing(listingId);
         }
 
         [HttpGet("GetRatingByListingAndUser/{listingId}/{userId}")]

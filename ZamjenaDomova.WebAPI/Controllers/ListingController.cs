@@ -67,6 +67,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.Update(id, request);
         }
+        [HttpGet("GetListing/{voziloId}")]
+        public Model.ListingModel GetListing(int voziloId)
+        {
+            return _service.GetListing(voziloId);
+        }
 
     }
 }
