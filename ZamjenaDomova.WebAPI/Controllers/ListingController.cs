@@ -41,6 +41,11 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.GetCount(request);
         }
+        [HttpGet("UnapprovedCount")]
+        public ActionResult<int> UnapprovedCount()
+        {
+            return _service.UnapprovedCount();
+        }
         [HttpPost("GetListingsModels")]
         public ActionResult<List<Model.ListingModel>> GetListingsModels(ListingsModelsSearchRequest request)
         {

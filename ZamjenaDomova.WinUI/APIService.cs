@@ -40,6 +40,12 @@ namespace ZamjenaDomova.WinUI
             }
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<List<T>>();
         }
+        public async Task<int> UnapprovedCount<T>()
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/UnapprovedCount";
+            
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>();
+        }
 
         public async Task<T> GetById<T>(object id)
         {

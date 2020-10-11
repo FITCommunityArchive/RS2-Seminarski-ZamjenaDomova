@@ -357,5 +357,10 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return listing;
         }
+
+        public int UnapprovedCount()
+        {
+            return _context.Listing.Where(x => !x.Approved).Count();
+        }
     }
 }

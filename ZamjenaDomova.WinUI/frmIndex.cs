@@ -16,12 +16,14 @@ namespace ZamjenaDomova.WinUI
 {
     public partial class frmIndex : Form
     {
+        private readonly APIService _service = new APIService("Listing");
         public frmIndex()
         {
             InitializeComponent();
+            notifyIcon.Icon = this.Icon;
         }
 
-        private void frmIndex_Load(object sender, EventArgs e)
+        private async void frmIndex_Load(object sender, EventArgs e)
         {
             //buttons styling
             //btnAmenities
@@ -60,6 +62,9 @@ namespace ZamjenaDomova.WinUI
             btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(50, 255, 255, 255);
             btnReports.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(100, 255, 255, 255);
 
+            int unapprovedCount = await _service.UnapprovedCount<int>();
+            if (unapprovedCount > 0)
+                notifyIcon.ShowBalloonTip(4000, "Neodobreni oglasi", "Broj: " + unapprovedCount, ToolTipIcon.Info);
         }
 
 
@@ -101,6 +106,12 @@ namespace ZamjenaDomova.WinUI
         {
             PanelHelper.RemovePanels(panelMain);
             PanelHelper.AddPanel(panelMain, new ucReports());
+        }
+
+        private void notifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            PanelHelper.RemovePanels(panelMain);
+            PanelHelper.AddPanel(panelMain, new ucApproveListings());
         }
     }
 }
