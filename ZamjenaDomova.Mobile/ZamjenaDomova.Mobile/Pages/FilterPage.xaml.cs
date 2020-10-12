@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,14 @@ namespace ZamjenaDomova.Mobile.Pages
     public partial class FilterPage : ContentPage
     {
         public SelectableObservableCollection<SelectableItem<Model.AmenityModel>> AmenitiesItems { get; set; }
+        public ObservableCollection<Model.Territory> TerritoriesCollection = new ObservableCollection<Territory>();
+        
         private double StepValue = 1.0;
         public FilterPage()
         {
             InitializeComponent();
             GetAmenities();
+            GetTerritories();
         }
         private async void BtnFilter_Clicked(object sender, EventArgs e)
         {
@@ -63,6 +67,25 @@ namespace ZamjenaDomova.Mobile.Pages
             AmenitiesItems = new SelectableObservableCollection<SelectableItem<AmenityModel>>(amenitiesItems);
             lvAmenities.ItemsSource = AmenitiesItems;
         }
+        private async void GetTerritories()
+        {
+            var territories = await APIService.GetTerritories();
+            territories = territories.OrderBy(x => x.Name).ToList();
+            foreach (var item in territories)
+            {
+                TerritoriesCollection.Add(item);
+            }
+            PickerTerritory.ItemsSource = TerritoriesCollection;
+        }
 
+        private void TapReset_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PickerTerritory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

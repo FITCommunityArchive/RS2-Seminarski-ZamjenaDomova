@@ -3,27 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ZamjenaDomova.Mobile.Pages.FilterPage"
              xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
-             NavigationPage.HasNavigationBar="False" 
-             NavigationPage.HasBackButton="True">
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
             <!--NASLOV-->
-            <Label
+            <Grid BackgroundColor="White" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label
                     FontSize="Large"
-                    HorizontalTextAlignment="Center"
-                    Text="Filteri" 
-                    Margin="0,0,0,20"/>
-            <BoxView BackgroundColor="Black" HeightRequest="1" />
-            <Button
-                    x:Name="BtnFilter"
-                    BackgroundColor="#B83A3A"
-                    Clicked="BtnFilter_Clicked"
-                    Text="Traži"
-                    TextColor="White" />
+                    Text="Filteri"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"/>
+                <Label FontSize="Small"
+                       Text="Reset"
+                       Grid.Column="2"
+                       HorizontalOptions="End"
+                       VerticalOptions="End"
+                       Grid.Row="0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapReset"
+                                              Tapped="TapReset_Tapped"/>
+                    </Label.GestureRecognizers>
 
-            <ScrollView>
+                </Label>
+            </Grid>
+            <BoxView BackgroundColor="Black" HeightRequest="1" />
+
+
+        <ScrollView>
             <StackLayout Spacing="10" Margin="30,50,30,30">
-               
+
 
                 <!--LOKACIJA-->
                 <Label
@@ -32,9 +51,20 @@
                         Text="Lokacija" />
                 <Entry x:Name="EntCity">
                 </Entry>
+                    <!--KANTON-->
+                    <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Kanton" />
+                    <Picker
+                        x:Name="PickerTerritory"
+                        Title="Odaberite kanton"
+                        ItemDisplayBinding="{Binding Name}"
+                    SelectedIndexChanged="PickerTerritory_SelectedIndexChanged">
 
+                    </Picker>
 
-                <Grid Margin="0,30">
+                    <Grid Margin="0,30">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.4*" />
                         <ColumnDefinition Width="0.2*" />
@@ -97,7 +127,7 @@
                            Grid.Row="4"
                            FontSize="Small"/>
                     <Slider x:Name="sBathrooms"
-                        Maximum="20"
+                        Maximum="7"
                         Minimum="1"
                         ValueChanged="sBathrooms_ValueChanged"
                         Grid.Column="0"
@@ -134,8 +164,15 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
+                <Button
+                    x:Name="BtnFilter"
+                    BackgroundColor="#B83A3A"
+                    Clicked="BtnFilter_Clicked"
+                    Text="Traži"
+                    TextColor="White" 
+                    Margin="0,20,0,0"/>
             </StackLayout>
+
         </ScrollView>
         </StackLayout>
     </ContentPage.Content>
