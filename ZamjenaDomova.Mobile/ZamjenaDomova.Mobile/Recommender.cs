@@ -79,6 +79,7 @@ namespace ZamjenaDomova.Mobile
         private async Task LoadListings(int listingId)
         {
             ListingsModelsSearchRequest request = new ListingsModelsSearchRequest();
+            request.Amenities = null;
             List<Model.ListingModel> listingsList = await APIService.GetListingsModels(request);
 
             var listingToRemove = listingsList.Find(x => x.ListingId == listingId);

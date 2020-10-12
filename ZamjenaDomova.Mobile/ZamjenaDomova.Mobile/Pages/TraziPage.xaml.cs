@@ -17,23 +17,35 @@ namespace ZamjenaDomova.Mobile.Pages
     {
         private string _searchText;
         public ObservableCollection<Model.ListingModel> listings;
+        private ListingsModelsSearchRequest _request;
         public TraziPage()
         {
             InitializeComponent();
+            _searchText="";
+            _request = new ListingsModelsSearchRequest { Amenities = null };
+
             listings = new ObservableCollection<Model.ListingModel>();
             this.Appearing += async (object sender, EventArgs e) =>
             {
-                await GetListingsModels();
+                await GetListingsModels(_request);
+            };
+        }
+        public TraziPage(ListingsModelsSearchRequest request)
+        {
+            InitializeComponent();
+            _request = new ListingsModelsSearchRequest();
+            _request = request;
+            _searchText = "";
+            listings = new ObservableCollection<Model.ListingModel>();
+            this.Appearing += async (object sender, EventArgs e) =>
+            {
+                await GetListingsModels(_request);
             };
         }
 
-        async Task GetListingsModels()
+        async Task GetListingsModels(ListingsModelsSearchRequest request)
         {
             listings.Clear();
-            var request = new ListingsModelsSearchRequest
-            {
-                Name = _searchText
-            };
             var list = await APIService.GetListingsModels(request);
             foreach (var item in list)
             {

@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZamjenaDomova.Controls;
 using ZamjenaDomova.Model;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
@@ -17,16 +18,36 @@ namespace ZamjenaDomova.Mobile.Pages
     {
         public SelectableObservableCollection<SelectableItem<Model.AmenityModel>> AmenitiesItems { get; set; }
         public ObservableCollection<Model.Territory> TerritoriesCollection = new ObservableCollection<Territory>();
-        
+
         private double StepValue = 1.0;
+        private int territoryId = -1;
         public FilterPage()
         {
             InitializeComponent();
             GetAmenities();
             GetTerritories();
+            lblPersons.Text = sPersons.Value.ToString();
+            lblBeds.Text = sBeds.Value.ToString();
+            lblBathrooms.Text = sBathrooms.Value.ToString();
+
         }
         private async void BtnFilter_Clicked(object sender, EventArgs e)
         {
+            var request = new ListingsModelsSearchRequest();
+            request.City = EntCity.Text;
+            request.TerritoryId = territoryId;
+            request.Persons = int.Parse(lblPersons.Text);
+            request.Beds = int.Parse(lblBeds.Text);
+            request.Bathrooms = int.Parse(lblBathrooms.Text);
+            request.Amenities = new List<int>();
+            var selectedAmenities = AmenitiesItems.SelectedItems().ToList();
+
+            foreach (var item in selectedAmenities)
+            {
+                request.Amenities.Add(item.Data.AmenityId);
+            }
+            await Navigation.PushAsync(new TraziPage(request));
+
         }
 
         private void sPersons_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -71,21 +92,40 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             var territories = await APIService.GetTerritories();
             territories = territories.OrderBy(x => x.Name).ToList();
+
             foreach (var item in territories)
             {
                 TerritoriesCollection.Add(item);
             }
+            PickerTerritory.Items.Clear();
             PickerTerritory.ItemsSource = TerritoriesCollection;
         }
 
         private void TapReset_Tapped(object sender, EventArgs e)
         {
-
+            EntCity.Text = "";
+            PickerTerritory.SelectedItem = -1;
+            sPersons.Value = 1;
+            sBeds.Value = 1;
+            sBathrooms.Value = 1;
+            GetAmenities();
         }
 
         private void PickerTerritory_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            var picker = sender as Picker;
+            if (!(picker.SelectedItem is int))
+            {
+                var selectedTerritory = (Model.Territory)picker.SelectedItem;
+
+                territoryId = (int)selectedTerritory.TerritoryId;
+            }
+            else
+            {
+                territoryId = -1;
+            }
         }
+
     }
 }

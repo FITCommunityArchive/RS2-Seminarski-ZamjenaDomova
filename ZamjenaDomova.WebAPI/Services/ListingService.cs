@@ -229,15 +229,14 @@ namespace ZamjenaDomova.WebAPI.Services
                 .Where(x => x.Approved)
                 .Where(x => x.UserId != request.UserId)
                 .AsQueryable();
-            if (request != null)
-            {
+
                 if (!string.IsNullOrWhiteSpace(request.City))
                     query = query.Where(x => x.City.StartsWith(request.City));
                 //if (request.StartDate != null)
                 //    query = query.Where(x => x.DateApproved > request.StartDate);
                 //if (request.EndDate != null)
                 //    query = query.Where(x => x.DateApproved < request.EndDate);
-            }
+            
             var list = query.ToList();
             List<Model.ListingModel> result = new List<ListingModel>();
             foreach (var item in list)

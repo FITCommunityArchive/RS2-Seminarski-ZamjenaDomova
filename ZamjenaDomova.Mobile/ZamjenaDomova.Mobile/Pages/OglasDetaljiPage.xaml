@@ -175,7 +175,7 @@
                           ItemsSource="{Binding AmenitiesItems}" 
                           VerticalOptions="Start" 
                           RowHeight="30"
-                          HeightRequest="{Binding Height}"
+                          HeightRequest="{Binding _height}"
                           VerticalScrollBarVisibility="Never">
 
                     <ListView.ItemTemplate>

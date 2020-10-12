@@ -23,7 +23,7 @@ namespace ZamjenaDomova.Mobile.Pages
         private int _totalImages = 0;
         private string email;
         private string phone;
-        private int Height = 0;
+        private int _height = 0;
         private bool _deletable;
         public OglasDetaljiPage(int listingId, bool deletable)
         {
@@ -62,9 +62,9 @@ namespace ZamjenaDomova.Mobile.Pages
             email = listing.UserEmail;
             phone = listing.UserPhone;
 
-            Height = 32 * listing.Amenities.Count;
+            _height = 32 * listing.Amenities.Count;
             lvAmenities.ItemsSource = listing.Amenities;
-            lvAmenities.HeightRequest = Height;
+            lvAmenities.HeightRequest = _height;
 
             var images = await APIService.GetListingImages(listingId);
             if (images != null)
@@ -193,7 +193,7 @@ namespace ZamjenaDomova.Mobile.Pages
             UserRating.IsVisible = !UserRating.IsVisible;
         }
 
-        private async void UserRatingOptions()
+        private void UserRatingOptions()
         {
             RatingOptions.IsVisible = true;
         }
