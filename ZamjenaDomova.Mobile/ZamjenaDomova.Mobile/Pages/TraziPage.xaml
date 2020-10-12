@@ -6,7 +6,9 @@
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters"
              mc:Ignorable="d"
-             x:Class="ZamjenaDomova.Mobile.Pages.TraziPage">
+             x:Class="ZamjenaDomova.Mobile.Pages.TraziPage" 
+             NavigationPage.HasBackButton="False" 
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ImageConverter x:Key="imgConv" />

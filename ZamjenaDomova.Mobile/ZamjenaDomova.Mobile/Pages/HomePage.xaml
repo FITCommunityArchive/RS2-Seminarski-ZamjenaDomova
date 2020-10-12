@@ -9,10 +9,10 @@
     NavigationPage.HasNavigationBar="False"
     SelectedTabColor="#000000"
     UnselectedTabColor="#000000"
-    mc:Ignorable="d" BarBackgroundColor="#FFFFFF" BarTextColor="#000000">
+    mc:Ignorable="d" BarBackgroundColor="#FFFFFF" BarTextColor="#000000" NavigationPage.HasBackButton="False">
 
-    <pages:MojDomPage Title="Moj dom" />
-    <pages:TraziPage Title="Traži"/>
-    <pages:ProfilPage Title="Profil"/>
+    <!--<pages:MojDomPage Title="Moj dom" />
+    --><!--<pages:TraziPage Title="Traži"/>--><!--
+    <pages:ProfilPage Title="Profil"/>-->
 
 </TabbedPage>

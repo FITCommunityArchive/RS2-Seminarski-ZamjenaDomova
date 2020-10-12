@@ -46,7 +46,7 @@ namespace ZamjenaDomova.Mobile.Pages
             {
                 request.Amenities.Add(item.Data.AmenityId);
             }
-            await Navigation.PushAsync(new TraziPage(request));
+            await Navigation.PushAsync(new HomePage(request));
 
         }
 

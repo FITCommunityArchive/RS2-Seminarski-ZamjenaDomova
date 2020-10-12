@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ZamjenaDomova.Mobile.Pages.FilterPage"
              xmlns:ms="clr-namespace:ZamjenaDomova.Controls" 
-             NavigationPage.HasBackButton="True"
+             NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout Padding="5">

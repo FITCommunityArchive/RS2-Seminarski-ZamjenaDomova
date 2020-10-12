@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
@@ -15,7 +16,19 @@ namespace ZamjenaDomova.Mobile.Pages
         public HomePage()
         {
             InitializeComponent();
+            this.Children.Add(new MojDomPage() { Title = "Moj dom" });
+            this.Children.Add(new TraziPage() { Title = "Traži" });
+            this.Children.Add(new ProfilPage() { Title = "Profil" });
             this.CurrentPage = this.Children[1];
+        }
+        public HomePage(ListingsModelsSearchRequest request)
+        {
+            InitializeComponent();
+            this.Children.Add(new MojDomPage() {Title= "Moj dom" });
+            this.Children.Add(new TraziPage(request) {Title="Traži" });
+            this.Children.Add(new ProfilPage() {Title= "Profil" });
+            this.CurrentPage = this.Children[1];
+
         }
     }
 }
