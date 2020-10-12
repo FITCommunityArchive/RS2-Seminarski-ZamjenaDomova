@@ -26,9 +26,6 @@ namespace ZamjenaDomova.Mobile.Pages
             InitializeComponent();
             GetAmenities();
             GetTerritories();
-            lblPersons.Text = sPersons.Value.ToString();
-            lblBeds.Text = sBeds.Value.ToString();
-            lblBathrooms.Text = sBathrooms.Value.ToString();
 
         }
         private async void BtnFilter_Clicked(object sender, EventArgs e)
@@ -55,15 +52,19 @@ namespace ZamjenaDomova.Mobile.Pages
             var newStep = Math.Round(e.NewValue / StepValue);
 
             sPersons.Value = newStep * StepValue;
-            lblPersons.Text = sPersons.Value.ToString();
+            if (sPersons.Value != 0)
+                lblPersons.Text = sPersons.Value.ToString();
+            else
+                lblPersons.Text = "";
         }
 
         private void sBeds_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             var newStep = Math.Round(e.NewValue / StepValue);
-
             sBeds.Value = newStep * StepValue;
-            lblBeds.Text = sBeds.Value.ToString();
+            if (sBeds.Value != 0)
+                lblBeds.Text = sBeds.Value.ToString();
+            else lblBeds.Text = "";
         }
 
         private void sBathrooms_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -71,7 +72,9 @@ namespace ZamjenaDomova.Mobile.Pages
             var newStep = Math.Round(e.NewValue / StepValue);
 
             sBathrooms.Value = newStep * StepValue;
-            lblBathrooms.Text = sBathrooms.Value.ToString();
+            if (sBathrooms.Value != 0)
+                lblBathrooms.Text = sBathrooms.Value.ToString();
+            else lblBathrooms.Text = "";
         }
         private async void GetAmenities()
         {
@@ -105,9 +108,9 @@ namespace ZamjenaDomova.Mobile.Pages
         {
             EntCity.Text = "";
             PickerTerritory.SelectedItem = -1;
-            sPersons.Value = 1;
-            sBeds.Value = 1;
-            sBathrooms.Value = 1;
+            sPersons.Value = 0;
+            sBeds.Value = 0;
+            sBathrooms.Value = 0;
             GetAmenities();
         }
 
