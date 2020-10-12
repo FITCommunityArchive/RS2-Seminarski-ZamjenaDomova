@@ -105,7 +105,7 @@
                 <Label
                     x:Name="LblRating"
                     FontAttributes="Bold"
-                    FontSize="Medium"
+                    FontSize="Small"
                     HorizontalOptions="Center" />
                 <StackLayout x:Name="RatingOptions" 
                              IsVisible="false">
@@ -114,7 +114,7 @@
                     Margin="0,5"
                     Clicked="BtnUserRating_Clicked"
                     FontAttributes="Bold"
-                    FontSize="Medium"
+                    FontSize="Small"
                     HorizontalOptions="Center"
                     Text="Ocijenite oglas" />
 
@@ -135,7 +135,7 @@
                     x:Name="LblUserRatingMessage"
                     Margin="0,5"
                     FontAttributes="Bold"
-                    FontSize="Medium"
+                    FontSize="Small"
                     HorizontalOptions="Center"
                     TextColor="#B83A3A" />
                 </StackLayout>

@@ -113,7 +113,9 @@ namespace ZamjenaDomova.WinUI.Reports
 
             document.Add(header);
             document.Add(new Paragraph(new Text("\n")));
-            document.Add(new Paragraph("Broj aktivnih oglasa po gradovima"));
+            document.Add(new Paragraph("Broj aktivnih oglasa po gradovima"))
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetFontSize(15);
 
 
             float[] columnWidths = { 1, 2, 2, 2, 2, 2 };

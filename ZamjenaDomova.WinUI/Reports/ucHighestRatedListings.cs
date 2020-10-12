@@ -70,7 +70,9 @@ namespace ZamjenaDomova.WinUI.Reports
 
             document.Add(header);
             document.Add(new Paragraph(new Text("\n")));
-            document.Add(new Paragraph("Najbolje ocijenjeni oglasi"));
+            document.Add(new Paragraph("Najbolje ocijenjeni oglasi"))
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetFontSize(15);
 
 
             float[] columnWidths = { 1, 2, 2, 2, 2, 1, 2};
