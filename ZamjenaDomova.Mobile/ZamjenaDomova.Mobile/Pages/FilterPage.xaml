@@ -1,12 +1,142 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZamjenaDomova.Mobile.Pages.FilterPage">
+             x:Class="ZamjenaDomova.Mobile.Pages.FilterPage"
+             xmlns:ms="clr-namespace:ZamjenaDomova.Controls"
+             NavigationPage.HasNavigationBar="False" 
+             NavigationPage.HasBackButton="True">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!--NASLOV-->
+            <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Filteri" 
+                    Margin="0,0,0,20"/>
+            <BoxView BackgroundColor="Black" HeightRequest="1" />
+            <Button
+                    x:Name="BtnFilter"
+                    BackgroundColor="#B83A3A"
+                    Clicked="BtnFilter_Clicked"
+                    Text="Traži"
+                    TextColor="White" />
+
+            <ScrollView>
+            <StackLayout Spacing="10" Margin="30,50,30,30">
+               
+
+                <!--LOKACIJA-->
+                <Label
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Lokacija" />
+                <Entry x:Name="EntCity">
+                </Entry>
+
+
+                <Grid Margin="0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*" />
+                        <ColumnDefinition Width="0.2*" />
+                        <ColumnDefinition Width="0.4*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--BROJ OSOBA-->
+                    <Label 
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Broj osoba" 
+                        Grid.Column="0"
+                        Grid.Row="0"/>
+                    <Label x:Name="lblPersons"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           FontSize="Small"/>
+                    <Slider x:Name="sPersons"
+                        Maximum="20"
+                        Minimum="1"
+                        ValueChanged="sPersons_ValueChanged"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"></Slider>
+
+                    <!--BROJ KREVETA-->
+                    <Label 
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Broj kreveta"
+                        Grid.Column="0"
+                        Grid.Row="2"/>
+                    <Label x:Name="lblBeds" 
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           FontSize="Small"/>
+                    <Slider x:Name="sBeds"
+                        Maximum="20"
+                        Minimum="1"
+                        ValueChanged="sBeds_ValueChanged"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="3"></Slider>
+
+                    <!--BROJ KUPAONICA-->
+                    <Label Grid.Column="0"
+                           Grid.Row="4"
+                        FontSize="Small"
+                        HorizontalTextAlignment="Start"
+                        Text="Broj kupaonica" />
+                    <Label x:Name="lblBathrooms"
+                           Grid.Column="1"
+                           Grid.Row="4"
+                           FontSize="Small"/>
+                    <Slider x:Name="sBathrooms"
+                        Maximum="20"
+                        Minimum="1"
+                        ValueChanged="sBathrooms_ValueChanged"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="5"></Slider>
+
+                </Grid>
+                <!--SADRŽAJI-->
+
+                <Label
+                    FontSize="Subtitle"
+                    HorizontalTextAlignment="Center"
+                    Text="Sadržaji"/>
+                <BoxView BackgroundColor="Black" HeightRequest="1" />
+
+                <ListView x:Name="lvAmenities"
+                          ItemsSource="{Binding AmenitiesItems}"
+                          ms:MultiSelectListView.IsMultiSelect="true" Margin="0,0,50,0">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ms:SelectableViewCell>
+                                <ms:SelectableViewCell.CheckView>
+                                    <BoxView Color="#B83A3A" 
+                                             WidthRequest="12" 
+                                             HeightRequest="12" />
+                                </ms:SelectableViewCell.CheckView>
+
+                                <ms:SelectableViewCell.DataView>
+                                    <Label Text="{Binding Data.Name}" />
+                                </ms:SelectableViewCell.DataView>
+
+                            </ms:SelectableViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
