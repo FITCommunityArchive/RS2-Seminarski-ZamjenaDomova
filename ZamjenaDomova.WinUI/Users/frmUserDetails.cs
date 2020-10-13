@@ -69,42 +69,7 @@ namespace ZamjenaDomova.WinUI.Users
 
             }
         }
-        //private async void frmUserDetails_Load(object sender, EventArgs e)
-        //{
-        //    //var roles = await _roleService.Get<List<Model.Role>>(null);
-        //    //clbRoles.DataSource = roles;
-        //    //clbRoles.DisplayMember = "Name";
-        //    //clbRoles.ValueMember = "RoleId";
-
-        //    if (_id.HasValue)
-        //    {
-
-        //        btnDelete.Show();
-        //        var user = await _userService.GetById<Model.User>(_id);
-
-        //        txtFirstName.Text = user.FirstName;
-        //        txtLastName.Text = user.LastName;
-        //        txtEmail.Text = user.Email;
-        //        txtTelephone.Text = user.PhoneNumber;
-
-        //        if (user.Image != null)
-        //        {
-        //            MemoryStream ms = new MemoryStream(user.Image);
-        //            Image image = Image.FromStream(ms);
-        //            pbAvatar.Image = image;
-        //        }
-        //        var request = new RoleSearchRequest { UserId = user.UserId };
-        //        var userRoles = await _roleService.Get<List<Model.Role>>(request);
-        //        var rolesInt = userRoles.Select(x => x.RoleId);
-        //        for (int i = 0; i < clbRoles.Items.Count; i++)
-        //        {
-        //            var item = (clbRoles.Items[i] as Model.Role).RoleId;
-        //            if (rolesInt.Contains(item))
-        //                clbRoles.SetItemChecked(i, true);
-        //        }
-
-        //    }
-        //}
+      
         UserUpsertRequest request = new UserUpsertRequest();
         private async void btnSave_Click(object sender, EventArgs e)
         {

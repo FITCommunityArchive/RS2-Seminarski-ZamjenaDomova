@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:Behaviours="clr-namespace:ZamjenaDomova.Mobile.Behaviours" 
-             xmlns:Validators="clr-namespace:ZamjenaDomova.Mobile.Validators.Implementations"
+             xmlns:Validators="clr-namespace:ZamjenaDomova.Mobile.Validators.Implementations" xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="ZamjenaDomova.Mobile.Pages.PostavkeKorisnickogRacunaPage" 
              NavigationPage.HasBackButton="True" 
              NavigationPage.HasNavigationBar="False">
@@ -12,7 +12,7 @@
                 <StackLayout.Behaviors>
                     <Behaviours:ValidationGroupBehaviour x:Name="form"/>
                 </StackLayout.Behaviors>
-
+                
                 <!--NASLOV-->
                 <Label
                     FontSize="Large"
@@ -20,7 +20,38 @@
                     Text="Postavke računa" 
                     Margin="0,0,0,20"/>
                 <BoxView BackgroundColor="Black" HeightRequest="1" />
+                
+                <!--SLIKA - PRIKAZ I UPLOAD-->
+                <StackLayout
+                Padding="20">
+                    <forms:CachedImage
+                    x:Name="ImgProfile"
+                    Aspect="AspectFit"
+                    CacheType="All"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    LoadingPlaceholder="user.png"
+                    Source="user.png"
+                    VerticalOptions="EndAndExpand"
+                    WidthRequest="150">
+                        <forms:CachedImage.Transformations>
+                            <transformations:CircleTransformation />
+                        </forms:CachedImage.Transformations>
+                    </forms:CachedImage>
 
+                    <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Promijeni sliku"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapUploadImage" Tapped="TapUploadImage_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                
+                <!--Polja usera-->
                 <Label
                 Text="Ime"
                 TextColor="#000000" />
@@ -81,6 +112,7 @@
                         </Behaviours:ValidationBehaviour>
                     </Entry.Behaviors>
                 </Entry>
+                <!--Button Save-->
                 <Label
                     x:Name="LblWarning"
                     FontSize="Small"
@@ -102,9 +134,8 @@
                     Clicked="BtnSave_Clicked"
                     IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                     Text="Spremi promjene"
-                    TextColor="White" />
-
-
+                    TextColor="White"
+                    Margin="0,20,0,0"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

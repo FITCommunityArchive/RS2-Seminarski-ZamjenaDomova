@@ -86,5 +86,14 @@ namespace ZamjenaDomova.WebAPI.Controllers
         {
             return _service.Delete(id);
         }
+        [HttpPost("ChangeProfilePicture")]
+        public IActionResult ChangeProfilePicture([FromBody] byte[] imageArray)
+        {
+            var userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+
+            var response = _service.ChangeProfilePicture(userEmail, imageArray);
+            if (response == null) return BadRequest("Greška pri uploadu slike!");
+            return Ok("Profilna slika uspješno promijenjena!");
+        }
     }
 }

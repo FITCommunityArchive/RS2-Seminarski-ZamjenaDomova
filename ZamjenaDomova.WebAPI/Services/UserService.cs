@@ -249,6 +249,18 @@ namespace ZamjenaDomova.WebAPI.Services
 
             return _mapper.Map<Model.User>(entity);
         }
- 
+
+        public Model.User ChangeProfilePicture(string userEmail, byte[] imageArray)
+        {
+            var user = _context.User.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user == null)
+            {
+                throw new UserException("Korisnik nije pronađen!");
+            }
+            user.Image = imageArray;
+            _context.SaveChanges();
+            return _mapper.Map<Model.User>(user);
+        }
     }
 }
