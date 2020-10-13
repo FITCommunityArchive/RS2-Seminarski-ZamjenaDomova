@@ -28,7 +28,7 @@ namespace ZamjenaDomova.WebAPI.Controllers
             return _service.Get(request);
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize]
         [HttpGet("{id}")]
 
         public Model.User GetById(int id)

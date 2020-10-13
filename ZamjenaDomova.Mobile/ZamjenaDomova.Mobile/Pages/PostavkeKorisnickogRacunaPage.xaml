@@ -1,14 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Behaviours="clr-namespace:ZamjenaDomova.Mobile.Behaviours" 
+             xmlns:Validators="clr-namespace:ZamjenaDomova.Mobile.Validators.Implementations"
              x:Class="ZamjenaDomova.Mobile.Pages.PostavkeKorisnickogRacunaPage" 
              NavigationPage.HasBackButton="True" 
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="10" Margin="30,50,30,30">
+                <StackLayout.Behaviors>
+                    <Behaviours:ValidationGroupBehaviour x:Name="form"/>
+                </StackLayout.Behaviors>
+
+                <!--NASLOV-->
+                <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Postavke računa" 
+                    Margin="0,0,0,20"/>
+                <BoxView BackgroundColor="Black" HeightRequest="1" />
+
+                <Label
+                Text="Ime"
+                TextColor="#000000" />
+                <Entry
+                x:Name="EntFirstName"
+                Keyboard="Default"
+                TextColor="#000000">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                Text="Prezime"
+                TextColor="#000000" />
+                <Entry
+                x:Name="EntLastName"
+                Keyboard="Default"
+                TextColor="#000000">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                Text="Email"
+                TextColor="#000000" />
+                <Entry
+                x:Name="EntEmail"
+                Keyboard="Email"
+                TextColor="#000000">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                Text="Broj telefona"
+                TextColor="#000000" />
+                <Entry
+                x:Name="EntPhone"
+                Keyboard="Telephone"
+                TextColor="#000000">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:RequiredValidator />
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                    x:Name="LblWarning"
+                    FontSize="Small"
+                    HorizontalTextAlignment="Center"
+                    Text="Niste unijeli sva obavezna polja!"
+                    TextColor="Red">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference BtnSave}, Path=IsEnabled}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Button
+                    x:Name="BtnSave"
+                    BackgroundColor="#B83A3A"
+                    Clicked="BtnSave_Clicked"
+                    IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
+                    Text="Spremi promjene"
+                    TextColor="White" />
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -135,7 +135,7 @@ namespace ZamjenaDomova.Mobile
             if (!response.IsSuccessStatusCode) return false;
             return true;
         }
-
+        
         public static async Task<List<Model.ListingModel>> GetListingsModels(Model.Requests.ListingsModelsSearchRequest request)
         {
             await TokenValidator.CheckTokenValidity();
@@ -145,11 +145,11 @@ namespace ZamjenaDomova.Mobile
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
             var response = await httpClient.PostAsync($"{_apiUrl}/Listing/GetListingsModels", content);
-      
+
             var jsonResult = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(jsonResult);
         }
-
+        
         public static async Task<List<ListingImageModel>> GetListingImages(int listingId)
         {
             await TokenValidator.CheckTokenValidity();
@@ -159,7 +159,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/ListingImage/GetByListing/{listingId}");
             return JsonConvert.DeserializeObject<List<ListingImageModel>>(response);
         }
-
+       
         public static async Task<ListingDetailsModel> GetListingDetails(int listingId)
         {
             await TokenValidator.CheckTokenValidity();
@@ -169,7 +169,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/GetListingDetails/{listingId}");
             return JsonConvert.DeserializeObject<Model.ListingDetailsModel>(response);
         }
-
+        
         public static async Task<List<Model.ListingModel>> GetMyListings(bool approved)
         {
             await TokenValidator.CheckTokenValidity();
@@ -179,7 +179,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Listing/MyListings/{userId}/{approved}");
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
         }
-
+        
         public static async Task<List<Model.ListingModel>> GetWishlistListings()
         {
             await TokenValidator.CheckTokenValidity();
@@ -189,6 +189,7 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Wishlist/{wishlistId}");
             return JsonConvert.DeserializeObject<List<Model.ListingModel>>(response);
         }
+        
         public static async Task<Model.WishlistListing> SaveWishlistListing(int listingId)
         {
             await TokenValidator.CheckTokenValidity();
@@ -207,6 +208,7 @@ namespace ZamjenaDomova.Mobile
             var jsonResult = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Model.WishlistListing>(jsonResult);
         }
+        
         public static async Task<bool> RemoveWishlistListing(int listingId)
         {
             await TokenValidator.CheckTokenValidity();
@@ -218,6 +220,7 @@ namespace ZamjenaDomova.Mobile
             return true;
 
         }
+        
         public static async Task<bool> IsOnWishlist(int listingId)
         {
             await TokenValidator.CheckTokenValidity();
@@ -260,6 +263,7 @@ namespace ZamjenaDomova.Mobile
 
             return true;
         }
+        
         //public static async Task<bool> DeleteListing(int listingId)
         //{
         //    await TokenValidator.CheckTokenValidity();
@@ -302,6 +306,16 @@ namespace ZamjenaDomova.Mobile
             return JsonConvert.DeserializeObject<Model.ListingModel>(response);
         }
 
+        public static async Task<User> GetUserDetails()
+        {
+            await TokenValidator.CheckTokenValidity();
+            var userId = Preferences.Get("userId", 0);
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.GetStringAsync($"{_apiUrl}/User/{userId}");
+            return JsonConvert.DeserializeObject<User>(response);
+        }
         //        public static async Task<string> GetPhoneNumber()
         //        {
         //            await TokenValidator.CheckTokenValidity();
@@ -335,16 +349,6 @@ namespace ZamjenaDomova.Mobile
         //            return JsonConvert.DeserializeObject<ProfilePictureModel>(response);
         //        }
 
-        //        public static async Task<List<Modeli.Kategorija>> GetKategorije()
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Kategorije");
-        //            return JsonConvert.DeserializeObject<List<Modeli.Kategorija>>(response);
-        //        }
-
         //        public static async Task<List<VoziloSearch>> PretragaVozila(string search)
         //        {
         //            await TokenValidator.CheckTokenValidity();
@@ -371,17 +375,6 @@ namespace ZamjenaDomova.Mobile
             var response = await httpClient.GetStringAsync($"{_apiUrl}/Listings/GetListings");
             return JsonConvert.DeserializeObject<List<Model.Listing>>(response);
         }
-
-        //        public static async Task<List<Modeli.MojOglas>> GetMojeOglase()
-        //        {
-        //            await TokenValidator.CheckTokenValidity();
-
-        //            var httpClient = new HttpClient();
-        //            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
-        //            var response = await httpClient.GetStringAsync($"{_apiUrl}/Vozila/MojiOglasi");
-        //            return JsonConvert.DeserializeObject<List<Modeli.MojOglas>>(response);
-        //        }
-        //    }
 
         public static class TokenValidator
         {
