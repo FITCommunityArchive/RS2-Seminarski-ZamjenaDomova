@@ -33,10 +33,11 @@ namespace ZamjenaDomova.Mobile.Pages
             var request = new ListingsModelsSearchRequest();
             request.City = EntCity.Text;
             request.TerritoryId = territoryId;
-            request.Persons = int.Parse(lblPersons.Text);
-            request.Beds = int.Parse(lblBeds.Text);
-            request.Bathrooms = int.Parse(lblBathrooms.Text);
+            request.Persons = (int)Math.Round(sPersons.Value / StepValue);
+            request.Beds = (int)Math.Round(sBeds.Value / StepValue);
+            request.Bathrooms = (int)Math.Round(sBathrooms.Value / StepValue);
             request.Amenities = new List<int>();
+
             var selectedAmenities = AmenitiesItems.SelectedItems().ToList();
 
             foreach (var item in selectedAmenities)
@@ -44,6 +45,7 @@ namespace ZamjenaDomova.Mobile.Pages
                 request.Amenities.Add(item.Data.AmenityId);
             }
             await Navigation.PushAsync(new HomePage(request));
+
 
         }
 

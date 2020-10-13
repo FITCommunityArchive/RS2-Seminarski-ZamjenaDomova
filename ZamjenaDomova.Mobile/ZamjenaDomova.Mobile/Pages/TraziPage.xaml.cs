@@ -21,7 +21,7 @@ namespace ZamjenaDomova.Mobile.Pages
         public TraziPage()
         {
             InitializeComponent();
-            _searchText="";
+            _searchText = "";
             _request = new ListingsModelsSearchRequest { Amenities = null };
 
             listings = new ObservableCollection<Model.ListingModel>();
@@ -46,19 +46,22 @@ namespace ZamjenaDomova.Mobile.Pages
         async Task GetListingsModels(ListingsModelsSearchRequest request)
         {
             listings.Clear();
+
             var list = await APIService.GetListingsModels(request);
             foreach (var item in list)
             {
                 listings.Add(item);
             }
             lvListings.ItemsSource = listings;
+
+
         }
         private void lvListings_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var listingId = (e.SelectedItem as Model.ListingModel).ListingId;
             Navigation.PushAsync(new OglasDetaljiPage(listingId, false));
         }
-       public async void BtnFilter_Clicked(object sender, EventArgs e)
+        public async void BtnFilter_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FilterPage());
         }
