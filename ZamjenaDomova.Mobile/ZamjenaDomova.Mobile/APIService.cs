@@ -330,6 +330,19 @@ namespace ZamjenaDomova.Mobile
             return true;
         }
 
+        public static async Task<bool> UpdateAccountSettings(Model.Requests.AccountSettingsUpdateRequest request)
+        {
+            await TokenValidator.CheckTokenValidity();
+            var userId =Preferences.Get("userId", 0);
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("access_token", string.Empty));
+            var response = await httpClient.PutAsync($"{_apiUrl}/User/UpdateAccountSettings/{userId}", content);
+
+            return true;
+        }
+
         //        public static async Task<ProfilePictureModel> GetProfilePicture()
         //        {
         //            await TokenValidator.CheckTokenValidity();

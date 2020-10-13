@@ -18,5 +18,6 @@ namespace ZamjenaDomova.WebAPI.Services
         Model.UserResponse Authenticate(string email, string password);
         Model.User ChangePassword(string userEmail, ChangePasswordModel model);
         Model.User ChangeProfilePicture(string userEmail, byte[] imageArray);
+        Model.User UpdateAccountSettings(int id, AccountSettingsUpdateRequest request);
     }
 }

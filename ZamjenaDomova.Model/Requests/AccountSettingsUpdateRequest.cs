@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ZamjenaDomova.Model.Requests
 {
-    class AccountSettingsUpdateRequest
+    public class AccountSettingsUpdateRequest
     {
         public string FirstName { get; set; }
 

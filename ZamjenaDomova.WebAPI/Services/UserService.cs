@@ -262,5 +262,19 @@ namespace ZamjenaDomova.WebAPI.Services
             _context.SaveChanges();
             return _mapper.Map<Model.User>(user);
         }
+
+        public Model.User UpdateAccountSettings(int id, AccountSettingsUpdateRequest request)
+        {
+            var entity = _context.User.FirstOrDefault(x => x.UserId == id);
+
+            _context.User.Attach(entity);
+            _context.User.Update(entity);
+
+            _mapper.Map(request, entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.User>(entity);
+        }
     }
 }

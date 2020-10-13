@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZamjenaDomova.Model.Requests;
 
 namespace ZamjenaDomova.Mobile.Pages
 {
@@ -40,9 +41,16 @@ namespace ZamjenaDomova.Mobile.Pages
             }
         }
 
-        private void BtnSave_Clicked(object sender, EventArgs e)
+        private async void BtnSave_Clicked(object sender, EventArgs e)
         {
+            var request = new AccountSettingsUpdateRequest();
+            request.FirstName = EntFirstName.Text;
+            request.LastName = EntLastName.Text;
+            request.PhoneNumber = EntPhone.Text;
+            request.Email = EntEmail.Text;
 
+            await APIService.UpdateAccountSettings(request);
+            await Navigation.PopAsync();
         }
 
         private void TapUploadImage_Tapped(object sender, EventArgs e)

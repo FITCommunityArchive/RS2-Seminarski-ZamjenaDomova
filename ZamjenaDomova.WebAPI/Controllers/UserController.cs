@@ -95,5 +95,10 @@ namespace ZamjenaDomova.WebAPI.Controllers
             if (response == null) return BadRequest("Greška pri uploadu slike!");
             return Ok("Profilna slika uspješno promijenjena!");
         }
+        [HttpPut("UpdateAccountSettings/{id}")]
+        public Model.User UpdateAccountSettings(int id, AccountSettingsUpdateRequest request)
+        {
+            return _service.UpdateAccountSettings(id, request);
+        }
     }
 }
