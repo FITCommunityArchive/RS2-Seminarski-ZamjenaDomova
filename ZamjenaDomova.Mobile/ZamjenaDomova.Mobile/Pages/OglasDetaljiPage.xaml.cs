@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,6 +77,15 @@ namespace ZamjenaDomova.Mobile.Pages
                 }
             }
             crvImages.ItemsSource = listingImages;
+            if (listing.UserImage != null && listing.UserImage.Length > 0)
+            {
+                Stream stream = new MemoryStream(listing.UserImage);
+                ImgUser.Source = ImageSource.FromStream(() => stream);
+            }
+            else
+            {
+                ImgUser.Source = "user.png";
+            }
         }
         private void crvImages_Scrolled(object sender, ItemsViewScrolledEventArgs e)
         {

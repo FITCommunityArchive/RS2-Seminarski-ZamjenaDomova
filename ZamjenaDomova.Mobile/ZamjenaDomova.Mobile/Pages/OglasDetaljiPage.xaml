@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:converters="clr-namespace:ZamjenaDomova.Mobile.Converters" 
              xmlns:ms="clr-namespace:ZamjenaDomova.Controls" 
-             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="ZamjenaDomova.Mobile.Pages.OglasDetaljiPage" 
              NavigationPage.HasBackButton="True" 
              NavigationPage.HasNavigationBar="False">
@@ -155,13 +155,36 @@
                 <Label x:Name="lblTerritory" FontSize="Body"></Label>
 
                 <Label Text="Vlasnik" FontSize="Medium" Margin="0,15,0,0"></Label>
-                <Grid>
+                <Grid ColumnSpacing="10" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" x:Name="lblOwner" VerticalOptions="Center" FontSize="Body"></Label>
-                    <Button Grid.Column="1"
+                    <Label Grid.Column="1" 
+                           Grid.Row="0"
+                           x:Name="lblOwner" 
+                           VerticalOptions="Center" 
+                           FontSize="Body"
+                           HorizontalOptions="Start"></Label>
+                    <forms:CachedImage
+                        x:Name="ImgUser"
+                        HeightRequest="80"
+                        HorizontalOptions="End"
+                        LoadingPlaceholder="user.png"
+                        WidthRequest="80"
+                        Grid.Row="0"
+                        Grid.Column="0">
+                        <forms:CachedImage.Transformations>
+                            <transformations:CircleTransformation />
+                        </forms:CachedImage.Transformations>
+                    </forms:CachedImage>
+                    <Button Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
                             x:Name="BtnContact"
                             BackgroundColor="#B83A3A"
                             Clicked="BtnContact_Clicked"

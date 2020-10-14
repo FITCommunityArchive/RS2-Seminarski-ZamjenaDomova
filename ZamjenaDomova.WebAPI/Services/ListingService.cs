@@ -247,7 +247,7 @@ namespace ZamjenaDomova.WebAPI.Services
             {
                 try
                 {
-                    for(int i=list.Count-1; i>=0; i--)
+                    for (int i = list.Count - 1; i >= 0; i--)
                     //foreach (var listing in list)
                     {
                         var listing = list[i];
@@ -266,11 +266,11 @@ namespace ZamjenaDomova.WebAPI.Services
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
                 }
-            
-        }
+
+            }
 
 
-        List<Model.ListingModel> result = new List<ListingModel>();
+            List<Model.ListingModel> result = new List<ListingModel>();
             foreach (var item in list)
             {
                 var newListingModel = new Model.ListingModel
@@ -293,106 +293,107 @@ namespace ZamjenaDomova.WebAPI.Services
             return result;
         }
 
-public ListingDetailsModel GetListingDetails(int listingId)
-{
-    var listing = _context.Listing
-        .Include(x => x.Territory)
-        .Include(x => x.User)
-        .FirstOrDefault(x => x.ListingId == listingId);
-
-    if (listing == null)
-        return new ListingDetailsModel();
-
-    //mapping properties
-    var result = new ListingDetailsModel
-    {
-        ListingId = listing.ListingId,
-        Address = listing.Address,
-        AreaDescription = listing.AreaDescription,
-        Bathrooms = listing.Bathrooms,
-        Beds = listing.Beds,
-        City = listing.City,
-        DateApproved = listing.DateApproved,
-        ListingDescription = listing.ListingDescription,
-        Name = listing.Name,
-        Persons = listing.Persons,
-        TerritoryName = listing.Territory.Name,
-        UserName = listing.User.FirstName + " " + listing.User.LastName,
-        UserEmail = listing.User.Email,
-        UserPhone = listing.User.PhoneNumber,
-        Amenities = new List<Model.Amenity>()
-    };
-    //mapping amenities
-    var listingAmenities = _context.ListingAmenity.Where(x => x.ListingId == listingId);
-    if (listingAmenities.Count() > 0)
-    {
-        foreach (var item in listingAmenities.Include(x => x.Amenity))
-            result.Amenities.Add(new Model.Amenity
-            {
-                AmenityId = item.AmenityId,
-                Name = item.Amenity.Name
-            });
-    }
-
-    return result;
-}
-
-public List<ListingModel> MyListings(int userId, bool approved)
-{
-    var query = _context.Listing
-       .Include(x => x.ListingImages)
-       .Where(x => x.UserId == userId)
-       .Where(x => x.Approved == approved)
-       .AsQueryable();
-
-    var list = query.ToList();
-    List<Model.ListingModel> result = new List<ListingModel>();
-    foreach (var item in list)
-    {
-        var newListingModel = new Model.ListingModel
+        public ListingDetailsModel GetListingDetails(int listingId)
         {
-            Bathrooms = item.Bathrooms,
-            Beds = item.Beds,
-            Persons = item.Persons,
-            City = item.City,
-            Name = item.Name,
-            ListingId = item.ListingId
-        };
-        //mapping images
-        if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
-            newListingModel.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
+            var listing = _context.Listing
+                .Include(x => x.Territory)
+                .Include(x => x.User)
+                .FirstOrDefault(x => x.ListingId == listingId);
 
-        result.Add(newListingModel);
+            if (listing == null)
+                return new ListingDetailsModel();
 
-    }
+            //mapping properties
+            var result = new ListingDetailsModel
+            {
+                ListingId = listing.ListingId,
+                Address = listing.Address,
+                AreaDescription = listing.AreaDescription,
+                Bathrooms = listing.Bathrooms,
+                Beds = listing.Beds,
+                City = listing.City,
+                DateApproved = listing.DateApproved,
+                ListingDescription = listing.ListingDescription,
+                Name = listing.Name,
+                Persons = listing.Persons,
+                TerritoryName = listing.Territory.Name,
+                UserName = listing.User.FirstName + " " + listing.User.LastName,
+                UserEmail = listing.User.Email,
+                UserPhone = listing.User.PhoneNumber,
+                Amenities = new List<Model.Amenity>(),
+                UserImage = listing.User.Image
+            };
+            //mapping amenities
+            var listingAmenities = _context.ListingAmenity.Where(x => x.ListingId == listingId);
+            if (listingAmenities.Count() > 0)
+            {
+                foreach (var item in listingAmenities.Include(x => x.Amenity))
+                    result.Amenities.Add(new Model.Amenity
+                    {
+                        AmenityId = item.AmenityId,
+                        Name = item.Amenity.Name
+                    });
+            }
 
-    return result;
-}
+            return result;
+        }
 
-public ListingModel GetListing(int listingId)
-{
-    var item = _context.Listing.SingleOrDefault(x => x.ListingId == listingId);
+        public List<ListingModel> MyListings(int userId, bool approved)
+        {
+            var query = _context.Listing
+               .Include(x => x.ListingImages)
+               .Where(x => x.UserId == userId)
+               .Where(x => x.Approved == approved)
+               .AsQueryable();
 
-    var listing = new Model.ListingModel
-    {
-        Bathrooms = item.Bathrooms,
-        Beds = item.Beds,
-        Persons = item.Persons,
-        City = item.City,
-        Name = item.Name,
-        ListingId = item.ListingId
-    };
+            var list = query.ToList();
+            List<Model.ListingModel> result = new List<ListingModel>();
+            foreach (var item in list)
+            {
+                var newListingModel = new Model.ListingModel
+                {
+                    Bathrooms = item.Bathrooms,
+                    Beds = item.Beds,
+                    Persons = item.Persons,
+                    City = item.City,
+                    Name = item.Name,
+                    ListingId = item.ListingId
+                };
+                //mapping images
+                if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
+                    newListingModel.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
 
-    if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
-        listing.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
+                result.Add(newListingModel);
+
+            }
+
+            return result;
+        }
+
+        public ListingModel GetListing(int listingId)
+        {
+            var item = _context.Listing.SingleOrDefault(x => x.ListingId == listingId);
+
+            var listing = new Model.ListingModel
+            {
+                Bathrooms = item.Bathrooms,
+                Beds = item.Beds,
+                Persons = item.Persons,
+                City = item.City,
+                Name = item.Name,
+                ListingId = item.ListingId
+            };
+
+            if (_context.ListingImage.Any(x => x.ListingId == item.ListingId))
+                listing.Image = _context.ListingImage.FirstOrDefault(x => x.ListingId == item.ListingId).Image;
 
 
-    return listing;
-}
+            return listing;
+        }
 
-public int UnapprovedCount()
-{
-    return _context.Listing.Where(x => !x.Approved).Count();
-}
+        public int UnapprovedCount()
+        {
+            return _context.Listing.Where(x => !x.Approved).Count();
+        }
     }
 }
