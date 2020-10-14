@@ -242,7 +242,7 @@ namespace ZamjenaDomova.WebAPI.Services
                 query = query.Where(x => x.Bathrooms == request.Bathrooms);
 
             var list = query.ToList();
-
+            list = list.OrderByDescending(x => x.DateApproved).ToList();
             if (request.Amenities != null && request.Amenities.Count > 0)
             {
                 try
