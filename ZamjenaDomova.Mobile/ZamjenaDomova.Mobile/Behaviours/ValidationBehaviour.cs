@@ -38,21 +38,13 @@ namespace ZamjenaDomova.Mobile.Behaviours
                         result = true;
                     }
                 }
-                //else
-                //{
-                //    var isEntry = (_view as Entry);
-                //    if (isEntry != null)
-                //    {
-                //        var value = isEntry.Text;
-                //        result = validator.Check(value);
-                //    }
                 else
                 {
                     var value = _view.GetType()
                                            .GetProperty(PropertyName)
                                            .GetValue(_view) as string;
                     result = validator.Check(value);
-                    //    }
+                    
                 }
                 isValid = isValid && result;
 

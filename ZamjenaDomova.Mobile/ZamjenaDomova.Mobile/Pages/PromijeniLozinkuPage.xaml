@@ -4,12 +4,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Behaviours="clr-namespace:ZamjenaDomova.Mobile.Behaviours" xmlns:Validators="clr-namespace:ZamjenaDomova.Mobile.Validators.Implementations"
     mc:Ignorable="d" NavigationPage.HasBackButton="True" 
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="30" VerticalOptions="CenterAndExpand" Spacing="10">
+                <StackLayout.Behaviors>
+                    <Behaviours:ValidationGroupBehaviour x:Name="form"/>
+                </StackLayout.Behaviors>
                 <Label
                     FontSize="Large"
                     HorizontalTextAlignment="Center"
@@ -29,20 +32,37 @@
                         Text="Nova lozinka" />
                 <Entry
                 x:Name="EntNewPassword"
-                IsPassword="True"/>
+                IsPassword="True">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:PasswordValidator/>
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
                 <Label
                         FontSize="Small"
                         HorizontalTextAlignment="Start"
                         Text="Potvrdi novu lozinku" />
                 <Entry
                 x:Name="EntConfirmPassword"
-                IsPassword="True"/>
+                IsPassword="True">
+                    <Entry.Behaviors>
+                        <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
+                            <Behaviours:ValidationBehaviour.Validators>
+                                <Validators:PasswordValidator/>
+                            </Behaviours:ValidationBehaviour.Validators>
+                        </Behaviours:ValidationBehaviour>
+                    </Entry.Behaviors>
+                </Entry>
 
                 <Button
                 x:Name="BtnChangePassword"
                 BackgroundColor="#B83A3A"
                 Clicked="BtnChangePassword_Clicked"
                 Text="Promijeni lozinku"
+                IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"
                 TextColor="White" 
                 FontSize="Subtitle"
                 Margin="0,20,0,0"/>
