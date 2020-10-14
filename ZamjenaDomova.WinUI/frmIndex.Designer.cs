@@ -42,7 +42,10 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.separator1 = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.separator2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -77,7 +80,7 @@
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnReports.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnReports.Location = new System.Drawing.Point(13, 456);
+            this.btnReports.Location = new System.Drawing.Point(13, 492);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.btnReports.Size = new System.Drawing.Size(329, 68);
@@ -94,7 +97,7 @@
             this.btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnApprove.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnApprove.Location = new System.Drawing.Point(13, 360);
+            this.btnApprove.Location = new System.Drawing.Point(13, 384);
             this.btnApprove.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
             this.btnApprove.Name = "btnApprove";
             this.btnApprove.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -112,7 +115,7 @@
             this.btnListings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListings.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnListings.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnListings.Location = new System.Drawing.Point(13, 286);
+            this.btnListings.Location = new System.Drawing.Point(13, 310);
             this.btnListings.Name = "btnListings";
             this.btnListings.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.btnListings.Size = new System.Drawing.Size(329, 68);
@@ -129,7 +132,7 @@
             this.btnAmenities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAmenities.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAmenities.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnAmenities.Location = new System.Drawing.Point(13, 190);
+            this.btnAmenities.Location = new System.Drawing.Point(13, 202);
             this.btnAmenities.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
             this.btnAmenities.Name = "btnAmenities";
             this.btnAmenities.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -215,9 +218,12 @@
             this.flowLayoutPanel1.BackgroundImage = global::ZamjenaDomova.WinUI.Properties.Resources.wood;
             this.flowLayoutPanel1.Controls.Add(this.btnUsers);
             this.flowLayoutPanel1.Controls.Add(this.btnNewUser);
+            this.flowLayoutPanel1.Controls.Add(this.separator1);
             this.flowLayoutPanel1.Controls.Add(this.btnAmenities);
+            this.flowLayoutPanel1.Controls.Add(this.separator2);
             this.flowLayoutPanel1.Controls.Add(this.btnListings);
             this.flowLayoutPanel1.Controls.Add(this.btnApprove);
+            this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.btnReports);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -228,11 +234,47 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(193, 587);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
+            // separator1
+            // 
+            this.separator1.BackColor = System.Drawing.Color.Ivory;
+            this.separator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.separator1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.separator1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.separator1.Location = new System.Drawing.Point(13, 187);
+            this.separator1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.separator1.Name = "separator1";
+            this.separator1.Size = new System.Drawing.Size(329, 2);
+            this.separator1.TabIndex = 8;
+            // 
             // notifyIcon
             // 
             this.notifyIcon.Text = "notifyIcon1";
             this.notifyIcon.Visible = true;
             this.notifyIcon.BalloonTipClicked += new System.EventHandler(this.notifyIcon_BalloonTipClicked);
+            // 
+            // separator2
+            // 
+            this.separator2.BackColor = System.Drawing.Color.Ivory;
+            this.separator2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.separator2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.separator2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.separator2.Location = new System.Drawing.Point(13, 295);
+            this.separator2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.separator2.Name = "separator2";
+            this.separator2.Size = new System.Drawing.Size(329, 2);
+            this.separator2.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Ivory;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(13, 477);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(329, 2);
+            this.label2.TabIndex = 10;
             // 
             // frmIndex
             // 
@@ -281,6 +323,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Label separator1;
+        private System.Windows.Forms.Label separator2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -29,9 +29,9 @@ namespace ZamjenaDomova.WinUI
             //btnAmenities
             btnAmenities.FlatAppearance.BorderSize = 0;
             btnAmenities.BackColor = System.Drawing.Color.Transparent;
-            btnAmenities.FlatAppearance.MouseOverBackColor= System.Drawing.Color.FromArgb(50, 255, 255, 255);
+            btnAmenities.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(50, 255, 255, 255);
             btnAmenities.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(100, 255, 255, 255);
-            
+
             //btnUsers
             btnUsers.FlatAppearance.BorderSize = 0;
             btnUsers.BackColor = System.Drawing.Color.Transparent;
@@ -65,6 +65,7 @@ namespace ZamjenaDomova.WinUI
             int unapprovedCount = await _service.UnapprovedCount<int>();
             if (unapprovedCount > 0)
                 notifyIcon.ShowBalloonTip(4000, "Neodobreni oglasi", "Broj: " + unapprovedCount, ToolTipIcon.Info);
+
         }
 
 
@@ -113,5 +114,7 @@ namespace ZamjenaDomova.WinUI
             PanelHelper.RemovePanels(panelMain);
             PanelHelper.AddPanel(panelMain, new ucApproveListings());
         }
+
+
     }
 }
