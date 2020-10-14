@@ -86,6 +86,7 @@
                         <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
                             <Behaviours:ValidationBehaviour.Validators>
                                 <Validators:RequiredValidator />
+                                <Validators:PasswordValidator/>
                             </Behaviours:ValidationBehaviour.Validators>
                         </Behaviours:ValidationBehaviour>
                     </Entry.Behaviors>
@@ -102,6 +103,7 @@
                         <Behaviours:ValidationBehaviour Group="{x:Reference form}" PropertyName="Text">
                             <Behaviours:ValidationBehaviour.Validators>
                                 <Validators:RequiredValidator />
+                                <Validators:PasswordValidator/>
                             </Behaviours:ValidationBehaviour.Validators>
                         </Behaviours:ValidationBehaviour>
                     </Entry.Behaviors>
