@@ -5,4 +5,7 @@
     xmlns:local="using:ZamjenaDomova.Mobile.UWP"
     RequestedTheme="Light">
 
+    <Application.Resources>
+        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+    </Application.Resources>
 </Application>
