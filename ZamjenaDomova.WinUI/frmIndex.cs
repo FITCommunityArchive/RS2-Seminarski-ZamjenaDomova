@@ -21,7 +21,6 @@ namespace ZamjenaDomova.WinUI
         {
             InitializeComponent();
             notifyIcon.Icon = this.Icon;
-            notifyIcon.
         }
 
         private async void frmIndex_Load(object sender, EventArgs e)

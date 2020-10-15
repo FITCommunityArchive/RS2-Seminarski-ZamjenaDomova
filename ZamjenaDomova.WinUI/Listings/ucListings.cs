@@ -27,6 +27,7 @@ namespace ZamjenaDomova.WinUI.Listings
             dtpStart.CustomFormat = " ";
             dgvListings.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvListings.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvListings.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void dgvListings_MouseDoubleClick(object sender, MouseEventArgs e)
         {

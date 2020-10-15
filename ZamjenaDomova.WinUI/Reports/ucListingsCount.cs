@@ -24,6 +24,7 @@ namespace ZamjenaDomova.WinUI.Reports
         public ucListingsCount()
         {
             InitializeComponent();
+            dgvCount.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private async void ucListingsCount_Load(object sender, EventArgs e)

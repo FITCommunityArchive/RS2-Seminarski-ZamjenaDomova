@@ -19,6 +19,7 @@ namespace ZamjenaDomova.WinUI.Listings
         {
             InitializeComponent();
             dgvListings.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvListings.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private async void ucApproveListings_Load(object sender, EventArgs e)
         {

@@ -106,7 +106,10 @@ namespace ZamjenaDomova.WebAPI.Services
 
         public Model.Listing GetById(int id)
         {
-            var listing = _context.Listing.Include(x => x.Territory).FirstOrDefault(x => x.ListingId == id);
+            var listing = _context.Listing
+                .Include(x => x.Territory)
+                .Include(x => x.User)
+                .FirstOrDefault(x => x.ListingId == id);
 
             if (listing == null)
                 return new Model.Listing();

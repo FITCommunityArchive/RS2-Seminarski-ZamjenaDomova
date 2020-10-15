@@ -29,7 +29,8 @@ namespace ZamjenaDomova.WinUI.Reports
             dtpEnd.Format = DateTimePickerFormat.Custom;
             dtpEnd.CustomFormat = " ";
             dtpStart.CustomFormat = " ";
-            dgvListings.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvListings.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvListings.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private async void ucListingDetails_Load(object sender, EventArgs e)
         {

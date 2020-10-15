@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,7 @@ namespace ZamjenaDomova.WinUI.Listings
             InitializeComponent();
             _id = listingId;
             _approved = approved;
+            
         }
 
         private async void frmListingDetails_Load(object sender, EventArgs e)
@@ -33,14 +35,7 @@ namespace ZamjenaDomova.WinUI.Listings
                 btnApprove.Hide();
                 btnReject.Hide();
             }
-            var listingAmenities = await _listingAmenityService
-                .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id });
-            clbAmenities.DataSource = listingAmenities;
-            clbAmenities.DisplayMember = "Name";
-            clbAmenities.ValueMember = "AmenityId";
-
-            for (int i = 0; i < clbAmenities.Items.Count; i++)
-                clbAmenities.SetItemChecked(i, true);
+            
 
             try
             {
@@ -64,15 +59,28 @@ namespace ZamjenaDomova.WinUI.Listings
                     Image image = Image.FromStream(ms);
                     pbImage.Image = image;
                 }
+                LoadAmenities();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Nemate pristup!", "Authorization", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Nemate pristup!", "Authorization", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
 
         }
+        private async void LoadAmenities()
+        {
+            var listingAmenities = await _listingAmenityService
+                .Get<List<Model.AmenityModel>>(new ListingAmenitySearchRequest { ListingId = _id });
 
+            clbAmenities.DataSource = listingAmenities;
+            clbAmenities.DisplayMember = "Name";
+            clbAmenities.ValueMember = "AmenityId";
+
+            for (int i = 0; i < clbAmenities.Items.Count; i++)
+                clbAmenities.SetItemChecked(i, true);
+        }
         private async void btnApprove_Click(object sender, EventArgs e)
         {
             ListingUpdateRequest request = new ListingUpdateRequest

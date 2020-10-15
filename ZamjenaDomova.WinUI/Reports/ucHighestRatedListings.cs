@@ -23,6 +23,8 @@ namespace ZamjenaDomova.WinUI.Reports
         public ucHighestRatedListings()
         {
             InitializeComponent();
+            dgvListings.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvListings.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private async void ucHighestRatedListings_Load(object sender, EventArgs e)
         {
