@@ -166,7 +166,7 @@ namespace ZamjenaDomova.Mobile.Pages
             {
                 var averageRating = ratings.Average(x => x.RatingValue);
                 Rating.Value = averageRating;
-                LblRating.Text = $"Trenutna prosječna ocjena: {averageRating}";
+                LblRating.Text = $"Trenutna prosječna ocjena: {averageRating:#.##}";
             }
         }
         private void CvRecommendedListings_SelectionChanged(object sender, SelectionChangedEventArgs e)
