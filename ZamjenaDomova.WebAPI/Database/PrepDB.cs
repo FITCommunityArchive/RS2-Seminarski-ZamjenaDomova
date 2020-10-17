@@ -128,9 +128,9 @@ namespace ZamjenaDomova.WebAPI.Database
                 context.Database.OpenConnection();
                 try
                 {
-                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.User ON");
+                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.[User] ON");
                     context.SaveChanges();
-                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.User OFF");
+                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.[User] OFF");
                 }
                 finally
                 {
@@ -426,10 +426,10 @@ namespace ZamjenaDomova.WebAPI.Database
                     new Rating { RatingId = 5, UserId = 2, ListingId = 1, RatingValue = 4 },
                     new Rating { RatingId = 6, UserId = 2, ListingId = 2, RatingValue = 4 },
 
-                    new Rating { RatingId = 1, UserId = 4, ListingId = 1, RatingValue = 3 },
-                    new Rating { RatingId = 2, UserId = 4, ListingId = 2, RatingValue = 2 },
-                    new Rating { RatingId = 3, UserId = 4, ListingId = 3, RatingValue = 5 },
-                    new Rating { RatingId = 4, UserId = 4, ListingId = 4, RatingValue = 4 }
+                    new Rating { RatingId = 7, UserId = 4, ListingId = 1, RatingValue = 3 },
+                    new Rating { RatingId = 8, UserId = 4, ListingId = 2, RatingValue = 2 },
+                    new Rating { RatingId = 9, UserId = 4, ListingId = 3, RatingValue = 5 },
+                    new Rating { RatingId = 10, UserId = 4, ListingId = 4, RatingValue = 4 }
                   );
                 context.Database.OpenConnection();
                 try
@@ -444,21 +444,21 @@ namespace ZamjenaDomova.WebAPI.Database
                 }
             }
 
-            //if (!context.WishlistListing.Any())
-            //{
-            //    context.WishlistListing.AddRange(new WishlistListing { WishlistListingId = 1, WishlistId = 2, ListingId = 1 });
-            //    context.Database.OpenConnection();
-            //    try
-            //    {
-            //        context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing ON");
-            //        context.SaveChanges();
-            //        context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing OFF");
-            //    }
-            //    finally
-            //    {
-            //        context.Database.CloseConnection();
-            //    }
-            //}
+            if (!context.WishlistListing.Any())
+            {
+                context.WishlistListing.AddRange(new WishlistListing { WishlistListingId = 1, WishlistId = 2, ListingId = 1 });
+                context.Database.OpenConnection();
+                try
+                {
+                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing ON");
+                    context.SaveChanges();
+                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing OFF");
+                }
+                finally
+                {
+                    context.Database.CloseConnection();
+                }
+            }
         }
 
 
