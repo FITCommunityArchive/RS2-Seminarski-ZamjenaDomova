@@ -103,7 +103,13 @@
                     ReadOnly="True"
                     ItemSize="20">
                     <rating:SfRating.RatingSettings>
-                        <rating:SfRatingSettings RatedFill="#B83A3A" UnRatedFill="white" RatedStrokeWidth="3" UnRatedStrokeWidth="2" />
+                        <rating:SfRatingSettings 
+                            RatedFill="#B83A3A" 
+                            UnRatedFill="white" 
+                            RatedStrokeWidth="1" 
+                            UnRatedStrokeWidth="1"
+                            RatedStroke="#B83A3A"
+                            UnRatedStroke="#B83A3A"/>
                     </rating:SfRating.RatingSettings>
                 </rating:SfRating>
 
@@ -132,8 +138,13 @@
                     ValueChanged="UserRating_ValueChanged"
                     ItemSize="20">
                         <rating:SfRating.RatingSettings>
-                            <rating:SfRatingSettings RatedFill="#B83A3A" UnRatedFill="Gray" RatedStrokeWidth="3" UnRatedStrokeWidth="2" />
-                        </rating:SfRating.RatingSettings>
+                            <rating:SfRatingSettings 
+                            RatedFill="#B83A3A" 
+                            UnRatedFill="white" 
+                            RatedStrokeWidth="1" 
+                            UnRatedStrokeWidth="1"
+                            RatedStroke="#B83A3A"
+                            UnRatedStroke="#B83A3A"/> </rating:SfRating.RatingSettings>
                     </rating:SfRating>
 
                     <Label
