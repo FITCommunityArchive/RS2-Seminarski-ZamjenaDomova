@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="SeedImages\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 

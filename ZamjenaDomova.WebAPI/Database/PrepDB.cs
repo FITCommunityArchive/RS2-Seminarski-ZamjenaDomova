@@ -444,21 +444,21 @@ namespace ZamjenaDomova.WebAPI.Database
                 }
             }
 
-            if (!context.WishlistListing.Any())
-            {
-                context.WishlistListing.AddRange(new WishlistListing { WishlistListingId = 1, WishlistId = 2, ListingId = 1 });
-                context.Database.OpenConnection();
-                try
-                {
-                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing ON");
-                    context.SaveChanges();
-                    context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing OFF");
-                }
-                finally
-                {
-                    context.Database.CloseConnection();
-                }
-            }
+            //if (!context.WishlistListing.Any())
+            //{
+            //    context.WishlistListing.AddRange(new WishlistListing { WishlistListingId = 1, WishlistId = 2, ListingId = 1 });
+            //    context.Database.OpenConnection();
+            //    try
+            //    {
+            //        context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing ON");
+            //        context.SaveChanges();
+            //        context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.WishlistListing OFF");
+            //    }
+            //    finally
+            //    {
+            //        context.Database.CloseConnection();
+            //    }
+            //}
         }
 
 

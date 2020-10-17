@@ -145,6 +145,12 @@ namespace ZamjenaDomova.WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            DefaultFilesOptions DefaultFile = new DefaultFilesOptions();
+            DefaultFile.DefaultFileNames.Clear();
+            DefaultFile.DefaultFileNames.Add("Index.html");
+            app.UseDefaultFiles(DefaultFile);
+            app.UseStaticFiles();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -173,6 +179,7 @@ namespace ZamjenaDomova.WebAPI
 
             });
 
+            PrepDB.PrepPopulation(app);
         }
     }
 }
