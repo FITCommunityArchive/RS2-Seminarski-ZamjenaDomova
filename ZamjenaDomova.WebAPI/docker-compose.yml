@@ -12,11 +12,7 @@ services:
 
   seminarski-api:
       build: ../
-      depends_on:
-        - ms-sql-server
       volumes:
         - './SeedImages:/app/SeedImages'
-      environment:
-        - ConnectionStrings:DockerDB=Server=ms-sql-server,1433;Database=KljucZaKljuc;User=sa;Password=Pa55w0rd2020;MultipleActiveResultSets=true;ConnectRetryCount=200;TrustServerCertificate=true;
       ports: 
         - "8080:80"
