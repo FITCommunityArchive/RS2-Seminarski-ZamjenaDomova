@@ -39,8 +39,17 @@ namespace ZamjenaDomova.WebAPI
         {
             services.AddControllers();
 
+            //     services.AddDbContext<ZamjenaDomovaContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
+
+            var server = Configuration["DBServer"] ?? "ms-sql-server";
+            var port = Configuration["DBPort"] ?? "1433";
+            var user = Configuration["DBUser"] ?? "SA";
+            var password = Configuration["DBPassword"] ?? "Pa55w0rd2020";
+            var database = Configuration["Database"] ?? "KljucZaKljuc";
+
             services.AddDbContext<ZamjenaDomovaContext>(options =>
-       options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer($"Server={server},{port};Initial Catalog={database}; User ID={user};Password={password}"));
 
             //swagger 
             services.AddSwaggerGen(c =>
