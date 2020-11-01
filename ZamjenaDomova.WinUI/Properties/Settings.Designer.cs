@@ -25,7 +25,7 @@ namespace ZamjenaDomova.WinUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1337/api")]
         public string APIUrl {
             get {
                 return ((string)(this["APIUrl"]));
